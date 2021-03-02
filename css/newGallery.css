@@ -9,9 +9,6 @@ body {
   height: 100%;
 }
 
-.Selection {
-}
-
 .flex-container {
   display: flex;
   align-items: center;
@@ -73,7 +70,6 @@ button {
 
 .button {
   appearance: auto;
-  -webkit-writing-mode: horizontal-tb !important;
   text-rendering: auto;
   color: black;
   letter-spacing: normal;
