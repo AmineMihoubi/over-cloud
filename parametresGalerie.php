@@ -9,11 +9,16 @@
         <div id = navigationBar>
             <ul>
                 <h2> Nom de la galerie</h2>
-                <li><a href="">Albums</a></li>
-                <li><a href="menuGalerie.html">Photos</a></li>
-                <li><a href="parametresGalerie.html">Paramètres</a></li>
-                <li><a href="participants.html">Participants</a></li>
-                <li id = "paraUtilisateur"><a href="parametresUtilisateurs.html">Amine Mihoubi</a></li>
+                <li><a href="albums.php">Albums</a></li>
+                <li><a href="">Photos</a></li>
+                <li><a href="parametresGalerie.php">Paramètres</a></li>
+                <li><a href="">Participants</a></li>
+                <li id = "paraUtilisateur"><a href="parametresUtilisateurs.php">
+                  <?php
+                  session_start();
+                   $user = $_SESSION['nom'];
+                   echo  $user;
+                  ?></a></li>
               </ul>
         </div>
 

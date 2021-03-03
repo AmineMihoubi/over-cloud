@@ -32,7 +32,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
            $_SESSION['idUtilisateur'] = $reponse['id_utilisateur'];
            $_SESSION['nom'] = $reponse['nom'];
 
-           header('Location: parametresGalerie.html');
+           header('Location: parametresGalerie.php');
         }
         else
         {
