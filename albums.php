@@ -7,6 +7,7 @@
   </head>
 
   <body>
+    <!-- Barre de navigation -->
     <div id = navigationBar>
         <ul>
             <h2> Nom de la galerie</h2>
@@ -22,4 +23,17 @@
               ?></a></li>
           </ul>
     </div>
+
+    <div id = listeAlbums>
+      <div class = carteAlbum>
+      <img src="image/nophoto.jfif" alt="Pas d'image">
+      <h4><b>Album blabla</b></h4>
+      </div>     
+      
+      <div class = carteAlbum>
+      <img src="image/nophoto.jfif" alt="Pas d'image">
+      <h4><b>Album de voiture</b></h4>
+      </div> 
+
+    </div> 
   </body>
