@@ -1,99 +1,92 @@
-body{
-  background-color: #576279;
-
+body {
+    background-color: #576279;
 }
-
-
 
 
 /**
 Parametres utilisateurs
 **/
 
-#photoProfil,#carteParametresUtilisateur {
-  display: block;
+#photoProfil,
+#carteParametresUtilisateur {
+    display: block;
 }
 
 #photoProfil {
-  padding-left: 700px;
-  padding-top: 50px;
-  width: 10px;
-  height: 10px;
-  
+    padding-left: 700px;
+    padding-top: 50px;
+    width: 10px;
+    height: 10px;
 }
 
-#carteParametresUtilisateur{
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  height: 700px;
-  width: 900px;
-  margin-left: 630px;
-  margin-top: -10px;
-  padding-top: 50px;
-  background-color: #1b1b28;
-  border-radius: 45px;
+#carteParametresUtilisateur {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    height: 700px;
+    width: 900px;
+    margin-left: 630px;
+    margin-top: -10px;
+    padding-top: 50px;
+    background-color: #1b1b28;
+    border-radius: 45px;
 }
 
-#carteText{
-  
-  padding-left: 40%;
-  margin-top: -50px;
-  font-size: 30px;
-  color: white;
+#carteText {
+    padding-left: 40%;
+    margin-top: -50px;
+    font-size: 30px;
+    color: white;
 }
 
 textarea {
-  border-radius: 45px;
-  width: 300px;
-  resize: none;
-  font-family:"Times New Roman", Times, serif;  
-  font-size: 15px;
-  padding-top: 10px;
-  letter-spacing: 1.2px;
-  padding-left: 20px;
-  margin-bottom: 30px;
-  margin-right: 360px;
-  margin-top: 10px;
-  
-
+    border-radius: 45px;
+    width: 300px;
+    resize: none;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    padding-top: 10px;
+    letter-spacing: 1.2px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    margin-right: 360px;
+    margin-top: 10px;
 }
 
 h9 {
-  font-size: 18px;
-  font-weight: 900;
-  color: hsla(0,0%,100%,.8);
-  line-height: 1.5;
-  margin-right: 200px ;
+    font-size: 18px;
+    font-weight: 900;
+    color: hsla(0, 0%, 100%, .8);
+    line-height: 1.5;
+    margin-right: 200px;
 }
 
 h5 {
-  color: hsla(0,0%,100%,.8);
-  line-height: 1.5;
-  margin-top: 20px;
+    color: hsla(0, 0%, 100%, .8);
+    line-height: 1.5;
+    margin-top: 20px;
 }
 
-#buttonConfirmation button{
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  background-color: yellowgreen;
-  border-radius: 45px;
-  margin-left: 350px;
+#buttonConfirmation button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: yellowgreen;
+    border-radius: 45px;
+    margin-left: 350px;
 }
 
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
-
 
 
 /**
@@ -101,116 +94,110 @@ ul {
 **/
 
 #carteParametresGalerie {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  height: 700px;
-  width: 900px;
-  margin-left: 630px;
-  background-color: #1b1b28;
-  border-radius: 45px;
-  margin-top: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    height: 700px;
+    width: 900px;
+    margin-left: 630px;
+    background-color: #1b1b28;
+    border-radius: 45px;
+    margin-top: 50px;
 }
 
 #carteParametresGalerie h5 {
-  margin-top: 70px;
-  margin-left: -10px;
-
+    margin-top: 70px;
+    margin-left: -10px;
 }
 
-#carteParametresGalerie, #navigationBar {
-  display: inline-block;
+#carteParametresGalerie,
+#navigationBar {
+    display: inline-block;
 }
 
 #infoText {
-  background-color:  #252533;
-  font-size: large;
-  margin-left: -200px;
-  margin-right: 100px;
-  margin-bottom: 50px;
+    background-color: #252533;
+    font-size: large;
+    margin-left: -200px;
+    margin-right: 100px;
+    margin-bottom: 50px;
 }
 
 #carteParametresGalerie h9 {
-  margin-left: -300px;
+    margin-left: -300px;
 }
 
-#carteParametresGalerie textarea{
-  width: 500px;
-  margin-left: -300px;
+#carteParametresGalerie textarea {
+    width: 500px;
+    margin-left: -300px;
 }
 
 select {
-  border-radius: 45px;
-  width: 300px;
-  height: 30px;
-  resize: none;
-  font-family:"Times New Roman", Times, serif;  
-  margin-bottom: 30px;
-  margin-right: 360px;
-  margin-top: 10px;
-  margin-left: -300px;
-  margin-bottom: 100px;
+    border-radius: 45px;
+    width: 300px;
+    height: 30px;
+    resize: none;
+    font-family: "Times New Roman", Times, serif;
+    margin-bottom: 30px;
+    margin-right: 360px;
+    margin-top: 10px;
+    margin-left: -300px;
+    margin-bottom: 100px;
 }
 
 #lien {
- padding-left: 570px;
+    padding-left: 570px;
 }
+
 
 /**
 * Bare de navigation
 **/
 
 #navigationBar {
-  width: 200px;
-  height: 100%;
-  background: #4b4276;
-  padding: 30px 0px;
-  position: fixed;
-  margin-top: -2%;
-  margin-left: -1%;
-
+    width: 200px;
+    height: 100%;
+    background: #4b4276;
+    padding: 30px 0px;
+    position: fixed;
+    margin-top: -2%;
+    margin-left: -1%;
 }
 
 #navigationBar h2 {
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 30px;
-
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 #navigationBar ul li {
-  padding: 15px;
-  border-bottom: 1px solid #bdb8d7;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  border-top: 1px solid rgba(255,255,255,0.05);
-
+    padding: 15px;
+    border-bottom: 1px solid #bdb8d7;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 #navigationBar ul li a {
-  color: #bdb8d7;
-  display: block;
-  text-decoration:none;
-  font-family: 'Josefin Sans', sans-serif;
-
+    color: #bdb8d7;
+    display: block;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
-#navigationBar ul li a .fas{
-  width: 25px;
+#navigationBar ul li a .fas {
+    width: 25px;
 }
 
-#navigationBar ul li:hover{
-  background-color: #594f8d;
+#navigationBar ul li:hover {
+    background-color: #594f8d;
 }
-    
-#navigationBar ul li:hover a{
-  color: #fff;
+
+#navigationBar ul li:hover a {
+    color: #fff;
 }
 
 #paraUtilisateur {
-  margin-top: 560px;
-} 
-
-.icon-ParametresUtilisateur {
+    margin-top: 560px;
 }
 
 
@@ -219,33 +206,52 @@ select {
 */
 
 #listeAlbums {
-  margin-left: 20%;
-  padding-top: 5%;
+    margin-left: 20%;
+    padding-top: 5%;
 }
-
 
 .carteAlbum {
-  /* Add shadows to create the "card" effect */
-  width: 255px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  cursor: pointer;
-  background-color: cornsilk;
-  display: inline-table;
-  margin-right: 50px;
+    /* Add shadows to create the "card" effect */
+    width: 255px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: cornsilk;
+    display: inline-table;
+    margin-right: 50px;
 }
+
 
 /* On mouse-over, add a deeper shadow */
+
 .carteAlbum {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+
 /* Add some padding inside the card container */
+
 .carteAlbum {
-  padding: 2px 16px;
+    padding: 2px 16px;
 }
 
 .carteAlbum h4 {
-  font-size: x-large;
-  text-align: center;
+    font-size: x-large;
+    text-align: center;
+}
+
+.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+.gallery:hover {
+    border: 1px solid #777;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
 }
