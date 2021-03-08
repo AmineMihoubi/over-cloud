@@ -7,5 +7,5 @@
 
 $("#goto-subscribe").click(function(event){
 		 event.preventDefault();
-	 	window.location.href = "./inscription.html";
+	 	window.location.href = "./inscription.php";
 });
