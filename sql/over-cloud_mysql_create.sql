@@ -28,8 +28,7 @@ CREATE TABLE `Photo` (
 
 CREATE TABLE `Album` (
 	`id_album` INT(20) NOT NULL AUTO_INCREMENT,
-	`nom` varchar(50) NOT NULL,
-	`publique` BOOLEAN NOT NULL DEFAULT '0',
+	`nom` varchar(50) NOT NULL,,
 	PRIMARY KEY (`id_album`)
 );
 
@@ -41,8 +40,7 @@ CREATE TABLE `Photo-Album` (
 CREATE TABLE `Galerie-Album` (
 	`fk_id_galerie` INT(20) NOT NULL,
 	`fk_id_Album` INT(20) NOT NULL,
-	`personnel` BOOLEAN NOT NULL DEFAULT true
-);
+	);
 
 CREATE TABLE `Commentaire` (
 	`id_commentaire` INT(20) NOT NULL AUTO_INCREMENT,
@@ -57,6 +55,9 @@ CREATE TABLE `Type_utilisateur` (
 	`nom` varchar(15) NOT NULL UNIQUE,
 	PRIMARY KEY (`id_type_utilisateur`)
 );
+
+INSERT INTO `type_utilisateur` (`id_type_utilisateur`, `nom`) VALUES ('1', 'spectateur');
+INSERT INTO `type_utilisateur` (`id_type_utilisateur`, `nom`) VALUES ('2', 'artiste');
 
 ALTER TABLE `Utilisateur-Galerie` ADD CONSTRAINT `Utilisateur-Galerie_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
 
