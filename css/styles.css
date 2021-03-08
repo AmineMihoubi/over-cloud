@@ -73,7 +73,7 @@ h5 {
   margin-top: 20px;
 }
 
-#buttonConfirmation {
+#buttonConfirmation button{
   border: none;
   color: white;
   padding: 15px 32px;
@@ -209,6 +209,9 @@ select {
 #paraUtilisateur {
   margin-top: 560px;
 } 
+
+.icon-ParametresUtilisateur {
+}
 
 
 /**
