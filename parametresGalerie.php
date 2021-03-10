@@ -3,37 +3,20 @@
        <meta charset="utf-8">
         <!-- importer le fichier de style -->
         <link rel="stylesheet" href="css\styles.css" media="screen" type="text/css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
 
     <body>
-      <!-- Selectionne la galerie avec l'id 1-->
+        <!-- bare de navigation-->
         <?php
-       require 'ConnectDb.php';
-       session_start();
-       $idGalerie = 1;
-       $db = ConnectDb::getInstance(); 
-       $sql = "SELECT nom,individuel FROM galerie where id_galerie = '$idGalerie'";
-       $query = mysqli_query($db,$sql);
-       $result = mysqli_fetch_assoc($query);
-           $nomGalerie = $result['nom'];
-           $individuelGalerie = $result['individuel'];
-         ?>
-        <div id = navigationBar>
-            <ul>
-                <h2><?php
-                 echo $nomGalerie;
-                ?></h2>
-                <li><a href="albums.php">Albums</a></li>
-                <li><a href="">Photos</a></li>
-                <li><a href="parametresGalerie.php">Paramètres</a></li>
-                <li><a href="">Participants</a></li>
-                <li id = "paraUtilisateur"><a href="parametresUtilisateurs.php">
-                  <?php
-                   $user = $_SESSION['nom'];
-                   echo  $user;
-                  ?></a></li>
-              </ul>
-        </div>
+         session_start();
+        ?>
+        <div id = navigationBar></div>
+        <script>
+        $(function(){
+        $("#navigationBar").load("navigationbar.php");
+        });
+        </script>
 
         <div id = carteParametresGalerie>
             <div id = carteText>
