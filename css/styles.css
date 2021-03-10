@@ -39,7 +39,7 @@ Parametres utilisateurs
     color: white;
 }
 
-textarea {
+.champSaisie{
     border-radius: 45px;
     width: 300px;
     resize: none;
@@ -51,6 +51,11 @@ textarea {
     margin-bottom: 30px;
     margin-right: 360px;
     margin-top: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    color: rgba(22, 21, 21, 0.8);
+    line-height: 1.5;
+    margin-right: 200px;
 }
 
 h9 {
@@ -67,7 +72,7 @@ h5 {
     margin-top: 20px;
 }
 
-#buttonConfirmation button {
+.buttonConfirmer {
     border: none;
     color: white;
     padding: 15px 32px;

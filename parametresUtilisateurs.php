@@ -4,38 +4,23 @@
         <!-- importer le fichier de style -->
         <link rel="stylesheet" href="css/styles.css" media="screen" type="text/css">
         <script src="/Over-Cloud/js/parametres.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
 
-    <body>
-          <!-- Selectionne la galerie avec l'id 1-->
-  <?php
-       require 'ConnectDb.php';
-       session_start();
-       $idGalerie = 1;
-       $db = ConnectDb::getInstance(); 
-       $sql = "SELECT nom,individuel FROM galerie where id_galerie = '$idGalerie'";
-       $query = mysqli_query($db,$sql);
-       $result = mysqli_fetch_assoc($query);
-           $nomGalerie = $result['nom'];
-           $individuelGalerie = $result['individuel'];
-  ?>
-        <div id = navigationBar>
-            <ul>
-                <h2><?php
-                 echo $nomGalerie;
-                ?></h2>
-                <li><a href="albums.php">Albums</a></li>
-                <li><a href="">Photos</a></li>
-                <li><a href="parametresGalerie.php">Paramètres</a></li>
-                <li><a href="">Participants</a></li>
-                <li id = "paraUtilisateur"><a href="parametresUtilisateurs.php">
-                  <?php
-                  $user = $_SESSION['nom'];
-                   echo  $user;
-                  ?></a></li>
-              </ul>
-        </div>
 
+    <body>
+        <!-- bare de navigation-->
+        <?php
+         session_start();
+        ?>
+        <div id = navigationBar></div>
+        <script>
+        $(function(){
+        $("#navigationBar").load("navigationbar.php");
+        });
+        </script>
+
+        <!-- Parametres utilisateur-->
         <div id = photoProfil>
             <img src="image/profilExemple.PNG" alt="Photo de profil">
         </div>
@@ -44,32 +29,26 @@
 
             <div id = carteText>
                 <h5>Modifier les informations de votre compte</h5>
+
+                <form action="modificationUtilisateur.php" method="POST">
                 <h9>Nom complet : </h9>
-                <textarea id = nom><?php
-                        $user = $_SESSION['nom'];
-                        // afficher le nom
-                        echo  $user;
-                ?></textarea>
+                <input type="text" class = "champSaisie" placeholder="<?php echo $_SESSION['nom'] ?>" name="nom">
                 <h9>Adresse couriel : </h9>
-                <textarea id = adresse><?php
-                        $email = $_SESSION['email'];
-                        // afficher l'adresse courriel
-                        echo  $email;
-                ?></textarea>
+                <input type="text" class = "champSaisie" placeholder="<?php echo $_SESSION['email']; ?>" name="email">    
+
                 <h5>Modifier le mot de passe de votre compte</h5>
                 <h9>Mot de passe actuel : </h9>
-                <textarea id = mdp> </textarea>
+                <input type="password" class = "champSaisie" placeholder="Mot de passe actuel" name="mdp"> 
                 <h9>Nouveau mot de passe : </h9>
-                <textarea id = newmdp></textarea>
+                <input type="password" class = "champSaisie" placeholder="Nouveau mot de passe" name="new-mdp"> 
+
+                <input type="submit" class = "buttonConfirmer" name="submit" value="Confirmer!">  
+                </form>
+
          
             </div>
-                <div id = buttonConfirmation>
-                    <button type="button" onclick="modifierInformations()">Confirmer les changements!</button>
-                </div>
 
         </div>
-
-
 
     </body>
 </html>
