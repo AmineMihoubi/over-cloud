@@ -246,17 +246,18 @@ select {
 }
 
 .gallery {
-    margin: 5px;
-    border: 1px solid #ccc;
-    float: left;
-    width: 180px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
 }
 
-.gallery:hover {
-    border: 1px solid #777;
+.container {
+    width: 60%;
+    margin: 2rem auto;
 }
 
-.gallery img {
+.gallery__img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
 }
