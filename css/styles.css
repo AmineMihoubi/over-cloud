@@ -39,7 +39,7 @@ Parametres utilisateurs
     color: white;
 }
 
-.champSaisie{
+.champSaisieUtilisateur{
     border-radius: 45px;
     width: 300px;
     resize: none;
@@ -119,6 +119,26 @@ ul {
     display: inline-block;
 }
 
+.champSaisieGalerie {
+    border-radius: 45px;
+    width: 300px;
+    resize: none;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    padding-top: 10px;
+    letter-spacing: 1.2px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    margin-right: 360px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    color: rgba(22, 21, 21, 0.8);
+    line-height: 1.5;
+    margin-right: 200px;
+    margin-left: -300px;
+}
+
 #infoText {
     background-color: #252533;
     font-size: large;
@@ -129,10 +149,19 @@ ul {
 
 #carteParametresGalerie h9 {
     margin-left: -300px;
+    padding-right: 290px;
 }
 
 #carteParametresGalerie textarea {
     width: 500px;
+    margin-left: -300px;
+}
+
+#carteParametresGalerie label {
+    font-size: medium;
+}
+
+#carteParametresGalerie input {
     margin-left: -300px;
 }
 
@@ -142,15 +171,20 @@ select {
     height: 30px;
     resize: none;
     font-family: "Times New Roman", Times, serif;
-    margin-bottom: 30px;
-    margin-right: 360px;
-    margin-top: 10px;
     margin-left: -300px;
-    margin-bottom: 100px;
+    margin-top: -20px;
+
 }
 
 #lien {
-    padding-left: 570px;
+    padding-left: 250px;
+}
+
+h8{
+    font-size: 18px;
+    font-weight: 900;
+    color: hsla(0, 0%, 100%, .8);
+    line-height: 1.5;
 }
 
 

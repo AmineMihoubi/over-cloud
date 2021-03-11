@@ -32,15 +32,15 @@
 
                 <form action="modificationUtilisateur.php" method="POST">
                 <h9>Nom complet : </h9>
-                <input type="text" class = "champSaisie" placeholder="<?php echo $_SESSION['nom'] ?>" name="nom">
+                <input type="text" class = "champSaisieUtilisateur" placeholder="<?php echo $_SESSION['blaseUtilisateur'] ?>" name="nom">
                 <h9>Adresse couriel : </h9>
-                <input type="text" class = "champSaisie" placeholder="<?php echo $_SESSION['email']; ?>" name="email">    
+                <input type="text" class = "champSaisieUtilisateur" placeholder="<?php echo $_SESSION['courrielUtilisateur']; ?>" name="email">    
 
                 <h5>Modifier le mot de passe de votre compte</h5>
                 <h9>Mot de passe actuel : </h9>
-                <input type="password" class = "champSaisie" placeholder="Mot de passe actuel" name="mdp"> 
+                <input type="password" class = "champSaisieUtilisateur" placeholder="Mot de passe actuel" name="mdp"> 
                 <h9>Nouveau mot de passe : </h9>
-                <input type="password" class = "champSaisie" placeholder="Nouveau mot de passe" name="new-mdp"> 
+                <input type="password" class = "champSaisieUtilisateur" placeholder="Nouveau mot de passe" name="new-mdp"> 
 
                 <input type="submit" class = "buttonConfirmer" name="submit" value="Confirmer!">  
                 </form>

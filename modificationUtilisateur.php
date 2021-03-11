@@ -19,14 +19,14 @@ $id_utilisateur = $_SESSION['idUtilisateur'];
  }
  if($email !== "") 
  {
-    $sql = "UPDATE utilisateur SET email = '".$email."' where id_utilisateur = '".$id_utilisateur."'";
+    $sql = "UPDATE utilisateur SET courriel = '".$email."' where id_utilisateur = '".$id_utilisateur."'";
     mysqli_query($db,$sql);
     $_SESSION['email'] = $email;
 
  }
  if($password !=="")
  {
-    $sql = "UPDATE utilisateur SET password = '".$password."' where id_utilisateur = '".$id_utilisateur."'";
+    $sql = "UPDATE utilisateur SET mdp = '".$password."' where id_utilisateur = '".$id_utilisateur."'";
     mysqli_query($db,$sql);
 
  }
