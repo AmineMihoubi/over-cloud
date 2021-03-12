@@ -18,6 +18,11 @@ $res=mysqli_query($conn,$sql);
 
 ?>
 
+<?php 
+error_reporting(0); 
+?> 
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,11 +48,41 @@ if(mysqli_num_rows($res) > 0){
      echo "0 results";
  }
 
- mysqli_close($conn)
+ //mysqli_close($conn)
 
 ?>
 </div>
 </div>
+
+<?php 
+
+  
+  // If upload button is clicked ... 
+  if (isset($_POST['upload'])) { 
+    $conn = mysqli_connect($db_host, $db_username, $db_password,$db_name);
+    
+    
+    $image= base64_encode(file_get_contents($_FILES['image']['tmp_name']) );       
+    echo $image;
+        // MARCHE PAS????????????????
+        $sql = "INSERT INTO photo(photo,date,fk_id_album) VALUES ('$image','2021-03-14', 1)"; 
+  
+        // Execute query 
+        if(mysqli_query($conn, $sql)){
+            echo "<br/>Image uploaded successfully.";
+        } else{
+            echo "<br/>NOOO.";
+        }
+        
+  } 
+  
+?> 
+<div id="content"> 
+  
+<form method="POST" action="photos.php" enctype="multipart/form-data">
+ <input type="file" name="image">
+ <input type="submit" name="upload" value="Upload">
+</form> 
 </body>
 </html>
 
