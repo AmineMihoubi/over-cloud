@@ -13,7 +13,7 @@
 		<h1>Bienvenue</h1>
 
 		<?php
-
+			$done = 'false';
 			if(isset($_POST['sub-btn'])) {
 				$db_username = 'root';
 				$db_password = '';
@@ -32,24 +32,27 @@
     			$password = mysqli_real_escape_string($conn,htmlspecialchars($_POST['pwd']));
 				$password2 = mysqli_real_escape_string($conn,htmlspecialchars($_POST['pwd2']));
 				if($password == $password2){
-					$sql="insert into utilisateur (nom, password, Email) VALUES ($username, $password, $email)";
+					$sql="insert into utilisateur (nom, password, Email) VALUES ('$username', '$password', '$email')";
 					$res=mysqli_query($conn,$sql);
 					if($res){
 						echo "test";
+						$done = 'true';
 					}else{
-						echo "patate";
+						echo $sql;
 					}
 				}
 			} 
 
 		?>
+
+		<input type="hidden" id="done" value="<?php echo $done ?>" onchange="redirectToLogin()" />
 		
 		<form method="post">
 			<input type="text" name="mail" placeholder="E-mail">
 			<input type="text" name="username" placeholder="Nom d'utilisateur">
 			<input type="password" name="pwd" placeholder="Mot de passe">
 			<input type="password" name="pwd2" placeholder="Confirmation">
-			<input type="submit" id="sub-button" name="sub-btntsdag" value="Inscription" />
+			<input type="submit" id="sub-button" name="sub-btn" value="Inscription"/>
 			
 			<button id="goto-login">Déjà inscrit?</button>
 		</form>

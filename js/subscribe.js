@@ -1,9 +1,12 @@
- $("#sub-button").click(function(event){
-		 event.preventDefault();
-	 
-	 $('form').fadeOut(500);
-	 $('.wrapper').addClass('form-success');
-});
+ function redirectToLogin(){
+		 
+	var done = $("#done").val();
+	console.log(done);
+	if(done == 'true'){
+		$('form').fadeOut(500);
+		$('.wrapper').addClass('form-success');
+	}
+}
 
 $("#goto-login").click(function(event){
 		 event.preventDefault();
