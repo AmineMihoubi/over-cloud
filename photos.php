@@ -40,7 +40,6 @@ error_reporting(0);
 //was able to show the images certain way, gotta see if i can show a certain amount per line
 if(mysqli_num_rows($res) > 0){
     while($row = mysqli_fetch_assoc($res)){
-        //echo $row["photo"]. "<br/>";
         echo '<img src="data:image/jpeg;base64,'.base64_encode($row["photo"]).' "class=gallery_img"/>';
     }
 }
@@ -57,19 +56,17 @@ if(mysqli_num_rows($res) > 0){
 <?php 
 
   
-  // If upload button is clicked ... 
   if (isset($_POST['upload'])) { 
     $conn = mysqli_connect($db_host, $db_username, $db_password,$db_name);
     
     
-    $image= base64_encode(file_get_contents($_FILES['image']['tmp_name']) );       
-    echo $image;
-        // MARCHE PAS????????????????
+    $image= addslashes(file_get_contents($_FILES['image']['tmp_name']) );       
+        
         $sql = "INSERT INTO photo(photo,date,fk_id_album) VALUES ('$image','2021-03-14', 1)"; 
   
         // Execute query 
         if(mysqli_query($conn, $sql)){
-            echo "<br/>Image uploaded successfully.";
+            echo "<br/>YAY.";
         } else{
             echo "<br/>NOOO.";
         }
