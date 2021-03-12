@@ -22,7 +22,7 @@
 
         <!-- Parametres utilisateur-->
         <div id = photoProfil>
-            <img src="image/profilExemple.PNG" alt="Photo de profil">
+            <img src="image/profil.PNG" alt="Photo de profil">
         </div>
         
         <div id = carteParametresUtilisateur>
@@ -31,8 +31,10 @@
                 <h5>Modifier les informations de votre compte</h5>
 
                 <form action="modificationUtilisateur.php" method="POST">
-                <h9>Nom complet : </h9>
-                <input type="text" class = "champSaisieUtilisateur" placeholder="<?php echo $_SESSION['blaseUtilisateur'] ?>" name="nom">
+                <h9>Prenom : </h9>
+                <input type="text" class = "champSaisieUtilisateur" placeholder="<?php echo $_SESSION['prenomUtilisateur'] ?>" name="prenom">
+                <h9>Nom : </h9>
+                <input type="text" class = "champSaisieUtilisateur" placeholder="<?php echo $_SESSION['nomUtilisateur'] ?>" name="nom">
                 <h9>Adresse couriel : </h9>
                 <input type="text" class = "champSaisieUtilisateur" placeholder="<?php echo $_SESSION['courrielUtilisateur']; ?>" name="email">    
 
@@ -42,7 +44,14 @@
                 <h9>Nouveau mot de passe : </h9>
                 <input type="password" class = "champSaisieUtilisateur" placeholder="Nouveau mot de passe" name="new-mdp"> 
 
-                <input type="submit" class = "buttonConfirmer" name="submit" value="Confirmer!">  
+                <input type="submit" class = "buttonConfirmer" name="submit" value="Confirmer!"> 
+                <?php
+                if(isset($_GET['erreur'])){
+                    $err = $_GET['erreur'];
+                    if($err==1)
+                        echo "<h6 style='color:red'>* Le mot de passe actuel est erroné</h6>";
+                } 
+                ?>
                 </form>
 
          
