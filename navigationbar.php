@@ -21,7 +21,7 @@
                  echo $nomGalerie;
                 ?></h2>
                 <li><a href="albums.php">Albums</a></li>
-                <li><a href="">Photos</a></li>
+                <li><a href="photos.php">Photos</a></li>
                 <li><a href="parametresGalerie.php">Paramètres</a></li>
                 <li><a href="">Participants</a></li>
                 <li id = "paraUtilisateur"><a href="parametresUtilisateurs.php">
