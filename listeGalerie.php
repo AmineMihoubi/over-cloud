@@ -29,7 +29,7 @@ $res=mysqli_query($conn,$sql_afficher_galeries);
                 while($row = $res->fetch_assoc()){
         ?>
                 <div class="card">
-                    <img src="./image/nophoto.png" alt="Galerie" width ="100" height="100">
+                    <img src="./image/galerieIcon.png" alt="Galerie" width ="120" height="100">
                     <div class="container">
                         <h4><b><?php echo $row['nom']; ?></b></h4>
                         <p></p>
@@ -40,9 +40,9 @@ $res=mysqli_query($conn,$sql_afficher_galeries);
                     }
                     else
                         { echo "No data found"; } ?>
-                <a href="selectionTypeGallerie.php">
+                <a href="newGalleryType.php">
                     <div class="card">
-                        <img src="./image/plus.png" alt="nouvelle" width ="100" height="100">
+                        <img src="./image/plus.png" alt="nouvelle" width ="120px" height="100px">
                         <div class="container">
                             <h4><b>Nouvelle galerie</b></h4>
                             <p></p>
