@@ -24,8 +24,15 @@
                     if($err==1 || $err==2)
                         echo "<p style='color:red'>Email ou mot de passe incorrect</p>";
                 }
-                ?>
+                ?><h4 id=creerCompte onclick="myFunction()">Créer un compte !</h4>
             </form>
         </div>
+
+        <script>
+function myFunction() {
+    window.location.href = "inscription.php";
+}
+</script>
+
     </body>
 </html>

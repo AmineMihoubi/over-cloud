@@ -19,10 +19,11 @@ function ajouterAlbums($idAlbum, $nom) {
                 "nomAlbum": $nom
             }
         })
+        alert("DS");
     });
 
 
-    img.src = "/Over-Cloud/image/nophoto.jfif";
+    img.src = "image/nophoto.jfif";
     newDiv.appendChild(img);
     newDiv.appendChild(br);
     newDiv.appendChild(h8);
