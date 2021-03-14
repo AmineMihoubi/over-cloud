@@ -36,9 +36,15 @@
 					$sql="insert into utilisateur (prenom, nom, mdp, courriel) VALUES ('$prenom', '$nom', '$password', '$email')";
 					$res=mysqli_query($conn,$sql);
 					if($res){
-						echo "test";
 						$done = 'true';
-						echo "<script> location.href='./index.php'; </script>";
+						session_start();
+						$requete = "SELECT id_utilisateur, nom, prenom FROM utilisateur WHERE courriel = '".$email."'";
+						$exec_requete = mysqli_query($db,$requete);
+						$reponse      = mysqli_fetch_assoc($exec_requete);
+						$_SESSION['idUtilisateur'] = $reponse['id_utilisateur'];
+						$_SESSION['nomUtilisateur'] = $reponse['nom'];
+						$_SESSION['prenomUtilisateur'] = $reponse['prenom'];
+						echo "<script> location.href='./newGalleryType.php'; </script>";
 						exit;
 					}else{
 						echo "le courriel entré est déjà utilisé";
@@ -52,7 +58,7 @@
 		
 		<form method="post">
 			<input type="text" name="mail" placeholder="E-mail">
-			<input type="text" name="prenom" placeholder="Prénom">
+			<input type="text"  style="color:#FFFFFF;" name="prenom" placeholder="Prénom">
 			<input type="text" name="nom" placeholder="Nom">
 			<input type="password" name="pwd" placeholder="Mot de passe">
 			<input type="password" name="pwd2" placeholder="Confirmation">
