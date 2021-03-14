@@ -9,11 +9,14 @@
   </head>
 
   <body>
-        <!-- bare de navigation-->
+        
         <?php
          session_start();
          require 'ConnectDb.php';
+
         ?>
+        
+        <!-- bare de navigation-->
         <div id = navigationBar></div>
         <script>
         $(function(){
@@ -24,8 +27,9 @@
     <div id = listeAlbums>
       <?php
         $db = ConnectDb::getInstance();
-        $sql = "SELECT id_album,nom FROM album where fk_id_galerie = 1";
+        $sql = "SELECT id_album,nom FROM album where fk_id_galerie = (select fk_id_galerie from utilisateur_galerie where fk_id_utilisateur like '{$_SESSION['idUtilisateur']}')";
         $result = mysqli_query($db,$sql);
+
 
         while($row =  mysqli_fetch_array($result)) {
           $idAlbum = $row['id_album'];

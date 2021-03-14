@@ -18,18 +18,23 @@ $res=mysqli_query($conn,$sql_afficher_photos);
 
 }
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
     <head>
     <link rel="stylesheet" href="css/styles.css" media="screen" type="text/css">
-    <script src="/Over-Cloud/js/parametres.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
      
 </head>
 <body>
+<div id = navigationBar></div>
+        <script>
+        $(function(){
+        $("#navigationBar").load("navigationbar.php");
+        });
+        </script>
+
 
 <div class ="container">
 <div class = "gallery">
