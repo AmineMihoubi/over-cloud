@@ -18,21 +18,22 @@ if(isset($_POST['email']) && isset($_POST['password']))
     if($email !== "" && $password !== "")
     {
         $requete = "SELECT count(*) FROM utilisateur where 
-              email = '".$email."' and password = '".$password."' ";
+              courriel = '".$email."' and mdp = '".$password."' ";
         $exec_requete = mysqli_query($db,$requete);
         $reponse      = mysqli_fetch_array($exec_requete);
         $count = $reponse['count(*)'];
         if($count!=0) // nom d'utilisateur et mot de passe correctes
         {
-           $_SESSION['email'] = $email;
+           $_SESSION['courrielUtilisateur'] = $email;
 
-           $requete = "SELECT id_utilisateur, nom FROM utilisateur WHERE email = '".$email."'";
+           $requete = "SELECT id_utilisateur, nom, prenom FROM utilisateur WHERE courriel = '".$email."'";
            $exec_requete = mysqli_query($db,$requete);
            $reponse      = mysqli_fetch_assoc($exec_requete);
            $_SESSION['idUtilisateur'] = $reponse['id_utilisateur'];
-           $_SESSION['nom'] = $reponse['nom'];
+           $_SESSION['nomUtilisateur'] = $reponse['nom'];
+           $_SESSION['prenomUtilisateur'] = $reponse['prenom'];
 
-           header('Location: parametresGalerie.php');
+           header('Location: albums.php');
         }
         else
         {

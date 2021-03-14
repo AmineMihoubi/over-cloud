@@ -39,7 +39,7 @@ Parametres utilisateurs
     color: white;
 }
 
-.champSaisie{
+.champSaisieUtilisateur {
     border-radius: 45px;
     width: 300px;
     resize: none;
@@ -70,9 +70,11 @@ h5 {
     color: hsla(0, 0%, 100%, .8);
     line-height: 1.5;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .buttonConfirmer {
+    width: 250px;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -84,7 +86,6 @@ h5 {
     cursor: pointer;
     background-color: yellowgreen;
     border-radius: 45px;
-    margin-left: 350px;
 }
 
 ul {
@@ -119,6 +120,26 @@ ul {
     display: inline-block;
 }
 
+.champSaisieGalerie {
+    border-radius: 45px;
+    width: 300px;
+    resize: none;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    padding-top: 10px;
+    letter-spacing: 1.2px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    margin-right: 360px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    color: rgba(22, 21, 21, 0.8);
+    line-height: 1.5;
+    margin-right: 200px;
+    margin-left: -300px;
+}
+
 #infoText {
     background-color: #252533;
     font-size: large;
@@ -129,10 +150,19 @@ ul {
 
 #carteParametresGalerie h9 {
     margin-left: -300px;
+    padding-right: 290px;
 }
 
 #carteParametresGalerie textarea {
     width: 500px;
+    margin-left: -300px;
+}
+
+#carteParametresGalerie label {
+    font-size: medium;
+}
+
+#carteParametresGalerie input {
     margin-left: -300px;
 }
 
@@ -142,15 +172,19 @@ select {
     height: 30px;
     resize: none;
     font-family: "Times New Roman", Times, serif;
-    margin-bottom: 30px;
-    margin-right: 360px;
-    margin-top: 10px;
     margin-left: -300px;
-    margin-bottom: 100px;
+    margin-top: -20px;
 }
 
 #lien {
-    padding-left: 570px;
+    padding-left: 250px;
+}
+
+h8 {
+    font-size: 18px;
+    font-weight: 900;
+    color: hsla(0, 0%, 100%, .8);
+    line-height: 1.5;
 }
 
 
@@ -205,6 +239,10 @@ select {
     margin-top: 560px;
 }
 
+#deconnexion {
+    background-color: darkred;
+}
+
 
 /**
 * Liste des albums
@@ -215,32 +253,40 @@ select {
     padding-top: 5%;
 }
 
-.carteAlbum {
+#listeAlbums b{
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1.5;
+    text-align: center;
+    cursor: pointer;
+}
+
+#carteAlbum {
     /* Add shadows to create the "card" effect */
     width: 255px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    cursor: pointer;
     background-color: cornsilk;
     display: inline-table;
     margin-right: 50px;
+    text-align: center;
 }
 
 
 /* On mouse-over, add a deeper shadow */
 
-.carteAlbum {
+#carteAlbum {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 
 /* Add some padding inside the card container */
 
-.carteAlbum {
+#carteAlbum {
     padding: 2px 16px;
 }
 
-.carteAlbum h4 {
+#carteAlbum b {
     font-size: x-large;
     text-align: center;
 }
@@ -260,4 +306,39 @@ select {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+#content {
+    width: 50%;
+    margin: 20px auto;
+    border: 1px solid #cbcbcb;
+}
+
+#photo-form {
+    width: 50%;
+    margin: 20px auto;
+}
+
+#photo-form div {
+    margin-top: 5px;
+}
+
+#img_div {
+    width: 80%;
+    padding: 5px;
+    margin: 15px auto;
+    border: 1px solid #cbcbcb;
+}
+
+#img_div:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#image {
+    float: left;
+    margin: 5px;
+    width: 300px;
+    height: 140px;
 }

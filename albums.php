@@ -4,14 +4,19 @@
     <!-- importer le fichier de style -->
     <link
       rel="stylesheet" href="css\styles.css" media="screen" type="text/css"/>
-      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src= "js/album.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </head>
 
   <body>
-        <!-- bare de navigation-->
+        
         <?php
          session_start();
+         require 'ConnectDb.php';
+
         ?>
+        
+        <!-- bare de navigation-->
         <div id = navigationBar></div>
         <script>
         $(function(){
@@ -20,15 +25,18 @@
         </script>
 
     <div id = listeAlbums>
-      <div class = carteAlbum>
-      <img src="image/nophoto.jfif" alt="Pas d'image">
-      <h4><b>Album blabla</b></h4>
-      </div>     
-      
-      <div class = carteAlbum>
-      <img src="image/nophoto.jfif" alt="Pas d'image">
-      <h4><b>Album de voiture</b></h4>
-      </div> 
+      <?php
+        $db = ConnectDb::getInstance();
+        $sql = "SELECT id_album,nom FROM album where fk_id_galerie = (select fk_id_galerie from utilisateur_galerie where fk_id_utilisateur like '{$_SESSION['idUtilisateur']}')";
+        $result = mysqli_query($db,$sql);
 
+
+        while($row =  mysqli_fetch_array($result)) {
+          $idAlbum = $row['id_album'];
+          $nom = $row['nom'];
+          echo "<script> ajouterAlbums(","'$idAlbum',","'$nom',",");</script>"; 
+
+        }
+      ?>
     </div> 
   </body>

@@ -26,22 +26,23 @@
                             Partagez des photos, ou participez aux discussions sur celle-çi avec les personnes de votre choix !
                         </i>
                     </div>
+                <form id = "paraGalerie-form" action="modificationGalerie.php" method="POST">
                 <h9>Changez le nom de la galerie :</h9>
-                <textarea><?php echo $nomGalerie; ?></textarea> 
+                <input type="text" class = "champSaisieGalerie" placeholder="<?php echo $_SESSION['nomGalerie'] ?>" name="nomGalerie">
                 <br></br>
-                <h9>Selectionnez le paramètre de confidentialité :</h9>   
-                <select>
-                    <option  value="1">Galerie public</option>
-                    <option  value="2">Galerie fermée</option>
-                </select>
+                <h9>Selectionnez le paramètre de confidentialité :</h9>  
+                <input type="radio" id="publique" name="confidentialite" value="publique">
+                <label for="publique">Galerie publique</label><br>
+                <input type="radio" id="prive" name="confidentialite" value="prive">
+                <label for="prive">Galerie privée</label><br> 
+                <input type="submit" class = "buttonConfirmer" name="submit" value="Confirmer!">  
+
+                </form>               
             </div>
 
-                 <div id = buttonConfirmation>
-            <button type="button" onclick="alert('Les changements ont été enregistrés')">Confirmer les changements!</button>
-                 </div>
            <br></br>      
            <br></br>      
-        <h9 id = lien>Lien de la galerie : www.Over-Cloud.com/h5Dh42</h9>
+        <h8 id = lien>Lien de la galerie : www.Over-Cloud.com/h5Dh42</h8>
              
         </div>
 
