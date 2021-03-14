@@ -1,5 +1,7 @@
 <?php
 session_start();
+$idAlbum = $_POST['idAlbum'];
+$nomAlbum = $_POST['nomAlbum'];
 
 $db_username = 'root';
 $db_password = '';
