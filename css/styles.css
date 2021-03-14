@@ -39,7 +39,7 @@ Parametres utilisateurs
     color: white;
 }
 
-.champSaisie {
+.champSaisieUtilisateur {
     border-radius: 45px;
     width: 300px;
     resize: none;
@@ -253,7 +253,14 @@ h8 {
     padding-top: 5%;
 }
 
-.carteAlbum {
+#listeAlbums b{
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#carteAlbum {
     /* Add shadows to create the "card" effect */
     width: 255px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -262,23 +269,24 @@ h8 {
     background-color: cornsilk;
     display: inline-table;
     margin-right: 50px;
+    text-align: center;
 }
 
 
 /* On mouse-over, add a deeper shadow */
 
-.carteAlbum {
+#carteAlbum {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 
 /* Add some padding inside the card container */
 
-.carteAlbum {
+#carteAlbum {
     padding: 2px 16px;
 }
 
-.carteAlbum h4 {
+#carteAlbum b {
     font-size: x-large;
     text-align: center;
 }
@@ -306,12 +314,12 @@ h8 {
     border: 1px solid #cbcbcb;
 }
 
-form {
+#photo-form {
     width: 50%;
     margin: 20px auto;
 }
 
-form div {
+#photo-form div {
     margin-top: 5px;
 }
 
@@ -328,7 +336,7 @@ form div {
     clear: both;
 }
 
-img {
+#image {
     float: left;
     margin: 5px;
     width: 300px;

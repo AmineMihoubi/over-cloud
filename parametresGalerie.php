@@ -26,7 +26,7 @@
                             Partagez des photos, ou participez aux discussions sur celle-çi avec les personnes de votre choix !
                         </i>
                     </div>
-                <form action="modificationGalerie.php" method="POST">
+                <form id = "paraGalerie-form" action="modificationGalerie.php" method="POST">
                 <h9>Changez le nom de la galerie :</h9>
                 <input type="text" class = "champSaisieGalerie" placeholder="<?php echo $_SESSION['nomGalerie'] ?>" name="nomGalerie">
                 <br></br>

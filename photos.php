@@ -39,7 +39,7 @@ $res=mysqli_query($conn,$sql_afficher_photos);
 //was able to show the images certain way, gotta see if i can show a certain amount per line
 if(mysqli_num_rows($res) > 0){
     while($row = mysqli_fetch_assoc($res)){
-        echo '<img src="data:image/jpeg;base64,'.base64_encode($row["photo"]).' "class=gallery_img"/>';
+        echo '<img id = "image" src="data:image/jpeg;base64,'.base64_encode($row["photo"]).' "class=gallery_img"/>';
     }
 }
  else{
@@ -75,7 +75,7 @@ if(mysqli_num_rows($res) > 0){
 ?> 
 <div id="content"> 
   
-<form method="POST" action="photos.php" enctype="multipart/form-data">
+<form id = "photo-form" method="POST" action="photos.php" enctype="multipart/form-data">
  <input type="file" name="image">
  <input type="submit" name="upload" value="Upload">
 </form> 

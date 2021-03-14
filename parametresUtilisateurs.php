@@ -22,7 +22,7 @@
 
         <!-- Parametres utilisateur-->
         <div id = photoProfil>
-            <img src="image/profil.PNG" alt="Photo de profil">
+            <img id = "imageProfil"src="image/profil.PNG" alt="Photo de profil">
         </div>
         
         <div id = carteParametresUtilisateur>
