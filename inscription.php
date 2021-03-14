@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Calm breeze subscribe screen</title>
+  <title>Inscription</title>
   <link rel="stylesheet" href="./css/login.css">
 
 </head>
@@ -28,17 +28,20 @@
 				}
 
 				$email = mysqli_real_escape_string($conn,htmlspecialchars($_POST['mail']));
-				$username = mysqli_real_escape_string($conn,htmlspecialchars($_POST['username']));
+				$prenom = mysqli_real_escape_string($conn,htmlspecialchars($_POST['prenom']));
+				$nom = mysqli_real_escape_string($conn,htmlspecialchars($_POST['nom']));
     			$password = mysqli_real_escape_string($conn,htmlspecialchars($_POST['pwd']));
 				$password2 = mysqli_real_escape_string($conn,htmlspecialchars($_POST['pwd2']));
 				if($password == $password2){
-					$sql="insert into utilisateur (nom, password, Email) VALUES ('$username', '$password', '$email')";
+					$sql="insert into utilisateur (prenom, nom, mdp, courriel) VALUES ('$prenom', '$nom', '$password', '$email')";
 					$res=mysqli_query($conn,$sql);
 					if($res){
 						echo "test";
 						$done = 'true';
+						echo "<script> location.href='./index.php'; </script>";
+						exit;
 					}else{
-						echo $sql;
+						echo "le courriel entré est déjà utilisé";
 					}
 				}
 			} 
@@ -49,12 +52,12 @@
 		
 		<form method="post">
 			<input type="text" name="mail" placeholder="E-mail">
-			<input type="text" name="username" placeholder="Nom d'utilisateur">
+			<input type="text" name="prenom" placeholder="Prénom">
+			<input type="text" name="nom" placeholder="Nom">
 			<input type="password" name="pwd" placeholder="Mot de passe">
 			<input type="password" name="pwd2" placeholder="Confirmation">
 			<input type="submit" id="sub-button" name="sub-btn" value="Inscription"/>
-			
-			<button id="goto-login">Déjà inscrit?</button>
+			<a href="./index.php" style="color:#FFFFFF;">Déjà inscrit?</a>
 		</form>
 	</div>
 	

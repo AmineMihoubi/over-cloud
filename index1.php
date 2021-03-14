@@ -2,7 +2,7 @@
     <head>
        <meta charset="utf-8">
         <!-- importer le fichier de style -->
-        <link rel="stylesheet" href="/Over-Cloud/css/connexion.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="./css/connexion.css" media="screen" type="text/css" />
     </head>
     <body>
         <div id="container">
