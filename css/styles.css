@@ -1,5 +1,6 @@
 body {
     background-color: #576279;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -180,7 +181,7 @@ select {
     padding-left: 250px;
 }
 
-h8 {
+#h8 {
     font-size: 18px;
     font-weight: 900;
     color: hsla(0, 0%, 100%, .8);
@@ -253,7 +254,7 @@ h8 {
     padding-top: 5%;
 }
 
-#listeAlbums b{
+#listeAlbums b {
     font-size: 18px;
     font-weight: 900;
     line-height: 1.5;
@@ -291,13 +292,16 @@ h8 {
     text-align: center;
 }
 
+
+/*Affichage des photos*/
+
 .gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 15px;
 }
 
-.container {
+.gallerycontainer {
     width: 60%;
     margin: 2rem auto;
 }
@@ -306,21 +310,6 @@ h8 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-#content {
-    width: 50%;
-    margin: 20px auto;
-    border: 1px solid #cbcbcb;
-}
-
-#photo-form {
-    width: 50%;
-    margin: 20px auto;
-}
-
-#photo-form div {
-    margin-top: 5px;
 }
 
 #img_div {
@@ -341,4 +330,89 @@ h8 {
     margin: 5px;
     width: 300px;
     height: 140px;
+}
+
+
+/*bar d'action*/
+
+.actionsbar-container {
+    width: 80%;
+    margin: auto;
+}
+
+.actionsbar-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #576279;
+}
+
+.actionsbar-li {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.actionsbar-a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+
+/*popup*/
+
+.bg-popup {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.popup-content {
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.popup-input {
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+}
+
+.btn-fermer {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 35px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button {
+    border: 2px solid white;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 10px 28px;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
 }

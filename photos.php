@@ -37,7 +37,30 @@ if (!$conn) {
     </script>
 
 
-    <div class="container">
+    <div class="actionsbar-container">
+
+        <ul class="actionsbar-ul">
+            <li> </li>
+            <li class="actionsbar-nav-li"><a id="button" class="button">Ajouter +</a></li>
+        </ul>
+
+    </div>
+
+    <div class="bg-popup">
+        <div class="popup-content">
+            <div class="btn-fermer">+</div>
+            <form method="POST" action="photos.php" enctype="multipart/form-data">
+                <br /><br /><br /><br /><br /><br />
+                <input class="popup-input" type="file" name="image">
+                <input class="popup-input" type="submit" name="upload" value="Upload"></li>
+                </ul>
+            </form>
+
+        </div>
+    </div>
+
+
+    <div class="gallerycontainer">
         <div class="gallery">
 
             <?php
@@ -50,8 +73,6 @@ if (!$conn) {
             } else {
                 echo "0 results";
             }
-
-            //mysqli_close($conn)
 
             ?>
         </div>
@@ -77,12 +98,7 @@ if (!$conn) {
     }
 
     ?>
-    <div id="content">
-
-        <form id="photo-form" method="POST" action="photos.php" enctype="multipart/form-data">
-            <input type="file" name="image">
-            <input type="submit" name="upload" value="Upload" onclick="location.reload()">
-        </form>
+    <script src="js/popupscript.js"></script>
 </body>
 
 </html>
