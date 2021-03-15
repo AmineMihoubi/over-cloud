@@ -13,6 +13,7 @@
         <?php
          session_start();
          require 'ConnectDb.php';
+         $_SESSION['idGalerie'] = $_GET['id'];
 
         ?>
         
@@ -26,8 +27,9 @@
 
     <div id = listeAlbums>
       <?php
+        $id = $_SESSION['idGalerie'];
         $db = ConnectDb::getInstance();
-        $sql = "SELECT id_album,nom FROM album where fk_id_galerie = (select fk_id_galerie from utilisateur_galerie where fk_id_utilisateur like '{$_SESSION['idUtilisateur']}')";
+        $sql = "SELECT id_album, nom FROM album where fk_id_galerie = '$id'";
         $result = mysqli_query($db,$sql);
 
         while($row =  mysqli_fetch_array($result)) {
@@ -35,9 +37,7 @@
           $nom = $row['nom'];
 
           echo "<div class = carteAlbum>
-                
-                <a href='photoAlbum?id=$idAlbum'>
-                
+                <a href='photoAlbum?id=$idAlbum'>    
                 <br></br> 
                 <b>$nom</b>
                 </a>

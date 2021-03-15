@@ -2,7 +2,7 @@
           <?php
           require 'ConnectDb.php';
           session_start();
-          $idGalerie = 1;
+          $idGalerie = $_SESSION['idGalerie'];;
           $db = ConnectDb::getInstance();
           $sql = "SELECT id_galerie,nom,prive FROM galerie where id_galerie = '$idGalerie'";
           $query = mysqli_query($db, $sql);
@@ -20,10 +20,12 @@
             <h2><?php
                 echo $nomGalerie;
                 ?></h2>
-            <li><a href="albums.php">Albums</a></li>
+                <?php echo "<li><a href='albums.php?id=$idGalerie'>Albums</a></li>";
+                ?>
+          
             <li><a href="photos.php">Photos</a></li>
             <li><a href="parametresGalerie.php">Paramètres</a></li>
-            <!--<li><a href="">Participants</a></li>-->
+            <li><a href="">Participants</a></li>
             <li id="paraUtilisateur"><a href="parametresUtilisateurs.php">
                 <?php
                 $_SESSION['blaseUtilisateur'] = $_SESSION['prenomUtilisateur'] . " " . $_SESSION['nomUtilisateur'];
