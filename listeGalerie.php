@@ -34,6 +34,10 @@
                 </div>
                 
                 <a href="newGalleryType.php">
+                    }
+                    else
+                        { echo "No data found"; } ?>
+                <a href="nouveau-galerie-type.php">
                     <div class="card">
                         <img src="./image/plus.png" alt="nouvelle" width ="120px" height="100px">
                         <div class="container">
