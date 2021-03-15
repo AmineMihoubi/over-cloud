@@ -18,7 +18,7 @@
         require 'ConnectDb.php';
         $db = ConnectDb::getInstance();
 
-        $sql = "SELECT id_galerie,nom FROM galerie where id_galerie = (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}');";
+        $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}');";
         $result = mysqli_query($db, $sql);
         while ($row =  mysqli_fetch_array($result)) {
             $idGalerie = $row['id_galerie'];
