@@ -27,10 +27,10 @@
                         </i>
                     </div>
                 <form id = "paraGalerie-form" action="modificationGalerie.php" method="POST">
-                <h9>Changez le nom de la galerie :</h9>
+                <h9>Changez le nom de la galerie :  </h9>
                 <input type="text" class = "champSaisieGalerie" placeholder="<?php echo $_SESSION['nomGalerie'] ?>" name="nomGalerie">
                 <br></br>
-                <h9>Selectionnez le paramètre de confidentialité :</h9>  
+                <h9>Selectionnez le paramètre de confidentialité :  </h9>  
                 <input type="radio" id="publique" name="confidentialite" value="publique">
                 <label for="publique">Galerie publique</label><br>
                 <input type="radio" id="prive" name="confidentialite" value="prive">
@@ -42,7 +42,6 @@
 
            <br></br>      
            <br></br>      
-        <h8 id = lien>Lien de la galerie : www.Over-Cloud.com/h5Dh42</h8>
              
         </div>
 

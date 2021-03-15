@@ -1,5 +1,5 @@
 body {
-    background-color: #fff;
+    background-color: rgb(209, 209, 209);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -113,7 +113,7 @@ ul {
 
 #carteParametresGalerie h5 {
     margin-top: 70px;
-    margin-left: -10px;
+    margin-left: -50px;
 }
 
 #carteParametresGalerie,
@@ -151,7 +151,7 @@ ul {
 
 #carteParametresGalerie h9 {
     margin-left: -300px;
-    padding-right: 290px;
+    padding-right: 300px;
 }
 
 #carteParametresGalerie textarea {
@@ -237,7 +237,7 @@ select {
 }
 
 #paraUtilisateur {
-    margin-top: 32rem;
+    margin-top: 35rem;
 }
 
 #deconnexion {
@@ -346,6 +346,7 @@ select {
     padding: 0;
     overflow: hidden;
     background-color: white;
+    width: 130px;
 }
 
 .actionsbar-li {
@@ -412,7 +413,7 @@ select {
     border-radius: 30px;
     text-decoration: none;
     padding: 10px 28px;
-    color: white;
+    color: rgb(0, 0, 0);
     display: inline-block;
     cursor: pointer;
 }

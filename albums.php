@@ -30,14 +30,13 @@
         $sql = "SELECT id_album,nom FROM album where fk_id_galerie = (select fk_id_galerie from utilisateur_galerie where fk_id_utilisateur like '{$_SESSION['idUtilisateur']}')";
         $result = mysqli_query($db,$sql);
 
-
         while($row =  mysqli_fetch_array($result)) {
           $idAlbum = $row['id_album'];
           $nom = $row['nom'];
 
           echo "<div class = carteAlbum>
                 <a href='photoAlbum?id=$idAlbum'>
-                <img src='image/nophoto.jfif' alt=Pas d'image'>
+                
                 <br></br> 
                 <b>$nom</b>
                 </a>

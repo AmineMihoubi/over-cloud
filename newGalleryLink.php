@@ -57,9 +57,9 @@ session_start();
       die("could not connect to database: " . mysqli_connect_error());
     }
 
-
+    $id = $_SESSION['idUtilisateur'];
     $sql = "INSERT INTO galerie (nom, prive) VALUES ('{$_SESSION['nouveauNomGalerie']}', '{$_SESSION['TypeGalerie']}');";
-    $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ((SELECT id_utilisateur from utilisateur order by id_utilisateur desc limit 1), (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
+    $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ($id, (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
     $sql3 = "INSERT INTO album (nom, fk_id_galerie) VALUES('Default',(SELECT id_galerie from galerie order by id_galerie desc limit 1));";
     $res = mysqli_query($conn, $sql);
     $res2 = mysqli_query($conn, $sql2);
@@ -72,6 +72,7 @@ session_start();
       echo "one ".$res;
       echo "two ".$res2;
       echo "three ".$res3;
+     
     }
     ?>
 
