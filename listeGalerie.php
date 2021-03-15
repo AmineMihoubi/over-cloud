@@ -23,10 +23,12 @@
                         $idGalerie = $row['id_galerie'];
                         $nom = $row['nom'];
                             
-                        echo "<img src='./image/galerieIcon.png' alt='Galerie' width ='120' height='100'>
+                         echo " <a href='albums?id=$idGalerie'>
+                              <img src='./image/galerieIcon.png' alt='Galerie' width ='120' height='100'>
                               <div class='container'> 
                               <h4><b>$nom</b></h4> 
                               <p></p>
+                              </a>
                               </div>";
                     }
 
@@ -34,9 +36,6 @@
                 </div>
                 
                 <a href="newGalleryType.php">
-                    }
-                    else
-                        { echo "No data found"; } ?>
                 <a href="nouveau-galerie-type.php">
                     <div class="card">
                         <img src="./image/plus.png" alt="nouvelle" width ="120px" height="100px">
