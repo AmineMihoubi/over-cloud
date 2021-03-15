@@ -35,6 +35,7 @@
           $nom = $row['nom'];
 
           echo "<div class = carteAlbum>
+                
                 <a href='photoAlbum?id=$idAlbum'>
                 
                 <br></br> 
