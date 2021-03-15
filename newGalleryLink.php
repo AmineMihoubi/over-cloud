@@ -7,7 +7,7 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="css/radiobtn.css" media="screen" type="text/css">
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
 
@@ -44,7 +44,7 @@ session_start();
     <?php
 
     $user = $_SESSION['idUtilisateur'];
-    
+
     $db_username = 'root';
     $db_password = '';
     $db_name     = 'overcloud';
@@ -65,14 +65,14 @@ session_start();
     $res2 = mysqli_query($conn, $sql2);
     $res3 = mysqli_query($conn, $sql3);
 
-    if ($res&&$res2&&$res3) {
+    if ($res && $res2 && $res3) {
       $done = 'true';
     } else {
       echo "NOPE";
-      echo "one ".$res;
-      echo "two ".$res2;
-      echo "three ".$res3;
-      echo "HELLLOOOO".$user;
+      echo "one " . $res;
+      echo "two " . $res2;
+      echo "three " . $res3;
+      echo "HELLLOOOO" . $user;
     }
     ?>
 

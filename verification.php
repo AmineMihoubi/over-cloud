@@ -50,4 +50,3 @@ else
    header('Location: index.php');
 }
 mysqli_close($db); // fermer la connexion
-?>

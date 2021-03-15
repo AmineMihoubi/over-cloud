@@ -20,9 +20,9 @@
             <h2><?php
                 echo $nomGalerie;
                 ?></h2>
-                <?php echo "<li><a href='albums.php?id=$idGalerie'>Albums</a></li>";
-                ?>
-          
+            <?php echo "<li><a href='albums.php?id=$idGalerie'>Albums</a></li>";
+            ?>
+
             <li><a href="photos.php">Photos</a></li>
             <li><a href="parametresGalerie.php">Paramètres</a></li>
             <li><a href="">Participants</a></li>
