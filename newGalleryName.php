@@ -1,42 +1,50 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8" />
-  <!-- importer le fichier de style -->
-  <link rel="stylesheet" href="css\newGallery.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="css/radiobtn.css" media="screen" type="text/css">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 
-<body class="TypeSelectionPage">
-  <div id="Titre">
-    <h1>Créaction d'une Gallerie</h1>
-  </div>
+<body>
 
-  <form class="Selection" action="newGalleryLink.php" method="POST" onsubmit="return checkForm();">
-    <div style="text-align: center">
+
+  <form action="newGalleryName.php" method="POST">
+    <div>
+      <h1>Création d'une Gallerie</h1>
+      <br/><br/>
       <label>Nom de la gallerie</label>
-    </div>
-    <div style="text-align: center">
-      <input type="text" id="nomGallerie" />
-    </div>
-    <div class="SubmitHolder">
-      <button type="submit" id="submit-gallery-name">Suivant</button>
+      <br/><br/><br/><br/>
+      <input type="text" name="NomGalerie"/>
+      <br/><br/>
+      <button type="submit" class="button" name="Submit">Suivant</button>
     </div>
   </form>
 
-  <script>
-    //Stores the name written inside localStorage (thought you can't read the data inside localStorage when it comes to php. Php can only read cookies or GET/POST requests)
-    function checkForm() {
-      if (document.getElementById("nomGallerie").value != "") {
-        galleryName = document.getElementById("nomGallerie").value;
-        //alert(galleryName);
-        localStorage.setItem("galleryName", galleryName);
-        return true;
-      } else {
-        alert("Veuillez entrez un nom pour la nouvelle gallerie");
-        return false;
-      }
+  
+  <?php
+    if (isset($_POST['Submit'])) {
+
+        $nouveauNomGalerie = $_POST['NomGalerie'];
+       
+        $_SESSION['nouveauNomGalerie'] = $nouveauNomGalerie;
+        
+
+
+        
+
+        header("location:newGalleryLink.php");
     }
-  </script>
+
+    ?>
+
+
+
 </body>
 
 </html>

@@ -13,6 +13,7 @@
 		<h1>Bienvenue</h1>
 
 		<?php
+		session_start();
 			$done = 'false';
 			if(isset($_POST['sub-btn'])) {
 				$db_username = 'root';
@@ -37,14 +38,14 @@
 					$res=mysqli_query($conn,$sql);
 					if($res){
 						$done = 'true';
-						session_start();
+						
 						$requete = "SELECT id_utilisateur, nom, prenom FROM utilisateur WHERE courriel = '".$email."'";
 						$exec_requete = mysqli_query($db,$requete);
 						$reponse      = mysqli_fetch_assoc($exec_requete);
 						$_SESSION['idUtilisateur'] = $reponse['id_utilisateur'];
 						$_SESSION['nomUtilisateur'] = $reponse['nom'];
 						$_SESSION['prenomUtilisateur'] = $reponse['prenom'];
-						echo "<script> location.href='./nouveaugallerytype.php'; </script>";
+						echo "<script> location.href='./nouveau-galerie-type.php'; </script>";
 						exit;
 					}else{
 						echo "le courriel entré est déjà utilisé";

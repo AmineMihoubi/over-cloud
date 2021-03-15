@@ -22,9 +22,9 @@ session_start();
     </div>
 
 
-    <form method="POST" action="nouveaugallerytype.php">
+    <form method="POST" action="nouveau-galerie-type.php">
         <div class="card">
-            <input type="radio" name="typeGallerie" id="seule" value="1" checked>
+            <input type="radio" name="TypeGalerie" value="1" checked>
             <label for="seule">
                 <h5>Pour soi-même</h5>
                 <h2><img src="image/seul.png" width="250" height="200"></h2>
@@ -32,7 +32,7 @@ session_start();
         </div>
 
         <div class="card">
-            <input type="radio" name="typeGallerie" id="groupe" value="0">
+            <input type="radio" name="TypeGalerie" value="0">
             <label for="groupe">
                 <h5>Avec un groupe</h5>
                 <h2><img src="image/group.png" width="250" height="200"></h2>
@@ -41,23 +41,23 @@ session_start();
         </div>
 
         <div class="submit">
-            <button class="button" type="submit" name="Button">Suivant</button>
+            <button class="button" type="submit" name="Submit">Suivant</button>
         </div>
 
     </form>
 
 
     <?php
-    if (isset($_POST['Button'])) {
+    if (isset($_POST['Submit'])) {
 
-        $typeChoisi = $_POST['typeGallerie'];
+        $typeChoisi = $_POST['TypeGalerie'];
 
 
 
         if ($typeChoisi == '1') {
-            $_SESSION["typeGallerie"] = 1;
+            $_SESSION["TypeGalerie"] = 1;
         } else if ($typeChoisi == '0') {
-            $_SESSION["typeGallerie"] = 0;
+            $_SESSION["TypeGalerie"] = 0;
         }
 
         header("location:newGalleryName.php");

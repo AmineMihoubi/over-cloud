@@ -95,14 +95,6 @@ input[type="radio"]:checked:after {
     background-color: #478bfb;
 }
 
-form {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    margin-top: 2em;
-    padding: 5px;
-}
-
 button,
 legend {
     color: white;
@@ -130,8 +122,18 @@ button:active {
     outline: 1px solid black;
 }
 
+
+/*Seulement pour nouveau-galerie-type*/
+
 .submit {
     position: absolute;
     margin: 100px;
     margin-top: 800px;
+}
+
+form {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-top: 2em;
 }
