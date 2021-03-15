@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
     <!-- importer le fichier de style -->
     <link
-      rel="stylesheet" href="css\styles.css" media="screen" type="text/css"/>
+      rel="stylesheet" href="css/styles.css" media="screen" type="text/css"/>
       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
       
   </head>

@@ -21,7 +21,6 @@
                 echo $nomGalerie;
                 ?></h2>
             <li><a href="albums.php">Albums</a></li>
-            <li><a href="newGalleryType.php">Créer Nouvel Album</a>
             <li><a href="photos.php">Photos</a></li>
             <li><a href="parametresGalerie.php">Paramètres</a></li>
             <li><a href="">Participants</a></li>
@@ -30,5 +29,5 @@
                 $_SESSION['blaseUtilisateur'] = $_SESSION['prenomUtilisateur'] . " " . $_SESSION['nomUtilisateur'];
                 echo  $_SESSION['blaseUtilisateur'];
                 ?></a></li>
-            <li id="deconnexion"><a href="index1.php">Se déconnecter</a></li>
+            <li id="deconnexion"><a href="index.php">Se déconnecter</a></li>
           </ul>

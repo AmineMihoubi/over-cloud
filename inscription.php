@@ -44,7 +44,7 @@
 						$_SESSION['idUtilisateur'] = $reponse['id_utilisateur'];
 						$_SESSION['nomUtilisateur'] = $reponse['nom'];
 						$_SESSION['prenomUtilisateur'] = $reponse['prenom'];
-						echo "<script> location.href='./newGalleryType.php'; </script>";
+						echo "<script> location.href='./nouveaugallerytype.php'; </script>";
 						exit;
 					}else{
 						echo "le courriel entré est déjà utilisé";
