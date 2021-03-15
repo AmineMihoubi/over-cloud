@@ -24,6 +24,7 @@
   </form>
 
   <script>
+    //Stores the name written inside localStorage (thought you can't read the data inside localStorage when it comes to php. Php can only read cookies or GET/POST requests)
     function checkForm() {
       if (document.getElementById("nomGallerie").value != "") {
         galleryName = document.getElementById("nomGallerie").value;

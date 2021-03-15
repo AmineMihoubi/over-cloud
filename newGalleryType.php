@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="css\newGallery.css" media="screen" type="text/css" />
 </head>
 
+<!-- first page of the "Adding a new Gallery Serie -->
+
 <body class="TypeSelectionPage">
   <div id="Titre">
     <h1>Comment allez-vous utiliser Overcloud?</h1>
@@ -34,16 +36,19 @@
   </form>
 
   <script>
+    //Store the data selected inside localStorage. (Again, that was before i learned of PHP and Post method)
     function checkForm() {
       if (document.getElementById("rbtnPersonnel").checked) {
         selected_type = document.getElementById("rbtnPersonnel").value;
         //alert(selected_type);
         localStorage.setItem("new-gallery-type", selected_type);
+        localStorage.setItem("not-added", "true");
         return true;
       } else if (document.getElementById("rbtnGroupe").checked) {
         selected_type = document.getElementById("rbtnGroupe").value;
         //alert(selected_type);
         localStorage.setItem("new-gallery-type", selected_type);
+        localStorage.setItem("not-added", "true");
         return true;
       } else {
         alert("Veuillez sélectionner un type de gallerie pour continuer");
