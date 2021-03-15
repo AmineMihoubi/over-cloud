@@ -1,19 +1,22 @@
 function ajouterAlbums($idAlbum, $nom) {
-  var d = document.getElementById("listeAlbums");
+  var div = document.getElementById("listeAlbums");
   var br = document.createElement("br");
   var newDiv = document.createElement("div");
   newDiv.id = "carteAlbum";
   var img = document.createElement("img");
-  var h8 = document.createElement("b");
-  h8.innerHTML = $nom;
+  var b = document.createElement("b");
+  b.innerHTML = nom;
 
   h8.addEventListener("click", function () {
     $.ajax({
-      url: "photos.php",
+      url: "photoAlbum.php",
       type: "POST",
-      data: {
-        idAlbum: $idAlbum,
-        nomAlbum: $nom,
+      datatype: {
+        idAlbum: idAlbum,
+        nomAlbum: nom,
+      },
+      success: function () {
+        alert("Ca fonctionne");
       },
     });
     alert("DS");
@@ -23,5 +26,5 @@ function ajouterAlbums($idAlbum, $nom) {
   newDiv.appendChild(img);
   newDiv.appendChild(br);
   newDiv.appendChild(h8);
-  d.appendChild(newDiv);
+  div.appendChild(newDiv);
 }

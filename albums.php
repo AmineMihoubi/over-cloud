@@ -4,8 +4,8 @@
     <!-- importer le fichier de style -->
     <link
       rel="stylesheet" href="css\styles.css" media="screen" type="text/css"/>
-      <script src= "js/album.js"></script>
       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      
   </head>
 
   <body>
@@ -34,7 +34,14 @@
         while($row =  mysqli_fetch_array($result)) {
           $idAlbum = $row['id_album'];
           $nom = $row['nom'];
-          echo "<script> ajouterAlbums(","'$idAlbum',","'$nom',",");</script>"; 
+
+          echo "<div class = carteAlbum>
+                <a href='photoAlbum?id=$idAlbum'>
+                <img src='image/nophoto.jfif' alt=Pas d'image'>
+                <br></br> 
+                <b>$nom</b>
+                </a>
+                </div>";
 
         }
       ?>

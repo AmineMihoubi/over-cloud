@@ -1,7 +1,5 @@
 <?php
 session_start();
-$idAlbum = $_POST['idAlbum'];
-$nomAlbum = $_POST['nomAlbum'];
 
 $db_username = 'root';
 $db_password = '';
@@ -26,7 +24,7 @@ if (!$conn) {
 
 <head>
     <link rel="stylesheet" href="css/styles.css" media="screen" type="text/css">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </head>
 
