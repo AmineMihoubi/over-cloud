@@ -1,7 +1,5 @@
 <?php
 session_start();
-$idAlbum = $_POST['idAlbum'];
-$nomAlbum = $_POST['nomAlbum'];
 
 $db_username = 'root';
 $db_password = '';
@@ -26,7 +24,7 @@ $res=mysqli_query($conn,$sql_afficher_photos);
 <html>
     <head>
     <link rel="stylesheet" href="css/styles.css" media="screen" type="text/css">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
      
 </head>
 <body>
@@ -46,7 +44,7 @@ $res=mysqli_query($conn,$sql_afficher_photos);
 //was able to show the images certain way, gotta see if i can show a certain amount per line
 if(mysqli_num_rows($res) > 0){
     while($row = mysqli_fetch_assoc($res)){
-        echo '<img id = "image" src="data:image/jpeg;base64,'.base64_encode($row["photo"]).' "class=gallery_img"/>';
+        echo '<img id = "image" src="data:image/jpeg;base64,'.base64_encode($row["photo"]).' "class=gallery_img"/>';       
     }
 }
  else{

@@ -236,7 +236,7 @@ h8 {
 }
 
 #paraUtilisateur {
-    margin-top: 560px;
+    margin-top: 32rem;
 }
 
 #deconnexion {
@@ -261,7 +261,7 @@ h8 {
     cursor: pointer;
 }
 
-#carteAlbum {
+.carteAlbum {
     /* Add shadows to create the "card" effect */
     width: 255px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -275,18 +275,18 @@ h8 {
 
 /* On mouse-over, add a deeper shadow */
 
-#carteAlbum {
+.carteAlbum {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 
 /* Add some padding inside the card container */
 
-#carteAlbum {
+.carteAlbum {
     padding: 2px 16px;
 }
 
-#carteAlbum b {
+.carteAlbum b {
     font-size: x-large;
     text-align: center;
 }
