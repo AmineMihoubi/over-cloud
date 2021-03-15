@@ -1,8 +1,8 @@
 <?php
 
-// Singleton to connect db.
+// Singleton pour connecter la BD inspiré de https://gist.github.com/jonashansen229/4534794
 class ConnectDb extends mysqli{
-  // Hold the class instance.
+
   private static $instance = null;
   private $conn;
   
@@ -11,7 +11,6 @@ class ConnectDb extends mysqli{
   private $pass = '';
   private $name = 'overcloud';
    
-  // The db connection is established in the private constructor.
   private function __construct() {
     parent::__construct($this->host, $this->user, $this->pass, $this->name);
     if (mysqli_connect_error()) {
