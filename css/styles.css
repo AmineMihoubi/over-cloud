@@ -418,3 +418,14 @@ select {
     display: inline-block;
     cursor: pointer;
 }
+
+/**
+Page création d'album
+**/
+
+#creation-album  {
+height: 400px;
+width: 700px;
+padding-left: 800px;
+padding-top: 200px;
+}

@@ -18,7 +18,7 @@
 
           <ul>
             <h2><?php
-                echo $nomGalerie;
+                echo "<a href='listeGalerie.php'>$nomGalerie</a>";
                 ?></h2>
             <?php echo "<li><a href='albums.php?id=$idGalerie'>Albums</a></li>";
             ?>

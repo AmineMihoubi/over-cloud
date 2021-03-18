@@ -50,7 +50,5 @@ $id_utilisateur = $_SESSION['idUtilisateur'];
  }
 
 mysqli_close($db);
-/*header('Refresh: 0.2; parametresUtilisateurs.php');
-echo "<script>alert('Les changements ont été effectués ');</script>";*/
-
-?>
+header('Refresh: 0.001; parametresUtilisateurs.php');
+echo "<script>alert('Les changements ont été effectués ');</script>";

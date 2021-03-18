@@ -13,8 +13,9 @@
   <?php
   session_start();
   require 'ConnectDb.php';
-  $_SESSION['idGalerie'] = $_GET['id'];
-
+  if($_GET['id'] != null) {
+    $_SESSION['idGalerie'] = $_GET['id'];
+  }
   ?>
 
   <!-- bare de navigation-->
@@ -44,5 +45,11 @@
                 </div>";
     }
     ?>
+    <div id= nouvelle-album>
+    <a href='creation-Album.php'>
+    <br></br> 
+    <b>Créer un nouvelle album</b>
+    </a>
+    </div>
   </div>
-</body>S
+</body>
