@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Inscription</title>
-  <link rel="stylesheet" href="./css/login.css">
+  <link rel="stylesheet" href="../css/login.css">
 
 </head>
 <body>
@@ -45,7 +45,7 @@
 						$_SESSION['idUtilisateur'] = $reponse['id_utilisateur'];
 						$_SESSION['nomUtilisateur'] = $reponse['nom'];
 						$_SESSION['prenomUtilisateur'] = $reponse['prenom'];
-						echo "<script> location.href='./index.php'; </script>";
+						echo "<script> location.href='../index.php'; </script>";
 						exit;
 					}else{
 						echo "le courriel entré est déjà utilisé";
@@ -64,7 +64,7 @@
 			<input type="password" name="pwd" placeholder="Mot de passe">
 			<input type="password" name="pwd2" placeholder="Confirmation">
 			<input type="submit" id="sub-button" name="sub-btn" value="Inscription"/>
-			<a href="./index.php" style="color:#FFFFFF;">Déjà inscrit?</a>
+			<a href="../index.php" style="color:#FFFFFF;">Déjà inscrit?</a>
 		</form>
 	</div>
 	
@@ -82,7 +82,7 @@
 	</ul>
 </div>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./js/subscribe.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../js/subscribe.js"></script>
 
 </body>
 </html>

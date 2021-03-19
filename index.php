@@ -11,7 +11,7 @@
         <div class="container">
             <!-- zone de connexion -->
 
-            <form action="verification.php" method="POST">
+            <form action="./php/verification.php" method="POST">
                 <h1>Connexion</h1>
                 <input type="text" placeholder="Courriel" name="email" required>
                 <input type="password" placeholder="Mot de passe" name="password" required>
@@ -41,7 +41,7 @@
 
     <script>
         function myFunction() {
-            window.location.href = "inscription.php";
+            window.location.href = "./pages/inscription.php";
         }
     </script>
 

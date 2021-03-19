@@ -26,5 +26,5 @@ $id_galerie = $_SESSION['idGalerie'];
 
 
 mysqli_close($db);
-header('Refresh: 0.001; parametresGalerie.php');
+header('Refresh: 0.001; ../pages/parametresGalerie.php');
 echo "<script>alert('Les changements ont été effectués ');</script>";

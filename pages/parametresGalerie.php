@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
-    <link rel="stylesheet" href="css\styles.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="../css/styles.css" media="screen" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
@@ -27,7 +27,7 @@
                     Partagez des photos, ou participez aux discussions sur celle-çi avec les personnes de votre choix !
                 </i>
             </div>
-            <form id="paraGalerie-form" action="modificationGalerie.php" method="POST">
+            <form id="paraGalerie-form" action="../php/modificationGalerie.php" method="POST">
                 <h9>Changez le nom de la galerie : </h9>
                 <input type="text" class="champSaisieGalerie" placeholder="<?php echo $_SESSION['nomGalerie'] ?>" name="nomGalerie">
                 <br></br>

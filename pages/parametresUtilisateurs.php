@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
-    <link rel="stylesheet" href="css/styles.css" media="screen" type="text/css">
-    <script src="/Over-Cloud/js/parametres.js"></script>
+    <link rel="stylesheet" href="../css/styles.css" media="screen" type="text/css">
+    <script src="../js/parametres.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
@@ -23,7 +23,7 @@
 
     <!-- Parametres utilisateur-->
     <div id=photoProfil>
-        <img id="imageProfil" src="image/profil.PNG" alt="Photo de profil">
+        <img id="imageProfil" src="../image/profil.PNG" alt="Photo de profil">
     </div>
 
     <div id=carteParametresUtilisateur>
@@ -31,7 +31,7 @@
         <div id=carteText>
             <h5>Modifier les informations de votre compte</h5>
 
-            <form action="modificationUtilisateur.php" method="POST">
+            <form action="../php/modificationUtilisateur.php" method="POST">
                 <h9>Prenom : </h9>
                 <input type="text" class="champSaisieUtilisateur" placeholder="<?php echo $_SESSION['prenomUtilisateur'] ?>" name="prenom">
                 <h9>Nom : </h9>

@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +7,7 @@ session_start();
 
 <head>
 
-    <link rel="stylesheet" href="css/radiobtn.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="../css/radiobtn.css" media="screen" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -27,7 +25,7 @@ session_start();
             <input type="radio" name="TypeGalerie" value="1" checked>
             <label for="seule">
                 <h5>Pour soi-même</h5>
-                <h2><img src="image/seul.png" width="250" height="200"></h2>
+                <h2><img src="../image/seul.png" width="250" height="200"></h2>
             </label>
         </div>
 
@@ -35,7 +33,7 @@ session_start();
             <input type="radio" name="TypeGalerie" value="0">
             <label for="groupe">
                 <h5>Avec un groupe</h5>
-                <h2><img src="image/group.png" width="250" height="200"></h2>
+                <h2><img src="../image/group.png" width="250" height="200"></h2>
 
             </label>
         </div>

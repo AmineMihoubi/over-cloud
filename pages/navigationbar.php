@@ -1,6 +1,6 @@
           <!-- Selectionne la galerie avec l'id 1-->
           <?php
-          require 'ConnectDb.php';
+          require '../php/ConnectDb.php';
           session_start();
           $idGalerie = $_SESSION['idGalerie'];;
           $db = ConnectDb::getInstance();

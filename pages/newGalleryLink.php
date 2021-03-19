@@ -1,12 +1,14 @@
 <?php
+require '../php/ConnectDb.php';
 session_start();
+$db = ConnectDb::getInstance(); 
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="css/radiobtn.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../css/radiobtn.css" media="screen" type="text/css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
@@ -43,27 +45,13 @@ session_start();
 
     <?php
 
-    $user = $_SESSION['idUtilisateur'];
-
-    $db_username = 'root';
-    $db_password = '';
-    $db_name     = 'overcloud';
-    $db_host     = 'localhost';
-
-    //Connecting to the database
-    $conn = mysqli_connect($db_host, $db_username, $db_password, $db_name);
-
-    if (!$conn) {
-      die("could not connect to database: " . mysqli_connect_error());
-    }
-
     $id = $_SESSION['idUtilisateur'];
     $sql = "INSERT INTO galerie (nom, prive) VALUES ('{$_SESSION['nouveauNomGalerie']}', '{$_SESSION['TypeGalerie']}');";
     $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
     $sql3 = "INSERT INTO album (nom, fk_id_galerie) VALUES('Default',(SELECT id_galerie from galerie order by id_galerie desc limit 1));";
-    $res = mysqli_query($conn, $sql);
-    $res2 = mysqli_query($conn, $sql2);
-    $res3 = mysqli_query($conn, $sql3);
+    $res = mysqli_query($db, $sql);
+    $res2 = mysqli_query($db, $sql2);
+    $res3 = mysqli_query($db, $sql3);
 
     if ($res && $res2 && $res3) {
       $done = 'true';

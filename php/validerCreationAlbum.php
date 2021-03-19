@@ -12,5 +12,5 @@ $db = ConnectDb::getInstance();
  $sql = "INSERT INTO album (nom,fk_id_galerie) VALUES ('".$nomAlbum."', $idGalerie)";
  mysqli_query($db,$sql);
  mysqli_close($db);
- header('Refresh: 0.001; albums.php?id='.$idGalerie.'');
-?>
+ header('Refresh: 0.001; ../pages/albums.php?id='.$idGalerie.'');
+ ?>

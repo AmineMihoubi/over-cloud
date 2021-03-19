@@ -1,21 +1,10 @@
 <?php
+require '../php/ConnectDb.php';
 session_start();
+$db = ConnectDb::getInstance(); 
 
-$db_username = 'root';
-$db_password = '';
-$db_name     = 'overcloud';
-$db_host     = 'localhost';
-
-
-//Connecting to the database
-$conn = mysqli_connect($db_host, $db_username, $db_password, $db_name);
-
-if (!$conn) {
-    die("could not connect to database: " . mysqli_connect_error());
-} else {
-    $sql_afficher_photos = "select * from photo where fk_id_album in (select id_album from album where fk_id_galerie in (select fk_id_galerie from utilisateur_galerie where fk_id_utilisateur like '{$_SESSION['idUtilisateur']}'))";
-    $res = mysqli_query($conn, $sql_afficher_photos);
-}
+$sql_afficher_photos = "select * from photo where fk_id_album in (select id_album from album where fk_id_galerie in (select fk_id_galerie from utilisateur_galerie where fk_id_utilisateur like '{$_SESSION['idUtilisateur']}'))";
+$res = mysqli_query($db, $sql_afficher_photos);
 
 ?>
 
@@ -23,7 +12,7 @@ if (!$conn) {
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/styles.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="../css/styles.css" media="screen" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </head>
@@ -68,7 +57,7 @@ if (!$conn) {
             //was able to show the images certain way, gotta see if i can show a certain amount per line
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
-                    echo '<img id = "image" src="data:image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery_img"/>';
+                    echo '<img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery_img"/>';
                 }
             } else {
                 echo "0 results";
@@ -98,7 +87,7 @@ if (!$conn) {
     }
 
     ?>
-    <script src="js/popupscript.js"></script>
+    <script src="../js/popupscript.js"></script>
 </body>
 
 </html>
