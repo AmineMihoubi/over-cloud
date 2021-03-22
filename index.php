@@ -22,7 +22,8 @@
                     if ($err == 1 || $err == 2)
                         echo "<p style='color:red'>Email ou mot de passe incorrect</p>";
                 }
-                ?><h4 id=creerCompte onclick="myFunction()">Créer un compte !</h4>
+                ?>
+                <input type="button" id=creerCompte onclick="myFunction()" value="Créer un compte !">
             </form>
         </div>
         <ul class="bg-bubbles">

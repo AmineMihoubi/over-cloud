@@ -1,7 +1,7 @@
 <?php
 require '../php/ConnectDb.php';
 session_start();
-$db = ConnectDb::getInstance(); 
+$db = ConnectDb::getInstance();
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,45 +24,43 @@ $db = ConnectDb::getInstance();
   <div>
     <a href="" id="lienNouveauGalerie">noLink</a>
 
-    <script>
-      //based on the info in the localStorage, creates the link to the album. (that was before i learned of the existence of php)
-      var name = localStorage.getItem("NomGalerie");
-      var type = localStorage.getItem("TypeGalerie");
-      var prive;
-      var link = "http://over-cloud.com/album?=";
-      if ((type == "Group")) {
-        prive = 0;
-        link = link + "g";
-      } else {
-        prive = 1;
-        link = link + "p";
+    <?php
+    if ($_SESSION['GallerieCreated'] === FALSE) {
+      $id = $_SESSION['idUtilisateur'];
+      $sql = "INSERT INTO galerie (nom, prive) VALUES ('{$_SESSION['nouveauNomGalerie']}', '{$_SESSION['TypeGalerie']}');";
+      $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
+      $sql3 = "INSERT INTO album (nom, fk_id_galerie) VALUES('Default',(SELECT id_galerie from galerie order by id_galerie desc limit 1));";
+      $res = mysqli_query($db, $sql);
+      if ($res === TRUE) {
+        $_SESSION['last_Id'] = $db->insert_id;
       }
-      link = link + name;
-      document.getElementById("lienNouveauGalerie").href = link;
-      document.getElementById("lienNouveauGalerie").innerHTML = link;
+      $res2 = mysqli_query($db, $sql2);
+      $res3 = mysqli_query($db, $sql3);
+
+      if ($res && $res2 && $res3) {
+        $done = 'true';
+        $_SESSION['GallerieCreated'] = TRUE;
+      } else {
+        echo "NOPE";
+        echo "one " . $res;
+        echo "two " . $res2;
+        echo "three " . $res3;
+        echo "HELLLOOOO" . $user;
+      }
+    } else {
+      $done = 'false';
+    }
+
+    ?>
+
+    <script>
+      var true_link = "albums?id=" + <?php echo $_SESSION['last_Id'] ?>;
+      var show_link = "https://over-cloud.com/pages/albums?id=" + <?php echo $_SESSION['last_Id'] ?>;
+      console.log(<?php echo $_SESSION['last_Id'] ?>);
+      document.getElementById("lienNouveauGalerie").href = true_link;
+      document.getElementById("lienNouveauGalerie").innerHTML = show_link;
     </script>
 
-
-    <?php
-
-    $id = $_SESSION['idUtilisateur'];
-    $sql = "INSERT INTO galerie (nom, prive) VALUES ('{$_SESSION['nouveauNomGalerie']}', '{$_SESSION['TypeGalerie']}');";
-    $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
-    $sql3 = "INSERT INTO album (nom, fk_id_galerie) VALUES('Default',(SELECT id_galerie from galerie order by id_galerie desc limit 1));";
-    $res = mysqli_query($db, $sql);
-    $res2 = mysqli_query($db, $sql2);
-    $res3 = mysqli_query($db, $sql3);
-
-    if ($res && $res2 && $res3) {
-      $done = 'true';
-    } else {
-      echo "NOPE";
-      echo "one " . $res;
-      echo "two " . $res2;
-      echo "three " . $res3;
-      echo "HELLLOOOO" . $user;
-    }
-    ?>
 
     <input type="hidden" id="done" value="<?php echo $done ?>" />
 

@@ -29,16 +29,15 @@ session_start();
 
   <?php
   if (isset($_POST['Submit'])) {
-
     $nouveauNomGalerie = $_POST['NomGalerie'];
-
-    $_SESSION['nouveauNomGalerie'] = $nouveauNomGalerie;
-
-
-
-
-
-    header("location:newGalleryLink.php");
+    if (!isset($nouveauNomGalerie) || trim($nouveauNomGalerie) == '') {
+      echo '<script type="text/javascript">';
+      echo ' alert("Le nom de la gallerie ne peut pas être vide! Veuillez entrer un nom")';  //not showing an alert box.
+      echo '</script>';
+    } else {
+      $_SESSION['nouveauNomGalerie'] = $nouveauNomGalerie;
+      header("location:newGalleryLink.php");
+    }
   }
 
   ?>

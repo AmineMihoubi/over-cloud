@@ -14,8 +14,8 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    /*margin: 0;
+    padding: 0;*/
     font-weight: 300;
 }
 
@@ -42,9 +42,11 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    position:relative; 
+    /*max-width: 600px;
     margin: 0 auto;
-    padding: 80px 0;
+    padding: 80px 0;*/
+    top: 30%;
     height: 400px;
     text-align: center;
 }
@@ -124,6 +126,7 @@ form input[type=submit] {
     width: 250px;
     cursor: pointer;
     font-size: 18px;
+    margin-top: 20px;
     transition-duration: 0.25s;
 }
 
