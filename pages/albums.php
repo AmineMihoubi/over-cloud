@@ -26,7 +26,7 @@
     });
   </script>
 
-  <div id=listeAlbums>
+  <div class="row">
     <?php
     $id = $_SESSION['idGalerie'];
     $db = ConnectDb::getInstance();
@@ -37,19 +37,29 @@
       $idAlbum = $row['id_album'];
       $nom = $row['nom'];
 
-      echo "<div class = carteAlbum>
+      echo "
+      <div class=column>
+      <div class = card>
                 <a href='photoAlbum?id=$idAlbum'>    
-                <br></br> 
-                <b>$nom</b>
+                <br></br>
+               
+                <b class= card_title>$nom</b>
+                
                 </a>
-                </div>";
+                </div>
+        </div>"        
+        ;
     }
     ?>
+    <div class="column">
     <div id= nouvelle-album>
     <a href='creation-Album.php'>
     <br></br> 
     <b>Créer un nouvelle album</b>
     </a>
     </div>
+    </div>
   </div>
+
+  
 </body>

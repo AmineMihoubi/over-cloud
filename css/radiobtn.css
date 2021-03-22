@@ -13,7 +13,7 @@ body {
     height: 100vh;
     width: 100vw;
     display: flex;
-    align-items: center;
+    align-content: center;
     justify-content: space-around;
 }
 
@@ -24,10 +24,27 @@ body {
     margin: 100px;
 }
 
+.container {
+    display: flex;
+    margin: auto;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: tomato;
+    width: 50vw;
+    height: 50vh;
+}
+
 input[type="radio"] {
     -webkit-appearance: none;
     appearance: none;
-    background-color: #f5fffa;
+    background-color: #a188f5;
     height: 100%;
     width: 100%;
     border-radius: 10px;

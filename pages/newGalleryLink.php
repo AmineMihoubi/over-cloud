@@ -68,7 +68,7 @@ $db = ConnectDb::getInstance();
 
   </div>
   <div class="SubmitHolder">
-    <a href="albums.php" class="button">Terminer</a>
+    <a href="listeGalerie.php" class="button">Terminer</a>
   </div>
   </div>
 
