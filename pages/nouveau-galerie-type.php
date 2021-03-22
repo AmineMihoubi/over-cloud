@@ -39,9 +39,10 @@ session_start();
 
                 </label>
             </div>
+            <button class="button" type="submit" name="Submit">Suivant</button>
         </form>
 
-        <button class="button" type="submit" name="Submit">Suivant</button>
+        
             
 
         <?php
