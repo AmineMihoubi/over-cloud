@@ -55,7 +55,7 @@
     <div id= nouvelle-album>
     <a href='creation-Album.php'>
     <br></br> 
-    <b>Créer un nouvelle album</b>
+    <b>Créer un nouvel album</b>
     </a>
     </div>
     </div>
