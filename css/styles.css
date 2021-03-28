@@ -502,3 +502,13 @@ Page création d'album
     height: 100px;
     background-color: rgb(255, 255, 255);
 }
+
+#deco{
+ height: 100px;
+ width: 300px;
+ border-radius: 55px;   
+ margin-left: 800px;
+ background-color: red;
+ color: white;
+ cursor: pointer;
+}

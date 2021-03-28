@@ -46,6 +46,10 @@
                 </div>
         </a>
         </div>
+
+        <form action="../php/deconnexion.php" method="get">
+         <input id=deco type="submit" value="Déconnexion">
+        </form>
 </body>
 
 </html>
