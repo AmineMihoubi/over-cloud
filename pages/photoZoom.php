@@ -37,7 +37,24 @@
 
   <div id = section-commentaires>
   <div class = commentaires>
-    
+    <i>Nahwa Al-Ansary</i>
+    <br></br>
+    <h7>Très belle photo de ton mariage!</h5>
+    <hr></hr>
   </div>
+  <div class = commentaires>
+    <i>Assim Amenas</i>
+    <br></br>
+    <h7>Magnifique!!!</h5>
+    <hr></hr>
+  </div>
+
+  <div id = text-Area>
+  <form>
+    <textarea></textarea>
+</form>
+<input type='button' value='Envoyer votre commentaire' />
+  </div> 
+
   </div>
 </body>
