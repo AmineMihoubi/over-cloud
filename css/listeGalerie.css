@@ -1,6 +1,4 @@
-.cards {
-    display: grid;
-}
+
 
 .card {
     /* Add shadows to create the "card" effect */
@@ -8,6 +6,8 @@
     transition: 0.3s;
     width: 120px;
     height: 180px;
+    display: inline-table;
+    margin-left: 5rem;
 }
 
 
