@@ -15,14 +15,17 @@ session_start();
 
 <body>
 
-    <div class="container">
-        <div class="content">
-            <div>
-                <h1>Comment allez-vous utiliser Overcloud?</h1>
-            </div>
+  <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+
+        <div>
+            <h1>Comment allez-vous utiliser Overcloud?</h1>
+            <br></br>
+        </div>
 
 
             <form method="POST" action="nouveau-galerie-type.php">
+
+                <div>
                 <div class="card">
                     <input type="radio" name="TypeGalerie" value="1" checked>
                     <label for="seule">
@@ -36,35 +39,38 @@ session_start();
                     <label for="groupe">
                         <h5>Avec un groupe</h5>
                         <h2><img src="../image/group.png" width="250" height="200"></h2>
-
                     </label>
                 </div>
+              </div>
+
+              <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
                 <button class="button" type="submit" name="Submit">Suivant</button>
+              </div>
+
             </form>
 
+</div>
 
 
 
-            <?php
-            if (isset($_POST['Submit'])) {
 
-                $typeChoisi = $_POST['TypeGalerie'];
+                <?php
+                if (isset($_POST['Submit'])) {
 
-                $_SESSION['GallerieCreated'] = FALSE;
+                    $typeChoisi = $_POST['TypeGalerie'];
 
-                if ($typeChoisi == '1') {
-                    $_SESSION["TypeGalerie"] = 1;
-                } else if ($typeChoisi == '0') {
-                    $_SESSION["TypeGalerie"] = 0;
+                    $_SESSION['GallerieCreated'] = FALSE;
+
+                    if ($typeChoisi == '1') {
+                        $_SESSION["TypeGalerie"] = 1;
+                    } else if ($typeChoisi == '0') {
+                        $_SESSION["TypeGalerie"] = 0;
+                    }
+
+                    header("location:newGalleryName.php");
                 }
 
-                header("location:newGalleryName.php");
-            }
-
-            ?>
-        </div>
-    </div>
-
+                ?>
 </body>
 
 </html>

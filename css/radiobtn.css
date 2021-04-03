@@ -9,35 +9,28 @@
 body {
     background-color: #fff;
     font-family: 'Poppins', sans-serif;
-    color: #2c2c51;
     height: 100vh;
     width: 100vw;
     display: flex;
     align-content: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .card {
     height: 500px;
     width: 300px;
     position: relative;
-    margin: 100px;
+    display: inline-block;
+    margin: 50px;
 }
 
-.container {
-    display: flex;
-    margin: auto;
-}
 
-.content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 50vw;
-    height: 50vh;
+form {
+
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }
 
 input[type="radio"] {
@@ -51,7 +44,9 @@ input[type="radio"] {
     box-shadow: 7px 7px 15px rgba(2, 28, 53, 0.08);
     cursor: pointer;
     outline: none;
-}
+    }
+
+
 
 input[type="radio"]:before {
     content: "";
@@ -65,7 +60,7 @@ input[type="radio"]:before {
     right: 20px;
 }
 
-input[type="radio"]:after {
+input[type="radio"]:after  {
     content: "";
     position: absolute;
     height: 13px;
@@ -75,6 +70,7 @@ input[type="radio"]:after {
     top: 39.5px;
     right: 24.5px;
 }
+
 
 label {
     position: absolute;
@@ -90,7 +86,8 @@ h5 {
 }
 
 h2 {
-    padding-top: 50px;
+    padding-top: 10px;
+
 }
 
 span {
@@ -111,6 +108,11 @@ input[type="radio"]:checked:after {
     background-color: #478bfb;
 }
 
+input[type="radio"] + img {
+  cursor: pointer;
+}
+
+
 button,
 legend {
     color: white;
@@ -120,11 +122,12 @@ legend {
     height: 50px;
     padding: 5px 10px;
     border-radius: 10px;
-    position: absolute;
+    position: fixed;
     box-shadow: 7px 7px 15px rgba(2, 28, 53, 0.08);
     cursor: pointer;
     outline: none;
     font-family: 'Poppins', sans-serif;
+
 }
 
 button:hover,
@@ -145,11 +148,4 @@ button:active {
     position: absolute;
     margin: 100px;
     margin-top: 800px;
-}
-
-form {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    margin-top: 2em;
 }
