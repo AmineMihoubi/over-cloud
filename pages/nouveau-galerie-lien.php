@@ -14,14 +14,14 @@ $db = ConnectDb::getInstance();
 </head>
 
 <body>
-  <div>
+  <div  style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
     <h1>Création d'une Galerie</h1>
   </div>
 
-  <div>
+  <div  style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
     <label>Copier le lien suivant</label>
   </div>
-  <div>
+  <div  style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
     <a href="" id="lienNouveauGalerie">noLink</a>
 
     <?php
@@ -65,10 +65,17 @@ $db = ConnectDb::getInstance();
     <input type="hidden" id="done" value="<?php echo $done ?>" />
 
   </div>
-  <div class="SubmitHolder">
-    <a href="listeGalerie.php" class="button">Terminer</a>
+  <div  style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+    <button type="submit" class="button" name="Submit">Terminer</button>
   </div>
-  </div>
+
+  <?php
+  if (isset($_POST['Submit'])) {
+      header("location:listeGalerie.php");
+    }
+  }
+
+  ?>
 
 </body>
 

@@ -6,7 +6,6 @@ session_start();
 <html>
 
 <head>
-
     <link rel="stylesheet" href="../css/radiobtn.css" media="screen" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -67,7 +66,7 @@ session_start();
                         $_SESSION["TypeGalerie"] = 0;
                     }
 
-                    header("location:newGalleryName.php");
+                    header("location:nouveau-galerie-nom.php");
                 }
 
                 ?>

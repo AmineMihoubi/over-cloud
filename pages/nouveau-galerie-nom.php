@@ -13,19 +13,28 @@ session_start();
 
 <body>
 
-
+<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <form action="newGalleryName.php" method="POST">
+
     <div>
       <h1>Création d'une Gallerie</h1>
-      <br /><br />
+      <br/><br/>
+    </div>
+
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
       <label>Nom de la gallerie</label>
-      <br /><br /><br /><br />
+      <br/><br/><br/><br/>
+      <br/><br/><br/><br/>
       <input type="text" name="NomGalerie" />
-      <br /><br />
+      <br/><br/>
+    </div>
+
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
       <button type="submit" class="button" name="Submit">Suivant</button>
     </div>
-  </form>
 
+  </form>
+</div>
 
   <?php
   if (isset($_POST['Submit'])) {
@@ -36,7 +45,7 @@ session_start();
       echo '</script>';
     } else {
       $_SESSION['nouveauNomGalerie'] = $nouveauNomGalerie;
-      header("location:newGalleryLink.php");
+      header("location:nouveau-galerie-lien.php");
     }
   }
 
