@@ -15,7 +15,7 @@ $res = mysqli_query($db, $sql_afficher_photos);
 <html>
 
 <head>
-    <link rel="stylesheet" href="../css/styles.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="../css/admin.css" media="screen" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </head>
@@ -34,22 +34,9 @@ $res = mysqli_query($db, $sql_afficher_photos);
 
         <ul class="actionsbar-ul">
             <li> </li>
-            <li class="actionsbar-nav-li"><a id="button" class="button">Ajouter +</a></li>
+            <li><a href="listeAlbums.php" id="button" class="button">Retour</a></li>
         </ul>
 
-    </div>
-
-    <div class="bg-popup">
-        <div class="popup-content">
-            <div class="btn-fermer">+</div>
-            <form method="POST" action="photos.php" enctype="multipart/form-data">
-                <br /><br /><br /><br /><br /><br />
-                <input class="popup-input" type="file" name="image">
-                <input class="popup-input" type="submit" name="upload" value="Upload"></li>
-                </ul>
-            </form>
-
-        </div>
     </div>
 
 
@@ -61,7 +48,17 @@ $res = mysqli_query($db, $sql_afficher_photos);
             //was able to show the images certain way, gotta see if i can show a certain amount per line
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
-                    echo '<img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery_img"/>';
+                    $idPhoto = $row['id_photo'];
+                    echo '
+                        <div class = "photo">
+                        <img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery_img"/>';
+
+                    echo "
+                        <form action='../php/actionUtilisateur.php?idPhoto=$idPhoto&idAlbum=$idAlbum'  method='post'>
+                        <input type='submit' name='voirCommentaires' value='Voir les commentaires'/>
+                        <input type='submit' name='supprimerPhoto' value='Supprimer' />
+                        </form>
+                        </div>";
                 }
             } else {
                 echo "0 results";
@@ -70,28 +67,6 @@ $res = mysqli_query($db, $sql_afficher_photos);
             ?>
         </div>
     </div>
-
-    <?php
-
-
-    if (isset($_POST['upload'])) {
-        $conn = mysqli_connect($db_host, $db_username, $db_password, $db_name);
-
-
-        $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-
-        $sql = "INSERT INTO photo(photo,date,fk_id_album) VALUES ('$image','2021-03-14', 1)";
-
-        // Execute query 
-        if (mysqli_query($conn, $sql)) {
-            echo "<br/>YAY.";
-        } else {
-            echo "<br/>NOOO.";
-        }
-    }
-
-    ?>
-    <script src="../js/popupscript.js"></script>
 </body>
 
 </html>

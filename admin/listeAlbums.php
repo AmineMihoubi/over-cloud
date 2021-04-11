@@ -28,7 +28,7 @@ $db = ConnectDb::getInstance();
 
     <div class='carte'>
         <div id=infoText>
-            <i>La liste des galeries de l'utilisateur vous permez de supprimer un galerie parmis tous les galeries de l'application.</i>
+            <i>La liste des galeries de l'utilisateur vous permez de supprimer un album parmis tous les albums de l'application.</i>
         </div>
 
         <div class='listeUtilisateurs'>
@@ -40,12 +40,15 @@ $db = ConnectDb::getInstance();
                     $nom = $row['nom'];
                     $id_album = $row['id_album'];
                     $id_galerie = $row['fk_id_galerie'];
+                    $sql2 = "SELECT nom FROM galerie WHERE id_galerie = $id_galerie";
+                    $exec_requete = mysqli_query($db,$sql2);
+                    $reponse      = mysqli_fetch_assoc($exec_requete);
+                    $nomGalerie = $reponse['nom'];
                     echo "
                     <form action='../php/actionUtilisateur.php?idAlbum=$id_album' method='post'> 
-                    <li>Nom : $nom | Fondateur : Amine aChanger
+                    <li>Nom : $nom | Galerie : $nomGalerie
                     <input type='submit' name='supprimer' value='Supprimer' />
                     <input type='submit' name='voirPhotos' value='Voir les photos' />
-                    <input type='submit' name='voirGalerie' value='Voir les utilisateurs' />
                     </li> 
                     </form>
                         ";

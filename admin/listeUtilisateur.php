@@ -44,8 +44,6 @@ $db = ConnectDb::getInstance();
                     <form action='../php/actionUtilisateur.php?courriel=$courriel' method='post'> 
                     <li>Nom : $prenom $nom | Mail : $courriel
                     <input type='submit' name='supprimer' value='Supprimer' />
-                    <input type='submit' name='voirPhotos' value='Voir les photos' />
-                    <input type='submit' name='voirGalerie' value='Voir les galeries' />
                     </li> 
                     </form>
                         ";
