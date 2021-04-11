@@ -1,7 +1,10 @@
 <?php
 require '../php/ConnectDb.php';
 session_start();
-$db = ConnectDb::getInstance(); 
+if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
+    header('Location: ../index.php');
+}
+$db = ConnectDb::getInstance();
 
 $sql_afficher_photos = "select * from photo where fk_id_album in (select id_album from album where fk_id_galerie in (select fk_id_galerie from utilisateur_galerie where fk_id_utilisateur like '{$_SESSION['idUtilisateur']}'))";
 $res = mysqli_query($db, $sql_afficher_photos);

@@ -13,6 +13,9 @@
     <!-- bare de navigation-->
     <?php
     session_start();
+    if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
+        header('Location: ../index.php');
+    }
     ?>
     <div id=navigationBar></div>
     <script>

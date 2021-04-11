@@ -2,7 +2,7 @@
 require '../php/ConnectDb.php';
     session_start();
     $db = ConnectDb::getInstance(); 
-    $imageID = $_SESSION['imageID']
+    $imageID = $_SESSION['imageID'];
     $sql = "select * from photo where id_photo = $idPhoto";
     $res = mysqli_query($db, $sql);
     list($id, $content, $type, $size,$content) = mysqli_fetch_array($res);
@@ -14,4 +14,3 @@ require '../php/ConnectDb.php';
     echo $content;
     mysqli_close($connection);
     exit;
-?>

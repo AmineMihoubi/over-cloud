@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
+  header('Location: ../index.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,28 +16,28 @@ session_start();
 
 <body>
 
-<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <form action="nouveau-galerie-nom.php" method="POST">
+  <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+    <form action="nouveau-galerie-nom.php" method="POST">
 
-    <div>
-      <h1>Création d'une Gallerie</h1>
-      <br/><br/>
-    </div>
+      <div>
+        <h1>Création d'une Gallerie</h1>
+        <br /><br />
+      </div>
 
-    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-      <label>Nom de la gallerie</label>
-      <br/><br/><br/><br/>
-      <br/><br/><br/><br/>
-      <input type="text" name="NomGalerie" />
-      <br/><br/>
-    </div>
+      <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+        <label>Nom de la gallerie</label>
+        <br /><br /><br /><br />
+        <br /><br /><br /><br />
+        <input type="text" name="NomGalerie" />
+        <br /><br />
+      </div>
 
-    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-      <button type="submit" class="button" name="Submit">Suivant</button>
-    </div>
+      <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+        <button type="submit" class="button" name="Submit">Suivant</button>
+      </div>
 
-  </form>
-</div>
+    </form>
+  </div>
 
   <?php
   if (isset($_POST['Submit'])) {

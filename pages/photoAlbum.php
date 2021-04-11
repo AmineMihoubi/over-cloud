@@ -1,7 +1,32 @@
 <?php
 require '../php/ConnectDb.php';
 session_start();
+if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
+    header('Location: ../index.php');
+}
 $db = ConnectDb::getInstance();
+$idAlbum = $_GET['id'];
+$galerieSQL = "SELECT fk_id_galerie FROM album where id_album = '$idAlbum'";
+$resultGalerie = mysqli_query($db, $galerieSQL);
+$row0 =  mysqli_fetch_array($resultGalerie);
+$id = $row0['fk_id_galerie'];
+$typeSql = "SELECT prive FROM galerie where id_galerie = '$id'";
+$resultType = mysqli_query($db, $typeSql);
+$row1 =  mysqli_fetch_array($resultType);
+$typeAlbum = $row1['prive'];
+//echo "<script>alert('Prive : $typeAlbum ');</script>";
+if ($typeAlbum == 1) {
+    $ownerSQL = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$id'";
+    $resultOwner = mysqli_query($db, $ownerSQL);
+    $row2 =  mysqli_fetch_array($resultOwner);
+    $ownerID = $row2['fk_id_utilisateur'];
+    //echo "<script>alert('Owner id: $ownerID ');</script>";
+    //$loginID = $_SESSION['idUtilisateur'];
+    //echo "<script>alert('Logged in ID: $loginID');</script>";
+    if ($_SESSION['idUtilisateur'] != $ownerID) {
+        header('Location: 404.php');
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +89,7 @@ $db = ConnectDb::getInstance();
                 if (mysqli_num_rows($res) > 0) {
                     while ($row = mysqli_fetch_assoc($res)) {
                         $idPhoto = $row['id_photo'];
-                        echo '<a href=photoZoom?idPhoto='.$idPhoto.'>   
+                        echo '<a href=photoZoom?idPhoto=' . $idPhoto . '>   
                         <img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery_img"/>
                         </a>';
                     }

@@ -12,8 +12,13 @@
 
   <?php
   session_start();
+
+  if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
+    header('Location: ../index.php');
+  }
+
   require '../php/ConnectDb.php';
-  if($_GET['id'] != null) {
+  if ($_GET['id'] != null) {
     $_SESSION['idGalerie'] = $_GET['id'];
   }
   ?>
@@ -30,6 +35,27 @@
     <?php
     $id = $_SESSION['idGalerie'];
     $db = ConnectDb::getInstance();
+
+    $typeSql = "SELECT prive FROM galerie where id_galerie = '$id'";
+    $resultType = mysqli_query($db, $typeSql);
+    $row1 =  mysqli_fetch_array($resultType);
+    $typeAlbum = $row1['prive'];
+    //echo "<script>alert('Prive : $typeAlbum ');</script>";
+    if ($typeAlbum == 1) {
+      $ownerSQL = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$id'";
+      $resultOwner = mysqli_query($db, $ownerSQL);
+      $row2 =  mysqli_fetch_array($resultOwner);
+      $ownerID = $row2['fk_id_utilisateur'];
+      //echo "<script>alert('Owner id: $ownerID ');</script>";
+      //$loginID = $_SESSION['idUtilisateur'];
+      //echo "<script>alert('Logged in ID: $loginID');</script>";
+      if ($_SESSION['idUtilisateur'] != $ownerID) {
+        header('Location: 404.php');
+      }
+    }
+
+
+
     $sql = "SELECT id_album, nom FROM album where fk_id_galerie = '$id'";
     $result = mysqli_query($db, $sql);
 
@@ -47,17 +73,16 @@
 
                 </a>
                 </div>
-        </div>"
-        ;
+        </div>";
     }
     ?>
     <div class="column">
-    <div id= nouvelle-album>
-    <a href='creation-Album.php'>
-    <br></br>
-    <b>Créer un nouvel album</b>
-    </a>
-    </div>
+      <div id=nouvelle-album>
+        <a href='creation-Album.php'>
+          <br></br>
+          <b>Créer un nouvel album</b>
+        </a>
+      </div>
     </div>
   </div>
 

@@ -1,9 +1,12 @@
 <?php
-    session_start();
-    require '../php/ConnectDb.php';
-    $db = ConnectDb::getInstance();
-    $idPhoto = $_GET['idPhoto'];
-    ?>
+session_start();
+if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
+  header('Location: ../index.php');
+}
+require '../php/ConnectDb.php';
+$db = ConnectDb::getInstance();
+$idPhoto = $_GET['idPhoto'];
+?>
 
 <html>
 
@@ -35,26 +38,28 @@
     ?>
   </div>
 
-  <div id = section-commentaires>
-  <div class = commentaires>
-    <i>Nahwa Al-Ansary</i>
-    <br></br>
-    <h7>Très belle photo de ton mariage!</h5>
-    <hr></hr>
-  </div>
-  <div class = commentaires>
-    <i>Assim Amenas</i>
-    <br></br>
-    <h7>Magnifique!!!</h5>
-    <hr></hr>
-  </div>
+  <div id=section-commentaires>
+    <div class=commentaires>
+      <i>Nahwa Al-Ansary</i>
+      <br></br>
+      <h7>Très belle photo de ton mariage!</h5>
+        <hr>
+        </hr>
+    </div>
+    <div class=commentaires>
+      <i>Assim Amenas</i>
+      <br></br>
+      <h7>Magnifique!!!</h5>
+        <hr>
+        </hr>
+    </div>
 
-  <div id = text-Area>
-  <form>
-    <textarea></textarea>
-</form>
-<input type='button' value='Envoyer votre commentaire' />
-  </div> 
+    <div id=text-Area>
+      <form>
+        <textarea></textarea>
+      </form>
+      <input type='button' value='Envoyer votre commentaire' />
+    </div>
 
   </div>
 </body>

@@ -12,6 +12,9 @@
 
   <?php
   session_start();
+  if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
+    header('Location: ../index.php');
+  }
   require '../php/ConnectDb.php';
   ?>
 
@@ -23,11 +26,11 @@
     });
   </script>
 
-<div id=creation-album>
-<form action="../php/validerCreationAlbum.php" method="POST">
-<h1>Donnez un nom à votre album</h1>
-<input type="text" class="champSaisieUtilisateur" placeholder="Le nom de l'album" name="nom">
-<input type="submit" class="buttonConfirmer" name="submit" value="Valider la création">
-</from>
-</div>
+  <div id=creation-album>
+    <form action="../php/validerCreationAlbum.php" method="POST">
+      <h1>Donnez un nom à votre album</h1>
+      <input type="text" class="champSaisieUtilisateur" placeholder="Le nom de l'album" name="nom">
+      <input type="submit" class="buttonConfirmer" name="submit" value="Valider la création">
+      </from>
+  </div>
 </body>

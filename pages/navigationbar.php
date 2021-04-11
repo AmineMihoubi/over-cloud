@@ -2,7 +2,14 @@
           <?php
           require '../php/ConnectDb.php';
           session_start();
-          $idGalerie = $_SESSION['idGalerie'];;
+          if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
+            header('Location: ../index.php');
+          }
+          if (isset($_SESSION['idGalerie']) && !empty($_SESSION['idGalerie'])) {
+            $idGalerie = $_SESSION['idGalerie'];
+          } else {
+            $idGalerie = 1; //give a random value so that we don't ruin the whole code 
+          }
           $db = ConnectDb::getInstance();
           $sql = "SELECT id_galerie,nom,prive FROM galerie where id_galerie = '$idGalerie'";
           $query = mysqli_query($db, $sql);
