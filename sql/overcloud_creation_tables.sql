@@ -1,42 +1,42 @@
-CREATE TABLE `utilisateur` (
+CREATE TABLE `Utilisateur` (
 	`id_utilisateur` INT(20) NOT NULL AUTO_INCREMENT,
-	`nom` varchar(50) NOT NULL,
 	`prenom` varchar(50) NOT NULL,
+	`nom` varchar(50) NOT NULL,
 	`mdp` varchar(50) NOT NULL,
 	`courriel` varchar(50) NOT NULL UNIQUE,
 	PRIMARY KEY (`id_utilisateur`)
 );
 
-CREATE TABLE `galerie` (
+CREATE TABLE `Galerie` (
 	`id_galerie` INT(20) NOT NULL AUTO_INCREMENT,
 	`nom` varchar(50) NOT NULL,
-	`prive` BOOLEAN NOT NULL,
+	`prive` INT NOT NULL,
 	PRIMARY KEY (`id_galerie`)
 );
 
-CREATE TABLE `utilisateur_galerie` (
+CREATE TABLE `Utilisateur_Galerie` (
 	`fk_id_utilisateur` INT(20) NOT NULL,
 	`fk_id_galerie` INT(20) NOT NULL,
-	`fk_id_type_utilisateur` INT(1) NOT NULL
+	`fk_id_type_utilisateur` INT(1) NOT NULL DEFAULT '0'
 );
 
-CREATE TABLE `photo` (
+CREATE TABLE `Photo` (
 	`id_photo` INT(20) NOT NULL AUTO_INCREMENT,
+	`fk_id_album` INT(20) NOT NULL,
 	`photo` blob NOT NULL,
 	`date` DATE NOT NULL,
-	`fk_id_album` INT(20) NOT NULL,
 	PRIMARY KEY (`id_photo`)
 );
 
-CREATE TABLE `album` (
+CREATE TABLE `Album` (
 	`id_album` INT(20) NOT NULL AUTO_INCREMENT,
+	`fk_id_photo` INT(20),
 	`nom` varchar(50) NOT NULL,
 	`fk_id_galerie` INT(20) NOT NULL,
 	PRIMARY KEY (`id_album`)
 );
 
-
-CREATE TABLE `commentaire` (
+CREATE TABLE `Commentaire` (
 	`id_commentaire` INT(20) NOT NULL AUTO_INCREMENT,
 	`fk_id_auteur` INT(20) NOT NULL,
 	`fk_id_photo` INT(20) NOT NULL,
@@ -44,27 +44,24 @@ CREATE TABLE `commentaire` (
 	PRIMARY KEY (`id_commentaire`)
 );
 
-CREATE TABLE `type_utilisateur` (
+CREATE TABLE `Type_utilisateur` (
 	`id_type_utilisateur` INT(3) NOT NULL AUTO_INCREMENT,
 	`nom` varchar(15) NOT NULL UNIQUE,
 	PRIMARY KEY (`id_type_utilisateur`)
 );
 
-INSERT INTO `type_utilisateur` (`id_type_utilisateur`, `nom`) VALUES ('1', 'artiste');
+ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
 
-INSERT INTO `type_utilisateur` (`id_type_utilisateur`, `nom`) VALUES ('2', 'spectateur');
+ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk1` FOREIGN KEY (`fk_id_galerie`) REFERENCES `Galerie`(`id_galerie`);
 
-ALTER TABLE `utilisateur_galerie` ADD CONSTRAINT `utilisateur_galerie_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `utilisateur`(`id_utilisateur`);
+ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk2` FOREIGN KEY (`fk_id_type_utilisateur`) REFERENCES `Type_utilisateur`(`id_type_utilisateur`);
 
-ALTER TABLE `utilisateur_galerie` ADD CONSTRAINT `utilisateur_galerie_fk1` FOREIGN KEY (`fk_id_galerie`) REFERENCES `galerie`(`id_galerie`);
+ALTER TABLE `Photo` ADD CONSTRAINT `Photo_fk0` FOREIGN KEY (`fk_id_album`) REFERENCES `Album`(`id_album`);
 
-ALTER TABLE `utilisateur_galerie` ADD CONSTRAINT `utilisateur_galerie_fk2` FOREIGN KEY (`fk_id_type_utilisateur`) REFERENCES `type_utilisateur`(`id_type_utilisateur`);
+ALTER TABLE `Album` ADD CONSTRAINT `Album_fk0` FOREIGN KEY (`fk_id_photo`) REFERENCES `Photo`(`id_photo`);
 
-ALTER TABLE `photo` ADD CONSTRAINT `fk_id_album` FOREIGN KEY (`fk_id_album`) REFERENCES `album`(`id_album`);
+ALTER TABLE `Album` ADD CONSTRAINT `Album_fk1` FOREIGN KEY (`fk_id_galerie`) REFERENCES `Galerie`(`id_galerie`);
 
-ALTER TABLE `album` ADD CONSTRAINT `fk_id_galerie` FOREIGN KEY (`fk_id_galerie`) REFERENCES `galerie`(`id_galerie`);
+ALTER TABLE `Commentaire` ADD CONSTRAINT `Commentaire_fk0` FOREIGN KEY (`fk_id_auteur`) REFERENCES `Utilisateur`(`id_utilisateur`);
 
-ALTER TABLE `commentaire` ADD CONSTRAINT `fk_id_auteur` FOREIGN KEY (`fk_id_auteur`) REFERENCES `utilisateur`(`id_utilisateur`);
-
-ALTER TABLE `commentaire` ADD CONSTRAINT `fk_id_photo` FOREIGN KEY (`fk_id_photo`) REFERENCES `photo`(`id_photo`);
-
+ALTER TABLE `Commentaire` ADD CONSTRAINT `Commentaire_fk1` FOREIGN KEY (`fk_id_photo`) REFERENCES `Photo`(`id_photo`);

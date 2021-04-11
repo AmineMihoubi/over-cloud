@@ -84,11 +84,15 @@ $db = ConnectDb::getInstance();
             $sql = "INSERT INTO photo(photo,date,fk_id_album) VALUES ('$image','2021-03-14', '$idAlbum')";
 
             // Execute query 
-            if (mysqli_query($db, $sql)) {
-                echo "<br/>YAY.";
+            if ($db->query($sql) === TRUE) {
+                $last_id = $db->insert_id;
+                echo "<br/>YAY." . $last_id;
             } else {
                 echo "<br/>NOOO.";
             }
+            //update l'image de couverture de l'album
+            $sql2 = "UPDATE album SET fk_id_photo='$last_id' WHERE id_album='$idAlbum'";
+            mysqli_query($db, $sql2);
         }
 
         ?>
