@@ -28,24 +28,24 @@ $db = ConnectDb::getInstance();
 
     <div class='carte'>
         <div id=infoText>
-            <i>La liste des utilisateurs vous permez de supprimer un compte parmis tous les utilisateurs de l'application.</i>
+            <i>La liste des galeries de l'utilisateur vous permez de supprimer un galerie parmis tous les galeries de l'application.</i>
         </div>
 
         <div class='listeUtilisateurs'>
             <ul>
                 <?php
-                $sql = "SELECT nom,prenom,courriel FROM utilisateur";
+                $sql = "SELECT nom,id_album,fk_id_galerie FROM album";
                 $result = mysqli_query($db, $sql);
                 while ($row =  mysqli_fetch_array($result)) {
                     $nom = $row['nom'];
-                    $prenom = $row['prenom'];
-                    $courriel = $row['courriel'];
+                    $id_album = $row['id_album'];
+                    $id_galerie = $row['fk_id_galerie'];
                     echo "
-                    <form action='../php/actionUtilisateur.php?courriel=$courriel' method='post'> 
-                    <li>Nom : $prenom $nom | Mail : $courriel
+                    <form action='../php/actionUtilisateur.php?idAlbum=$id_album' method='post'> 
+                    <li>Nom : $nom | Fondateur : Amine aChanger
                     <input type='submit' name='supprimer' value='Supprimer' />
                     <input type='submit' name='voirPhotos' value='Voir les photos' />
-                    <input type='submit' name='voirGalerie' value='Voir les galeries' />
+                    <input type='submit' name='voirGalerie' value='Voir les utilisateurs' />
                     </li> 
                     </form>
                         ";

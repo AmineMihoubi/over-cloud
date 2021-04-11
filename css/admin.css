@@ -8,7 +8,7 @@ body{
     margin-top:10%;
 }
 /* Bordered form */
-form {
+#container form {
     width:100%;
     padding: 30px;
     border: 1px solid #f1f1f1;
@@ -22,7 +22,7 @@ form {
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
+#container input[type=text], #container input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -32,7 +32,7 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-input[type=submit] {
+#container input[type=submit] {
     background-color: #53af57;
     color: white;
     padding: 14px 20px;
@@ -42,7 +42,7 @@ input[type=submit] {
     width: 100%;
 }
 
-input[type=submit]:hover {
+#container input[type=submit]:hover {
     background-color: white;
     color: #53af57;
 }
@@ -123,3 +123,43 @@ input[type=submit]:hover {
     margin: 3rem;
     color: white;
 }
+
+
+.listeUtilisateurs {
+    border:1px solid #000;
+    font-family:arial;
+    height:300px;
+    width:800px;
+    background-color: white;
+    margin-left: 5rem;
+  }
+
+  .listeUtilisateurs ul{
+    list-style:none;
+    max-height:300;
+    margin:0;
+    overflow:auto;
+    padding:0;
+    text-indent:10px;
+  }
+  .listeUtilisateurs li{
+    line-height:50px;
+   
+    cursor: pointer;
+    border: 0.1px solid black;
+  }
+
+  .listeUtilisateurs input {
+      float: right;
+      margin-top: 12px;
+      margin-right: 5px;
+  }
+
+  .carte button {
+      margin-left: 400px;
+      margin-top: 20px;
+  }
+
+  .bluebg {
+    background: #53af57
+  }
