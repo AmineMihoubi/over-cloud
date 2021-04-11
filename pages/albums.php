@@ -40,26 +40,26 @@
       echo "
       <div class=column>
       <div class = card>
-                <a href='photoAlbum?id=$idAlbum'>    
+                <a href='photoAlbum?id=$idAlbum'>
                 <br></br>
-               
+
                 <b class= card_title>$nom</b>
-                
+
                 </a>
                 </div>
-        </div>"        
+        </div>"
         ;
     }
     ?>
     <div class="column">
     <div id= nouvelle-album>
     <a href='creation-Album.php'>
-    <br></br> 
+    <br></br>
     <b>Créer un nouvel album</b>
     </a>
     </div>
     </div>
   </div>
 
-  
+
 </body>

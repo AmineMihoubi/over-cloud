@@ -493,7 +493,7 @@ Page création d'album
 #section-commentaires{
     background-color: rgba(180, 180, 180, 0.644);
     width: 500px;
-    height: 700px;    
+    height: 700px;
 }
 
 .commentaires {
@@ -506,7 +506,7 @@ Page création d'album
 #deco{
  height: 100px;
  width: 300px;
- border-radius: 55px;   
+ border-radius: 55px;
  margin-left: 800px;
  background-color: red;
  color: white;
@@ -528,4 +528,3 @@ Page création d'album
     resize: none;
 
 }
-

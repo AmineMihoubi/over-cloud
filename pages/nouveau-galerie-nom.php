@@ -14,7 +14,7 @@ session_start();
 <body>
 
 <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <form action="newGalleryName.php" method="POST">
+  <form action="nouveau-galerie-nom.php" method="POST">
 
     <div>
       <h1>Création d'une Gallerie</h1>
