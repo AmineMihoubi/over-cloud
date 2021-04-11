@@ -38,5 +38,5 @@
                 $_SESSION['blaseUtilisateur'] = $_SESSION['prenomUtilisateur'] . " " . $_SESSION['nomUtilisateur'];
                 echo  $_SESSION['blaseUtilisateur'];
                 ?></a></li>
-            <li id="deconnexion"><a href="/php/deconnexion.php">Se déconnecter</a></li>
+            <li id="deconnexion"><a href="../php/deconnexion.php">Se déconnecter</a></li>
           </ul>
