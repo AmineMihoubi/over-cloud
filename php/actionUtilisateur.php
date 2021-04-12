@@ -26,15 +26,16 @@ header("Refresh: 0; ../admin/admin-photos.php?album=$idAlbum");
 }
 
 /**
- * Si l'utilisateur clique sur voir les albums
+ * Si l'utilisateur clique sur voir les commentaires
  */
-else if(isset($_POST['sd'])) {
-    $sql = "SELECT id_utilisateur FROM utilisateur where courriel = '".$courriel."'";
+else if(isset($_POST['voirCommentaires'])) {
+
+  /*  $sql = "SELECT id_utilisateur FROM utilisateur where courriel = '".$courriel."'";
 $exec_requete = mysqli_query($db,$sql);
 $reponse      = mysqli_fetch_assoc($exec_requete);
-$id = $reponse['id_utilisateur'];
+$id = $reponse['id_utilisateur'];*/
 
-header("Refresh: 0; ../admin/listeGaleries.php?id=$id");
+header("Refresh: 0; ../admin/admin-photoCommentaires.php?idPhoto=$idPhoto");
 
 }
 

@@ -187,3 +187,58 @@ width: 200px;
 margin-right: 20px;
 }
 
+
+
+/* Section de commentaires pour la page imageZoom */
+
+#imageZoom,
+#section-commentaires {
+    display: inline-block;
+}
+
+#imageZoom {
+    margin-left: 500px;
+}
+
+#section-commentaires {
+    background-color: rgba(180, 180, 180, 0.644);
+    width: 500px;
+    height: 700px;
+    overflow: auto;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.commentaires {
+    margin-left: 5px;
+    width: 490px;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(31, 29, 29);
+}
+
+#deco {
+    height: 100px;
+    width: 300px;
+    border-radius: 55px;
+    margin-left: 800px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.commentaires hr {
+    margin-top: 25px;
+}
+
+#text-Area {
+    position: absolute;
+    bottom: 0;
+    position: right;
+}
+
+#text-Area textarea {
+    margin-top: -9rem;
+    width: 500px;
+    height: 100px;
+    resize: none;
+}
