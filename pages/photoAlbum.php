@@ -30,6 +30,42 @@ if ($typeAlbum == 1) {
 $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
 ?>
 
+<?php
+    if (isset($_POST['upload'])) {
+        $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+        $sql = "INSERT INTO photo(photo,date,fk_id_album) VALUES ('$image','2021-03-14', '$idAlbum')";
+
+        // Execute query
+        if (mysqli_query($db, $sql)) {
+          $page = $_SESSION['urlPrecedent'];
+            echo "<br/>YAY.";
+            echo "<script> window.location.replace('$page'); </script>";
+        } else {
+            echo "<br/>NOOO.";
+        }
+        header("Refresh: 0.001; photoAlbum.php?id=$idAlbum");
+        //update l'image de couverture de l'album
+        //$sql2 = "UPDATE album SET fk_id_photo='$last_id' WHERE id_album='$idAlbum'";
+        //mysqli_query($db, $sql2);
+    }
+
+          if (isset($_POST['confirm'])) {
+              $sql2 = "DELETE FROM photo where id_album like $idAlbum";
+                if (mysqli_query($db, $sql2)) {
+              $sql = "DELETE FROM album where id_album like $idAlbum";
+              // Execute query
+              if (mysqli_query($db, $sql)) {
+                $page = $_SESSION['urlPrecedent'];
+                  echo "<br/>YAY.";
+                  echo "<script> document.getElementsByClassName('.bg-popup2').style.display = 'none'; </script>";
+                  echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
+              } else {
+                  echo "<br/>NOOO.";
+              }
+          }
+        }
+    ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -122,44 +158,7 @@ $res = mysqli_query($db, $sql_afficher_photos);
             </div>
         </div>
     </div>
-    <?php
 
-
-    if (isset($_POST['upload'])) {
-        $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-        $sql = "INSERT INTO photo(photo,date,fk_id_album) VALUES ('$image','2021-03-14', '$idAlbum')";
-
-        // Execute query
-        if (mysqli_query($db, $sql)) {
-          $page = $_SESSION['urlPrecedent'];
-            echo "<br/>YAY.";
-            echo "<script> window.location.replace('$page'); </script>";
-        } else {
-            echo "<br/>NOOO.";
-        }
-        //update l'image de couverture de l'album
-        //$sql2 = "UPDATE album SET fk_id_photo='$last_id' WHERE id_album='$idAlbum'";
-        //mysqli_query($db, $sql2);
-    }
-
-          if (isset($_POST['confirm'])) {
-              $sql2 = "DELETE FROM photo where id_album like $idAlbum";
-                if (mysqli_query($db, $sql2)) {
-              $sql = "DELETE FROM album where id_album like $idAlbum";
-              // Execute query
-              if (mysqli_query($db, $sql)) {
-                $page = $_SESSION['urlPrecedent'];
-                  echo "<br/>YAY.";
-                  echo "<script> document.getElementsByClassName('.bg-popup2').style.display = 'none'; </script>";
-                  echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
-              } else {
-                  echo "<br/>NOOO.";
-              }
-          }
-        }
-
-
-    ?>
     <script src="../js/popupscript.js"></script>
 </body>
 
