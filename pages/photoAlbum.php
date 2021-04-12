@@ -143,6 +143,8 @@ $res = mysqli_query($db, $sql_afficher_photos);
     }
 
           if (isset($_POST['confirm'])) {
+              $sql2 = "DELETE FROM photo where id_album like $idAlbum";
+                if (mysqli_query($db, $sql2)) {
               $sql = "DELETE FROM album where id_album like $idAlbum";
               // Execute query
               if (mysqli_query($db, $sql)) {
@@ -154,6 +156,7 @@ $res = mysqli_query($db, $sql_afficher_photos);
                   echo "<br/>NOOO.";
               }
           }
+        }
 
 
     ?>
