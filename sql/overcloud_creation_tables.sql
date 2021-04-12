@@ -50,6 +50,15 @@ CREATE TABLE `Type_utilisateur` (
 	PRIMARY KEY (`id_type_utilisateur`)
 );
 
+CREATE TABLE `Historique` (
+	`id_historique` INT(20) NOT NULL AUTO_INCREMENT,
+	`action` varchar(200) NOT NULL,
+	`fk_id_utilisateur` INT(20) NOT NULL,
+	PRIMARY KEY (`id_historique`)
+);
+
+ALTER TABLE `Historique` ADD CONSTRAINT `Historique_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
+
 ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
 
 ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk1` FOREIGN KEY (`fk_id_galerie`) REFERENCES `Galerie`(`id_galerie`);
