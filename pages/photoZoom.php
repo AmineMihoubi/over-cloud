@@ -1,11 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
-  header('Location: ../index.php');
-}
 require '../php/ConnectDb.php';
 $db = ConnectDb::getInstance();
 $idPhoto = $_GET['idPhoto'];
+
 ?>
 
 <html>
@@ -29,37 +27,81 @@ $idPhoto = $_GET['idPhoto'];
     });
   </script>
 
-  <div id=imageZoom>
-    <?php
-    $sql = "select * from photo where id_photo = $idPhoto";
-    $res = mysqli_query($db, $sql);
-    $rep = mysqli_fetch_array($res);
-    echo '<img src="data:../image/jpeg;base64,' . base64_encode($rep["photo"]) . ' "class=gallery_img"/>';
-    ?>
+  <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+    <!--Content-->
+
+    <div class="actionsbar-container">
+
+      <ul>
+        <li><a id="button" class="button">Supprimer la photo</a></li>
+      </ul>
+
+    </div>
+
+    <div class="bg-popup">
+      <div class="popup-content">
+        <div class="btn-fermer">+</div>
+        <form method="POST" action="" enctype="multipart/form-data">
+          <br /><br /><br /><br /><br /><br />
+          <input class="popup-input" type="submit" name="confirm" value="Confirmer"></li>
+        </form>
+
+      </div>
+    </div>
+
+    <div id=imageZoom>
+      <!--l'image en grand-->
+      <?php
+      $sql = "select * from photo where id_photo = $idPhoto";
+      $res = mysqli_query($db, $sql);
+      $rep = mysqli_fetch_array($res);
+      echo '<img src="data:../image/jpeg;base64,' . base64_encode($rep["photo"]) . ' "class=gallery_img"/>';
+      ?>
+
+    </div>
+
+    <div id=section-commentaires>
+      <div class=commentaires>
+        <i>Utilisateur 1</i>
+        <br></br>
+        <h7>Exemple d'un commentaire</h5>
+          <hr>
+          </hr>
+      </div>
+      <div class=commentaires>
+        <i>Utilisateur 2</i>
+        <br></br>
+        <h7>Exemple d'un commentaire</h5>
+          <hr>
+          </hr>
+      </div>
+
+      <div id=text-Area>
+        <form>
+          <textarea></textarea>
+        </form>
+        <input type='button' value='Envoyer votre commentaire' />
+      </div>
+
+    </div>
   </div>
 
-  <div id=section-commentaires>
-    <div class=commentaires>
-      <i>Nahwa Al-Ansary</i>
-      <br></br>
-      <h7>Très belle photo de ton mariage!</h5>
-        <hr>
-        </hr>
-    </div>
-    <div class=commentaires>
-      <i>Assim Amenas</i>
-      <br></br>
-      <h7>Magnifique!!!</h5>
-        <hr>
-        </hr>
-    </div>
+  <?php
 
-    <div id=text-Area>
-      <form>
-        <textarea></textarea>
-      </form>
-      <input type='button' value='Envoyer votre commentaire' />
-    </div>
+        if (isset($_POST['confirm'])) {
+            $sql = "DELETE FROM photo where id_photo like $idPhoto";
+            // Execute query
+            if (mysqli_query($db, $sql)) {
+              $page = $_SESSION['urlPrecedent'];
+                echo "<br/>YAY.";
+                echo "<script> document.getElementsByClassName('.bg-popup').style.display = 'none'; </script>";
+                echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
+            } else {
+                echo "<br/>NOOO.";
+            }
+        }
 
-  </div>
+        ?>
+
+  <script src="../js/popupscript.js"></script>
 </body>

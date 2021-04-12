@@ -8,7 +8,7 @@ $db = ConnectDb::getInstance();
 
 $sql_afficher_photos = "select * from photo where fk_id_album in (select id_album from album where fk_id_galerie in (select fk_id_galerie from utilisateur_galerie where fk_id_utilisateur like '{$_SESSION['idUtilisateur']}'))";
 $res = mysqli_query($db, $sql_afficher_photos);
-
+$_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
 ?>
 
 <!DOCTYPE html>
@@ -81,9 +81,11 @@ $res = mysqli_query($db, $sql_afficher_photos);
 
         $sql = "INSERT INTO photo(photo,date,fk_id_album) VALUES ('$image','2021-03-14', 1)";
 
-        // Execute query 
+        // Execute query
         if (mysqli_query($conn, $sql)) {
+          $page = $_SESSION['urlPrecedent'];
             echo "<br/>YAY.";
+            echo "<script> window.location.replace('$page'); </script>";
         } else {
             echo "<br/>NOOO.";
         }

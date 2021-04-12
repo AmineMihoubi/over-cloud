@@ -298,16 +298,16 @@ select {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 15px;
 }
 
-.gallerycontainer {
+.gallery-container {
     width: 60%;
-    margin: 2rem auto;
+    margin-left: 200px;
 }
 
-.gallery__img {
+.gallery img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -334,17 +334,14 @@ select {
 }
 
 #imageZoom {
-    padding-left:30rem;
-    padding-top: 3rem;
     width: 35%;
-
 }
 
 #imageZoom img {
-    width:100%;
-    height:700px;
-    object-fit:cover;
-    object-position:100% 100%;
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    object-position: 100% 100%;
 }
 
 
@@ -352,19 +349,21 @@ select {
 
 .actionsbar-container {
     width: 80%;
-    margin: auto;
+    overflow: hidden;
+    display: inline-block;
 }
 
-.actionsbar-ul {
+.actionsbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: white;
     width: 130px;
+    float: left;
 }
 
-.actionsbar-li {
+.actionsbar li {
     float: left;
     color: #f2f2f2;
     text-align: center;
@@ -373,12 +372,12 @@ select {
     font-size: 17px;
 }
 
-.actionsbar-a {
+.actionsbar a {
     display: inline-block;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
-    text-decoration: none;
+
     transition: 0.3s;
     font-size: 17px;
 }
@@ -386,7 +385,19 @@ select {
 
 /*popup*/
 
-.bg-popup {
+.bg-popup{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.bg-popup2{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
@@ -423,6 +434,7 @@ select {
     cursor: pointer;
 }
 
+
 #button {
     border: 2px solid white;
     border-radius: 30px;
@@ -451,7 +463,6 @@ Page création d'album
 .column {
     float: left;
     width: 15%;
-    margin-left: 200px;
     margin-right: -200px;
 }
 
@@ -484,16 +495,21 @@ Page création d'album
     height: 40px;
 }
 
+
 /* Section de commentaires pour la page imageZoom */
 
-#imageZoom, #section-commentaires {
+#imageZoom,
+#section-commentaires {
     display: inline-block;
 }
 
-#section-commentaires{
+#section-commentaires {
     background-color: rgba(180, 180, 180, 0.644);
     width: 500px;
-    height: 700px;
+    height: 500px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
 }
 
 .commentaires {
@@ -503,14 +519,14 @@ Page création d'album
     background-color: rgb(255, 255, 255);
 }
 
-#deco{
- height: 100px;
- width: 300px;
- border-radius: 55px;
- margin-left: 800px;
- background-color: red;
- color: white;
- cursor: pointer;
+#deco {
+    height: 100px;
+    width: 300px;
+    border-radius: 55px;
+    margin-left: 800px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
 }
 
 .commentaires hr {
@@ -518,7 +534,6 @@ Page création d'album
 }
 
 #text-Area {
-    position: absolute;
     bottom: 0;
 }
 
@@ -526,5 +541,4 @@ Page création d'album
     width: 500px;
     height: 100px;
     resize: none;
-
 }
