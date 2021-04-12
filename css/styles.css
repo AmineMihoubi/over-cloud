@@ -494,6 +494,8 @@ Page création d'album
     background-color: rgba(180, 180, 180, 0.644);
     width: 500px;
     height: 700px;
+    overflow: auto;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 .commentaires {
@@ -501,6 +503,7 @@ Page création d'album
     width: 490px;
     height: 100px;
     background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(31, 29, 29);
 }
 
 #deco{
@@ -523,8 +526,13 @@ Page création d'album
 }
 
 #text-Area textarea {
+    margin-top: -5rem;
     width: 500px;
     height: 100px;
     resize: none;
 
+}
+
+#text-Area form {
+    margin-top: -20px;
 }
