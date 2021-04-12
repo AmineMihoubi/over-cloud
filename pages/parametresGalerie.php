@@ -14,6 +14,9 @@
     if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
         header('Location: ../index.php');
     }
+    require '../php/ConnectDb.php';
+    $db = ConnectDb::getInstance();
+    $idGalerie =$_SESSION['idGalerie'];
     ?>
     <div id=navigationBar></div>
     <script>
@@ -40,8 +43,14 @@
                 <input type="radio" id="prive" name="confidentialite" value="prive">
                 <label for="prive">Galerie privée</label><br>
                 <input type="submit" class="buttonConfirmer" name="submit" value="Confirmer!">
+                <br>
+
 
             </form>
+            <form method="POST" action="">
+<input type="submit" class="buttonSupprimer" name="delete" value="Supprimer galerie">
+</form>
+
         </div>
 
         <br></br>
@@ -53,4 +62,22 @@
 
 
     </div>
+
+    <?php
+
+          if (isset($_POST['delete'])) {
+            $sql2 = "DELETE FROM utilisateur_galerie where fk_id_galerie like $idGalerie";
+            if(mysqli_query($db, $sql2)){
+              $sql  = "DELETE FROM galerie where id_galerie like $idGalerie";
+              if (mysqli_query($db, $sql)) {
+                $page = $_SESSION['urlPrecedent'];
+                  echo "<br/>YAY.";
+                  echo "<script> window.location.replace('listeGalerie.php'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
+              } else {
+                  echo "<br/>NOOO.";
+              }
+          }
+        }
+
+          ?>
 </body>
