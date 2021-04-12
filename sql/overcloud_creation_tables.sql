@@ -50,6 +50,13 @@ CREATE TABLE `Type_utilisateur` (
 	PRIMARY KEY (`id_type_utilisateur`)
 );
 
+CREATE TABLE `Administrateur` (
+	`id_admin` INT(20) NOT NULL AUTO_INCREMENT,
+	`utilisateur` varchar(200) NOT NULL,
+	`mdp` varchar(200) NOT NULL,
+	PRIMARY KEY (`id_admin`)
+);
+
 CREATE TABLE `Historique` (
 	`id_historique` INT(20) NOT NULL AUTO_INCREMENT,
 	`action` varchar(200) NOT NULL,
