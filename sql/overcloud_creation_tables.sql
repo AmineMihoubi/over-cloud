@@ -30,7 +30,7 @@ CREATE TABLE `Photo` (
 
 CREATE TABLE `Album` (
 	`id_album` INT(20) NOT NULL AUTO_INCREMENT,
-	`fk_id_photo` INT(20),
+	`fk_id_photo` INT(20) NOT NULL DEFAULT '1',
 	`nom` varchar(50) NOT NULL,
 	`fk_id_galerie` INT(20) NOT NULL,
 	PRIMARY KEY (`id_album`)
