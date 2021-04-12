@@ -377,7 +377,6 @@ select {
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
-
     transition: 0.3s;
     font-size: 17px;
 }
@@ -385,7 +384,7 @@ select {
 
 /*popup*/
 
-.bg-popup{
+.bg-popup {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
@@ -397,7 +396,7 @@ select {
     display: none;
 }
 
-.bg-popup2{
+.bg-popup2 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
@@ -433,7 +432,6 @@ select {
     transform: rotate(45deg);
     cursor: pointer;
 }
-
 
 #button {
     border: 2px solid white;
@@ -506,10 +504,9 @@ Page création d'album
 #section-commentaires {
     background-color: rgba(180, 180, 180, 0.644);
     width: 500px;
-    height: 500px;
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
+    height: 700px;
+    overflow: auto;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 .commentaires {
@@ -517,6 +514,7 @@ Page création d'album
     width: 490px;
     height: 100px;
     background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(31, 29, 29);
 }
 
 #deco {
@@ -538,7 +536,12 @@ Page création d'album
 }
 
 #text-Area textarea {
+    margin-top: -5rem;
     width: 500px;
     height: 100px;
     resize: none;
+}
+
+#text-Area form {
+    margin-top: -20px;
 }
