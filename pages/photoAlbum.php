@@ -92,7 +92,7 @@ $res = mysqli_query($db, $sql_afficher_photos);
         });
     </script>
 
-    <div style="margin-left: 200px ;">
+    <div style="margin-left: 200px;">
         <!--content-->
         <div class="actionsbar-container">
             <ul >
