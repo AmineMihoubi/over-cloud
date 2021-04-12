@@ -108,7 +108,8 @@ if ($_GET['id'] != null) {
 
                         </a>
                 </div>";
-          }
+              }
+            }
           ?>
           </div>
           <div class="gallery">
