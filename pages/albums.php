@@ -79,18 +79,38 @@ if ($_GET['id'] != null) {
             $idAlbum = $row['id_album'];
             $nom = $row['nom'];
 
-            echo "
 
-      <div class = card>
-                <a href='photoAlbum?id=$idAlbum'>
-                <br></br>
+            $id = $_SESSION['idGalerie'];
+            $db = ConnectDb::getInstance();
+            $sql = "SELECT id_album, nom, fk_id_photo FROM album where fk_id_galerie = '$id'";
+            $result = mysqli_query($db, $sql);
 
-                <b class= card_title>$nom</b>
+            while ($row =  mysqli_fetch_array($result)) {
+              $idAlbum = $row['id_album'];
+              $nom = $row['nom'];
+              
+              // récupérer la photo de couverture de l'album
+              if(is_null($row['fk_id_photo'])){
+                //pas de photo dans l'album
+              }
+              else{
+                $idCover = $row['fk_id_photo'];
+                $sqlCover = "SELECT * FROM photo WHERE id_photo = $idCover";
+                $res = mysqli_query($db, $sqlCover);
+                $photo = mysqli_fetch_assoc($res);
+              }
+              echo "
+              <div class = card>
+                        <a href='photoAlbum?id=$idAlbum'>
+                        <br></br>
+                        <img width='100' height='100' src='data:../image/jpeg;base64," . base64_encode($photo["photo"]) . " 'class=gallery_img'/>
+                        <b class= card_title>$nom</b>
 
-                </a>
-        </div>";
+                        </a>
+                </div>";
           }
           ?>
+          </div>
           <div class="gallery">
             <div id=nouvelle-album>
               <a href='creation-Album.php'>
@@ -99,9 +119,8 @@ if ($_GET['id'] != null) {
               </a>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
-
 </body>
+</html>
