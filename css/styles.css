@@ -509,11 +509,16 @@ Page création d'album
 }
 
 
+
 /* Section de commentaires pour la page imageZoom */
 
 #imageZoom,
 #section-commentaires {
     display: inline-block;
+}
+
+#imageZoom {
+    margin-left: 500px;
 }
 
 #section-commentaires {
@@ -547,16 +552,14 @@ Page création d'album
 }
 
 #text-Area {
+    position: absolute;
     bottom: 0;
+    position: right;
 }
 
 #text-Area textarea {
-    margin-top: -5rem;
+    margin-top: -9rem;
     width: 500px;
     height: 100px;
     resize: none;
-}
-
-#text-Area form {
-    margin-top: -20px;
 }

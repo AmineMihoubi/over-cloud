@@ -37,6 +37,7 @@ $idPhoto = $_GET['idPhoto'];
       </ul>
 
     </div>
+  </div>
 
     <div class="bg-popup">
       <div class="popup-content">
@@ -50,13 +51,13 @@ $idPhoto = $_GET['idPhoto'];
     </div>
 
     <div id=imageZoom>
-      <!--l'image en grand-->
-      <?php
-      $sql = "select * from photo where id_photo = $idPhoto";
-      $res = mysqli_query($db, $sql);
-      $rep = mysqli_fetch_array($res);
-      echo '<img src="data:../image/jpeg;base64,' . base64_encode($rep["photo"]) . ' "class=gallery_img"/>';
-      ?>
+    <?php
+    $sql = "select * from photo where id_photo = $idPhoto";
+    $res = mysqli_query($db, $sql);
+    $rep = mysqli_fetch_array($res);
+    echo '<img src="data:../image/jpeg;base64,' . base64_encode($rep["photo"]) . ' "class=gallery_img"/>';
+    ?>
+  </div>
 
   <div id=section-commentaires>
     <?php
@@ -82,7 +83,8 @@ $idPhoto = $_GET['idPhoto'];
     ?>
     <div id=text-Area>
       <form method="post" action="../php/envoyerCommentaire.php">
-        <textarea name="commentaire" ></textarea>
+        <textarea name="commentaire" placeholder="Écrire un commentaire..." ></textarea>
+        <br></br>
         <input  type="hidden" name="idPhoto" value="<?php echo $idPhoto;?>"></input>
         <input name='submit' type='submit' value='Envoyer votre commentaire' />
       </form>

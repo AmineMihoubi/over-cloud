@@ -12,7 +12,7 @@
     <h1>Galeries</h1>
     <link rel="stylesheet" href="../css/listeGalerie.css">
 
-    <div class="card">
+  
         <?php
         session_start();
         if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
@@ -29,19 +29,17 @@
             $idGalerie = $row['id_galerie'];
             $nom = $row['nom'];
 
-            echo "
-                             <a href='albums?id=$idGalerie'>
-                              <img src='../image/galerieIcon.png' alt='Galerie' width ='120' height='100'>
-                              <div class='container'>
-                              <h4><b>$nom</b></h4>
-                              <p></p>
-                              </a>
-                              </div>";
-        }
+            echo "           <div class='card'>   
+            <a href='albums?id=$idGalerie'>
+             <img src='../image/galerieIcon.png' alt='Galerie' width ='120' height='100'>
+             <h4><b>$nom</b></h4> 
+             <p></p>
+             </a>
+             </div>";
+}
 
 $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
         ?>
-    </div>
 
     <a href="newGalleryType.php">
         <a href="nouveau-galerie-type.php">
