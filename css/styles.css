@@ -563,3 +563,10 @@ Page création d'album
     height: 100px;
     resize: none;
 }
+
+
+.button-supprimer {
+    float: right;
+    color: red;
+    cursor: pointer;
+}
