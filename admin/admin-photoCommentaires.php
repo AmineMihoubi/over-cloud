@@ -39,11 +39,13 @@ $idPhoto = $_GET['idPhoto'];
 
   <div id=section-commentaires>
     <?php
-    $sql = "SELECT fk_id_auteur,message FROM commentaire where fk_id_photo = $idPhoto ";
+    $sql = "SELECT fk_id_auteur,message,date,id_commentaire FROM commentaire where fk_id_photo = $idPhoto ";
     $result = mysqli_query($db, $sql);
     while ($row =  mysqli_fetch_array($result)) {
       $idAuteur = $row['fk_id_auteur'];
       $commentaire = $row['message'];
+      $dateCommentaire =  date('d-m-Y', strtotime($row['date']));
+      $idCommentaire = $row['id_commentaire'];
 
       $requete = "SELECT nom,prenom FROM utilisateur WHERE id_utilisateur = $idAuteur";
       $exec_requete = mysqli_query($db, $requete);
@@ -53,9 +55,14 @@ $idPhoto = $_GET['idPhoto'];
       echo "
           <div class=commentaires>
           <i>$prenom, $nom</i>
+          <i> / $dateCommentaire</i>
           <br></br>
           <h7>$commentaire</h5>
-          <hr></hr>
+          <form action='../php/actionUtilisateur.php' method='post'> 
+          <input type='submit' name='supprimerCommentaire' class='button-supprimer' value=Supprimer></input>
+          <input  type='hidden' name='idPhoto' value='$idPhoto'/>
+          <input  type='hidden' name='idCommentaire' value='$idCommentaire'/>
+          </from>
           </div>";
     }
     ?>

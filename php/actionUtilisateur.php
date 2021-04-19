@@ -30,11 +30,6 @@ header("Refresh: 0; ../admin/admin-photos.php?album=$idAlbum");
  */
 else if(isset($_POST['voirCommentaires'])) {
 
-  /*  $sql = "SELECT id_utilisateur FROM utilisateur where courriel = '".$courriel."'";
-$exec_requete = mysqli_query($db,$sql);
-$reponse      = mysqli_fetch_assoc($exec_requete);
-$id = $reponse['id_utilisateur'];*/
-
 header("Refresh: 0; ../admin/admin-photoCommentaires.php?idPhoto=$idPhoto");
 
 }
@@ -46,5 +41,18 @@ else if(isset($_POST['supprimerPhoto'])) {
 }
 
 
+/**
+ * Si l'utilisateur clique sur supprimer commentaire
+ */
+else if(isset($_POST['supprimerCommentaire'])) {
+  $idCommentaire = $_POST['idCommentaire'];
+  $idPhoto = $_POST['idPhoto'];
+  
+  
+  $sql = "DELETE FROM commentaire WHERE id_commentaire = $idCommentaire";
+  mysqli_query($db,$sql);
+  header("Refresh: 0.001; ../admin/admin-photoCommentaires.php?idPhoto=$idPhoto");
+  echo "<script>alert('Le commentaire à bien été supprimé !');</script>";
+}
 
 ?>
