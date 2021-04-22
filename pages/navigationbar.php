@@ -23,20 +23,45 @@
 
           <!-- Bare de navigation !-->
 
-          <ul>
-            <h2><?php
-                echo "<a href='listeGalerie.php'>$nomGalerie</a>";
-                ?></h2>
-            <?php echo "<li><a href='albums.php?id=$idGalerie'>Albums</a></li>";
-            ?>
+          <nav class="main-menu">
+            <ul>
+              <?php
+              echo "<li><a href='listeGalerie.php'>  <i class='fa fa-bars fa-2x'></i> <span class='nav-text'> $nomGalerie </span></a></li>";
+              ?>
+              <?php echo "<li><a href='albums.php?id=$idGalerie'> <i class='fa fa-folder fa-2x'></i> <span class='nav-text'>Albums</span></a></li>";
+              ?>
 
-            <li><a href="photos.php">Photos</a></li>
-            <li><a href="parametresGalerie.php">Paramètres</a></li>
-            <!--<li><a href="">Participants</a></li>-->
-            <li id="paraUtilisateur"><a href="parametresUtilisateurs.php">
-                <?php
-                $_SESSION['blaseUtilisateur'] = $_SESSION['prenomUtilisateur'] . " " . $_SESSION['nomUtilisateur'];
-                echo  $_SESSION['blaseUtilisateur'];
-                ?></a></li>
-            <li id="deconnexion"><a href="../php/deconnexion.php">Se déconnecter</a></li>
-          </ul>
+              <li>
+                <a href="photos.php">
+                  <i class="fa fa-picture-o fa-2x"></i>
+                  <span class="nav-text">Photos</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="parametresGalerie.php">
+                  <i class="fa fa-gear fa-2x"></i>
+
+                  <span class="nav-text">Paramètres</span></a>
+              </li>
+              <!--<li><a href="">Participants</a></li>-->
+              <li id="paraUtilisateur">
+              
+               <a href="parametresUtilisateurs.php">
+               <i class="fa fa-user fa-2x"></i>
+               <span class="nav-text">
+
+                  <?php
+                  $_SESSION['blaseUtilisateur'] = $_SESSION['prenomUtilisateur'] . " " . $_SESSION['nomUtilisateur'];
+                  echo  $_SESSION['blaseUtilisateur'];
+                  ?></span></a>
+              </li>
+
+            </ul>
+
+            <ul>
+              <li id="deconnexion"><a href="../php/deconnexion.php">
+                  <i class="fa fa-power-off fa-2x"></i>
+                  <span class="nav-text">Déconnecter</span></a></li>
+            </ul>
+          </nav>
