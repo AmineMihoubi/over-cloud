@@ -1,6 +1,12 @@
 <!doctype html>
 <html>
 
+<?php
+session_start();
+require '../php/ConnectDb.php';
+$db = ConnectDb::getInstance();
+?>
+
 <head>
     <meta charset="utf-8" />
     <!-- importer le fichier de style -->
@@ -9,52 +15,49 @@
 </head>
 
 <body>
-    <h1>Galeries</h1>
-    <link rel="stylesheet" href="../css/listeGalerie.css">
 
-  
+    <div id=listeGalerie-titre>
+        <h1>Galeries</h1>
+    </div>
+
+
+    <div id=listeGalerie-container>
         <?php
-        session_start();
-        if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
-            header('Location: ../index.php');
-        }
-
-
-        require '../php/ConnectDb.php';
-        $db = ConnectDb::getInstance();
-
         $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}');";
         $result = mysqli_query($db, $sql);
         while ($row =  mysqli_fetch_array($result)) {
             $idGalerie = $row['id_galerie'];
             $nom = $row['nom'];
 
-            echo "           <div class='card'>   
-            <a href='albums?id=$idGalerie'>
+            echo " 
+             <div class='listeGalerie-card'>   
+             <a href='albums?id=$idGalerie'>
              <img src='../image/galerieIcon.png' alt='Galerie' width ='120' height='100'>
              <h4><b>$nom</b></h4> 
-             <p></p>
              </a>
              </div>";
-}
+        }
 
-$_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
+        $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
         ?>
+    </div>
 
-    <a href="newGalleryType.php">
+
+    <div id=listeGalerie-nouvelle>
         <a href="nouveau-galerie-type.php">
-            <div class="card">
+            <div class="listeGalerie-card'">
                 <img src="../image/plus.png" alt="nouvelle" width="120px" height="100px">
-                <div class="container">
-                    <h4><b>Nouvelle galerie</b></h4>
-                    <p></p>
-                </div>
+                <h4><b>Nouvelle galerie</b></h4>
         </a>
-        </div>
+            </div>
+    </div>
 
-        <form action="../php/deconnexion.php" method="get">
-            <input id=deco type="submit" value="Déconnexion">
-        </form>
+
+
+
+    <form action="../php/deconnexion.php" method="get">
+        <input id=deco type="submit" value="Déconnexion">
+    </form>
 </body>
 
 </html>
