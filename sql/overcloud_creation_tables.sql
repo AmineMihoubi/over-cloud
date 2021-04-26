@@ -33,6 +33,7 @@ CREATE TABLE `Album` (
 	`fk_id_photo` INT(20) NOT NULL DEFAULT '1',
 	`nom` varchar(50) NOT NULL,
 	`fk_id_galerie` INT(20) NOT NULL,
+	`date` DATE NOT NULL,
 	PRIMARY KEY (`id_album`)
 );
 
@@ -52,19 +53,18 @@ CREATE TABLE `Type_utilisateur` (
 
 CREATE TABLE `Administrateur` (
 	`id_admin` INT(20) NOT NULL AUTO_INCREMENT,
-	`utilisateur` varchar(200) NOT NULL,
+	`utilisateur` varchar(200) NOT NULL UNIQUE,
 	`mdp` varchar(200) NOT NULL,
 	PRIMARY KEY (`id_admin`)
 );
 
 CREATE TABLE `Historique` (
 	`id_historique` INT(20) NOT NULL AUTO_INCREMENT,
-	`action` varchar(200) NOT NULL,
 	`fk_id_utilisateur` INT(20) NOT NULL,
+	`action` varchar(200) NOT NULL,
+	`date` DATETIME NOT NULL,
 	PRIMARY KEY (`id_historique`)
 );
-
-ALTER TABLE `Historique` ADD CONSTRAINT `Historique_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
 
 ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
 
@@ -81,3 +81,5 @@ ALTER TABLE `Album` ADD CONSTRAINT `Album_fk1` FOREIGN KEY (`fk_id_galerie`) REF
 ALTER TABLE `Commentaire` ADD CONSTRAINT `Commentaire_fk0` FOREIGN KEY (`fk_id_auteur`) REFERENCES `Utilisateur`(`id_utilisateur`);
 
 ALTER TABLE `Commentaire` ADD CONSTRAINT `Commentaire_fk1` FOREIGN KEY (`fk_id_photo`) REFERENCES `Photo`(`id_photo`);
+
+ALTER TABLE `Historique` ADD CONSTRAINT `Historique_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
