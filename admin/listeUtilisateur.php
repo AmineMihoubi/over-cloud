@@ -32,31 +32,34 @@ $db = ConnectDb::getInstance();
         </div>
 
         <div class='listeUtilisateurs'>
-            <ul>
-                <?php
-                $sql = "SELECT nom,prenom,courriel FROM utilisateur";
-                $result = mysqli_query($db, $sql);
-                while ($row =  mysqli_fetch_array($result)) {
-                    $nom = $row['nom'];
-                    $prenom = $row['prenom'];
-                    $courriel = $row['courriel'];
-                    echo "
-                    <form action='../php/actionUtilisateur.php?courriel=$courriel' method='post'> 
-                    <li>Nom : $prenom $nom | Mail : $courriel
-                    <input type='submit' name='supprimer' value='Supprimer' />
-                    </li> 
-                    </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Adresse mail</th>
+                        <th>Supprimer l'utilisateur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT nom,prenom,courriel FROM utilisateur";
+                    $result = mysqli_query($db, $sql);
+                    while ($row =  mysqli_fetch_array($result)) {
+                        $nom = $row['nom'];
+                        $prenom = $row['prenom'];
+                        $courriel = $row['courriel'];
+                        echo "
+                        <tr>
+                        <td>$prenom $nom</td>
+                        <td>$courriel</td>
+                        <td><form action='../php/actionUtilisateur.php?courriel=$courriel' method='post'> 
+                        <input type='submit' name='supprimer' value='Supprimer'/>
+                        </form>
                         ";
-                }
-                ?>
-            </ul>
-            <script>
-                $('li').on('click', function() {
-                    $('.bluebg').removeClass('bluebg');
-                    $(this).addClass('bluebg');
-                });
-            </script>
-
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
 

@@ -32,29 +32,48 @@ $db = ConnectDb::getInstance();
         </div>
 
         <div class='listeUtilisateurs'>
-            <ul>
+        <table>
+                <thead>
+                    <tr>
+                        <th>Galerie</th>
+                        <th>Album</th>
+                        <th>Fondateur</th>
+                        <th>Intéragir</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
                 <?php
                 $sql = "SELECT nom,id_album,fk_id_galerie FROM album";
                 $result = mysqli_query($db, $sql);
                 while ($row =  mysqli_fetch_array($result)) {
-                    $nom = $row['nom'];
+                    $nomAlbum = $row['nom'];
                     $id_album = $row['id_album'];
                     $id_galerie = $row['fk_id_galerie'];
-                    $sql2 = "SELECT nom FROM galerie WHERE id_galerie = $id_galerie";
+                    $sql2 = "SELECT nom,id_fondateur FROM galerie WHERE id_galerie = $id_galerie";
                     $exec_requete = mysqli_query($db,$sql2);
                     $reponse      = mysqli_fetch_assoc($exec_requete);
                     $nomGalerie = $reponse['nom'];
+                    $idFondateur = $reponse['id_fondateur'];
+                    $sql3 = "SELECT prenom,nom FROM utilisateur WHERE id_utilisateur = $idFondateur";
+                    $exec_requete = mysqli_query($db,$sql3);
+                    $reponse      = mysqli_fetch_assoc($exec_requete);
+                    $prenom = $reponse['prenom'];
+                    $nom = $reponse['nom'];
                     echo "
                     <form action='../php/actionUtilisateur.php?idAlbum=$id_album' method='post'> 
-                    <li>Nom : $nom | Galerie : $nomGalerie
-                    <input type='submit' name='supprimer' value='Supprimer' />
-                    <input type='submit' name='voirPhotos' value='Voir les photos' />
-                    </li> 
+                    <tr>
+                    <td>$nomGalerie</td>
+                    <td>$nomAlbum</td>
+                    <td>$nom, $prenom</td>
+                    <td><input type='submit' name='voirPhotos' value='Voir les photos' />
+                    <input type='submit' name='supprimer' value='Supprimer' /></td>
+                    </tr>
                     </form>
                         ";
                 }
                 ?>
-            </ul>
             <script>
                 $('li').on('click', function() {
                     $('.bluebg').removeClass('bluebg');
