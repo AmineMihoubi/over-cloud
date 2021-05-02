@@ -6,6 +6,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
 }
 $db = ConnectDb::getInstance();
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +14,6 @@ $db = ConnectDb::getInstance();
   <meta charset="utf-8" />
   <link rel="stylesheet" href="../css/radiobtn.css" media="screen" type="text/css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -59,7 +59,6 @@ $db = ConnectDb::getInstance();
       } else {
         $done = 'false';
       }
-
       ?>
 
       <script>
@@ -78,7 +77,7 @@ $db = ConnectDb::getInstance();
     <br /><br /><br /><br />
 
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-      <a href="listeGalerie.php" class="button">Terminer</a>
+      <a href="liste-des-galeries.php" class="button">Terminer</a>
     </div>
 
   </div>

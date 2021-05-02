@@ -44,11 +44,11 @@ $id_utilisateur = $_SESSION['idUtilisateur'];
       $sql = "UPDATE utilisateur SET mdp = '".$password."' where id_utilisateur = '".$id_utilisateur."'";
       mysqli_query($db,$sql);
     } else {
-      header('Location: ../pages/parametresUtilisateurs.php?erreur=1'); // Le mot de passe actuel est incorrect 
+      header('Location: ../pages/parametres-de-lutilisateur.php'); // Le mot de passe actuel est incorrect 
     }
 
  }
 
 mysqli_close($db);
-header('Refresh: 0.001; ../pages/parametresUtilisateurs.php');
+header('Refresh: 0.001; ../pages/parametres-de-lutilisateur.php');
 echo "<script>alert('Les changements ont été effectués ');</script>";

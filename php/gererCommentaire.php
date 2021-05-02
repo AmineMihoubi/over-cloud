@@ -12,7 +12,7 @@ $idPhoto = $_POST['idPhoto'];
 $sql = "DELETE FROM commentaire WHERE id_commentaire = $idCommentaire";
 mysqli_query($db,$sql);
 mysqli_close($db);
-header("Refresh: 0.001; ../pages/photoZoom?idPhoto=$idPhoto");
+header("Refresh: 0.001; ../pages/photo-zoom?idPhoto=$idPhoto");
 echo "<script>alert('Votre commentaire a été supprimé !');</script>";
 
 }
@@ -28,7 +28,7 @@ $date = date("Y-m-d H:i:s");
 $sql = "INSERT INTO commentaire (fk_id_auteur,fk_id_photo,message,date) VALUES ('".$idUtilisateur."', $idPhoto, '".$text."','".$date."' )";
 mysqli_query($db,$sql);
 mysqli_close($db);
-header("Refresh: 0.001; ../pages/photoZoom?idPhoto=$idPhoto");
+header("Refresh: 0.001; ../pages/photo-zoom?idPhoto=$idPhoto");
 
 
 }

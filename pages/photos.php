@@ -83,7 +83,7 @@ $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
 
         // Execute query
         if (mysqli_query($conn, $sql)) {
-          $page = $_SESSION['urlPrecedent'];
+            $page = $_SESSION['urlPrecedent'];
             echo "<br/>YAY.";
             echo "<script> window.location.replace('$page'); </script>";
         } else {

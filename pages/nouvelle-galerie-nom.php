@@ -17,7 +17,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
 <body>
 
   <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-    <form action="nouveau-galerie-nom.php" method="POST">
+    <form action="nouvelle-galerie-nom.php" method="POST">
 
       <div>
         <h1>Création d'une Gallerie</h1>
@@ -48,14 +48,9 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
       echo '</script>';
     } else {
       $_SESSION['nouveauNomGalerie'] = $nouveauNomGalerie;
-      header("location:nouveau-galerie-lien.php");
+      header("location:nouvelle-galerie-lien.php");
     }
   }
-
   ?>
-
-
-
 </body>
-
 </html>

@@ -12,6 +12,6 @@
         <i class="far fa-question-circle fa-spin"></i>
         <div class="err2">4</div>
         <div class="msg">Il se peut que la page que vous tentez d'acceder n'existe pas ou que vous n'avez pas les permissions requises pour y accéder.
-            <p>Vous pouvez clicker <a href="http://localhost/over-cloud/pages/listeGalerie.php">ici</a> pour retourner à votre liste des galleries</p>
+            <p>Vous pouvez clicker <a href="/liste-des-galeries.php">ici</a> pour retourner à votre liste des galeries</p>
         </div>
     </div>
