@@ -23,7 +23,7 @@ $db = ConnectDb::getInstance();
 
     <div id=listeGalerie-container>
         <?php
-        $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}');";
+        $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}' AND fk_id_type_utilisateur = 1);";
         $result = mysqli_query($db, $sql);
         while ($row =  mysqli_fetch_array($result)) {
             $idGalerie = $row['id_galerie'];
@@ -49,11 +49,38 @@ $db = ConnectDb::getInstance();
                 <img src="../image/plus.png" alt="nouvelle" width="120px" height="100px">
                 <h4><b>Nouvelle galerie</b></h4>
         </a>
-            </div>
+    </div>
     </div>
 
 
+    <div id=listeGaleriePartagee-titre>
+        <h1>Galeries Partagées Avec Moi</h1>
+    </div>
 
+    <?php
+    //need to modify the code to make it so that we can see the galleries that were shared with me.
+    ?>
+
+    <div id=listeGalerie-container>
+        <?php
+        $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}' AND fk_id_type_utilisateur = 2);";
+        $result = mysqli_query($db, $sql);
+        while ($row =  mysqli_fetch_array($result)) {
+            $idGalerie = $row['id_galerie'];
+            $nom = $row['nom'];
+
+            echo " 
+             <div class='listeGalerie-card'>   
+             <a href='albums?id=$idGalerie'>
+             <img src='../image/galerieIcon.png' alt='Galerie' width ='120' height='100'>
+             <h4><b>$nom</b></h4> 
+             </a>
+             </div>";
+        }
+
+        $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
+        ?>
+    </div>
 
     <form action="../php/deconnexion.php" method="get">
         <input id=deco type="submit" value="Déconnexion">

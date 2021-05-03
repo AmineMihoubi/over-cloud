@@ -46,6 +46,34 @@ $db = ConnectDb::getInstance();
         $res2 = mysqli_query($db, $sql2);
         $res3 = mysqli_query($db, $sql3);
 
+        //echo '<script type="text/javascript">alert("we finished inserting all the things for the author");</script>';
+        $typeChoisi = $_SESSION["TypeGalerie"];
+        if ($typeChoisi == '0') {
+          $listEmails = $_SESSION['listEmails'];
+          // echo '<script>console.log(' . json_encode($listEmails) . ');</script>';
+          foreach ($listEmails as $item) {
+            $email = $item;
+            //echo '<script>console.log(' . json_encode($email) . ');</script>';
+            $sqlInviteId = "SELECT id_utilisateur from utilisateur WHERE courriel='{$email}'";
+            $resIdInvite = mysqli_query($db, $sqlInviteId);
+            if (mysqli_num_rows($resIdInvite) == 1) {
+              // output data of each row
+              while ($row = mysqli_fetch_assoc($resIdInvite)) {
+                //echo '<script type="text/javascript">alert("We reached the row");</script>';
+                //echo '<script>console.log(' . json_encode($row) . ');</script>';
+                $idUserInvited = $row['id_utilisateur'];
+                //echo '<script>console.log("User Id is: ' . $idUserInvited . '");</script>';
+                if ($idUserInvited != $_SESSION['idUtilisateur']) {
+                  $sql4 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$idUserInvited}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),2);";
+                  mysqli_query($db, $sql4);
+                }
+              }
+            }
+          }
+          unset($item); // Détruit la référence sur le dernier élément
+          unset($i);
+        }
+
         if ($res && $res2 && $res3) {
           $done = 'true';
           $_SESSION['GallerieCreated'] = TRUE;
@@ -59,7 +87,6 @@ $db = ConnectDb::getInstance();
       } else {
         $done = 'false';
       }
-
       ?>
 
       <script>
@@ -78,7 +105,7 @@ $db = ConnectDb::getInstance();
     <br /><br /><br /><br />
 
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-      <a href="listeGalerie.php" class="button">Terminer</a>
+      <a href="liste-des-galeries.php" class="button">Terminer</a>
     </div>
 
   </div>

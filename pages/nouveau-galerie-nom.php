@@ -48,7 +48,12 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
       echo '</script>';
     } else {
       $_SESSION['nouveauNomGalerie'] = $nouveauNomGalerie;
-      header("location:nouveau-galerie-lien.php");
+      $typeChoisi = $_SESSION["TypeGalerie"];
+      if ($typeChoisi == '0') {
+        header("location:nouveau-galerie-ajout-utilisateurs.php");
+      } else {
+        header("location:nouveau-galerie-lien.php");
+      }
     }
   }
 
