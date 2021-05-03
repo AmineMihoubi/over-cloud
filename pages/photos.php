@@ -80,7 +80,7 @@ $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
         $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 
         $sql = "INSERT INTO photo(photo,date,fk_id_album) VALUES ('$image','2021-03-14', 1)";
-
+        
         // Execute query
         if (mysqli_query($conn, $sql)) {
             $page = $_SESSION['urlPrecedent'];
