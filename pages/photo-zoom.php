@@ -111,6 +111,21 @@ $idPhoto = $_GET['idPhoto'];
     // Execute query
     if (mysqli_query($db, $sql)) {
       $page = $_SESSION['urlPrecedent'];
+
+      //pour l'historique
+      $idalbum = $rep['fk_id_album'];
+      $sqlAlbum = "SELECT nom, fk_id_galerie FROM album WHERE id_album = $idalbum";
+      $resAlbum = mysqli_query($db, $sqlAlbum);
+      $repAlbum = mysqli_fetch_array($resAlbum);
+      $nomAlbum = $repAlbum['nom'];
+      $idGalerie = $repAlbum['fk_id_galerie'];
+      $sqlGalerie = "SELECT nom FROM galerie WHERE id_galerie = $idGalerie";
+      $resGalerie = mysqli_query($db, $sqlGalerie);
+      $repGalerie = mysqli_fetch_array($resGalerie);
+      $nomGalerie = $repGalerie['nom'];
+
+      $sqlHistorique = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à supprimé une photo dans $nomAlbum($nomGalerie)', '2021-03-14')";
+      mysqli_query($db, $sqlHistorique);
       echo "<br/>YAY.";
       echo "<script> document.getElementsByClassName('.bg-popup').style.display = 'none'; </script>";
       echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
