@@ -5,6 +5,11 @@ $db = ConnectDb::getInstance();
 $courriel = $_GET['courriel'];
 $idAlbum = $_GET['idAlbum'];
 $idPhoto = $_GET['idPhoto'];
+$idAdmin = $_SESSION['idAdmin'];
+date_default_timezone_set('America/New_york');
+$date = date("Y-m-d H:i:s");
+
+
 
 
 /**
@@ -12,7 +17,10 @@ $idPhoto = $_GET['idPhoto'];
  */
 if(isset($_POST['supprimer'])) {
 $sql = "DELETE FROM utilisateur where courriel = '".$courriel."'";
-mysqli_query($db,$sql);
+mysqli_query($db,$sqlChangement);
+$description = "Supprime un utilisateur";
+$sqlChangement = "INSERT INTO administrateur_changement (id_administrateur,description,date) VALUES ('".$idAdmin."','".$description."','".$date."')";
+mysqli_query($db,$sqlChangement);
 header('Refresh: 0; ../admin/listeUtilisateur.php');
 }
 
@@ -37,6 +45,9 @@ header("Refresh: 0; ../admin/admin-photoCommentaires.php?idPhoto=$idPhoto");
 else if(isset($_POST['supprimerPhoto'])) {
     $sql = "DELETE FROM photo where id_photo = '".$idPhoto."'";
     mysqli_query($db,$sql);
+    $description = "Supprime une photo";
+    $sqlChangement = "INSERT INTO administrateur_changement (id_administrateur,description,date) VALUES ('".$idAdmin."','".$description."','".$date."')";
+    mysqli_query($db,$sqlChangement); 
     header("Refresh: 0; ../admin/admin-photos.php?Album=$idAlbum");
 }
 
@@ -51,8 +62,9 @@ else if(isset($_POST['supprimerCommentaire'])) {
   
   $sql = "DELETE FROM commentaire WHERE id_commentaire = $idCommentaire";
   mysqli_query($db,$sql);
+  $description = "Supprime un commentaire";
+  $sqlChangement = "INSERT INTO administrateur_changement (id_administrateur,description,date) VALUES ('".$idAdmin."','".$description."','".$date."')";
+  mysqli_query($db,$sqlChangement);
   header("Refresh: 0.001; ../admin/admin-photoCommentaires.php?idPhoto=$idPhoto");
   echo "<script>alert('Le commentaire à bien été supprimé !');</script>";
 }
-
-?>

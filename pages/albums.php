@@ -9,20 +9,17 @@ if ($_GET['id'] != null) {
 
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8" />
   <!-- importer le fichier de style -->
   <link rel="stylesheet" href="../css/styles.css" media="screen" type="text/css" />
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
 </head>
 
 <body>
   <div>
     <!-- bare de navigation-->
     <div id=navigationBar></div>
-
     <script>
       $(function() {
         $("#navigationBar").load("navigationbar.php");
@@ -30,7 +27,6 @@ if ($_GET['id'] != null) {
     </script>
 
     <?php
-
     if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
       header('Location: ../index.php');
     }
@@ -80,20 +76,17 @@ if ($_GET['id'] != null) {
             $nom = $row['nom'];
 
             echo "
-
-      <div class = card>
+                <div class = card>
                 <a href='photoAlbum?id=$idAlbum'>
                 <br></br>
-
                 <b class= card_title>$nom</b>
-
                 </a>
-        </div>";
+                </div>";
           }
           ?>
           <div class="gallery">
             <div id=nouvelle-album>
-              <a href='creation-Album.php'>
+              <a href='creation-album.php'>
                 <br></br>
                 <b>Créer un nouvel album</b>
               </a>

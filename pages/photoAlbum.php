@@ -146,7 +146,7 @@ $res = mysqli_query($db, $sql_afficher_photos);
                     while ($row = mysqli_fetch_assoc($res)) {
                         $idPhoto = $row['id_photo'];
                         $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
-                        echo '<a href=photoZoom?idPhoto=' . $idPhoto . '>
+                        echo '<a href=photo-zoom?idPhoto=' . $idPhoto . '>
                         <img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery_img"/>
                         </a>';
                     }

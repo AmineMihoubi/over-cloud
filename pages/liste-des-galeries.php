@@ -1,12 +1,11 @@
-<!doctype html>
-<html>
-
 <?php
 session_start();
 require '../php/ConnectDb.php';
 $db = ConnectDb::getInstance();
 ?>
 
+<!doctype html>
+<html>
 <head>
     <meta charset="utf-8" />
     <!-- importer le fichier de style -->

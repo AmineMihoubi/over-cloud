@@ -25,7 +25,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
         </div>
 
 
-        <form method="POST" action="nouveau-galerie-type.php">
+        <form method="POST" action="nouvelle-galerie-type.php">
 
             <div>
                 <div class="card">
@@ -67,7 +67,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
             $_SESSION["TypeGalerie"] = 0;
         }
 
-        header("location:nouveau-galerie-nom.php");
+        header("location:nouvelle-galerie-nom.php");
     }
 
     ?>
