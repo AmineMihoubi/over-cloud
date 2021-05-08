@@ -124,8 +124,10 @@ $idPhoto = $_GET['idPhoto'];
       $resGalerie = mysqli_query($db, $sqlGalerie);
       $repGalerie = mysqli_fetch_array($resGalerie);
       $nomGalerie = $repGalerie['nom'];
+      date_default_timezone_set('America/New_york');
+      $currentDate = date("Y-m-d H:i:s");
 
-      $sqlHistorique = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à supprimé une photo dans $nomAlbum($nomGalerie)', '2021-03-14')";
+      $sqlHistorique = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à supprimé une photo dans $nomAlbum($nomGalerie)', $currentDate)";
       mysqli_query($db, $sqlHistorique);
       echo "<br/>YAY.";
       echo "<script> document.getElementsByClassName('.bg-popup').style.display = 'none'; </script>";

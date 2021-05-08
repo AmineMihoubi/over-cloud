@@ -6,14 +6,20 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
 }
 $db = ConnectDb::getInstance();
 $idAlbum = $_GET['id'];
-$galerieSQL = "SELECT fk_id_galerie FROM album where id_album = '$idAlbum'";
+$galerieSQL = "SELECT fk_id_galerie, nom FROM album where id_album = '$idAlbum'";
 $resultGalerie = mysqli_query($db, $galerieSQL);
 $row0 =  mysqli_fetch_array($resultGalerie);
 $id = $row0['fk_id_galerie'];
-$typeSql = "SELECT prive FROM galerie where id_galerie = '$id'";
+$nomAlbum = $row0['nom'];
+$typeSql = "SELECT prive, nom FROM galerie where id_galerie = '$id'";
 $resultType = mysqli_query($db, $typeSql);
 $row1 =  mysqli_fetch_array($resultType);
 $typeAlbum = $row1['prive'];
+$nomGalerie = $row1['nom'];
+
+date_default_timezone_set('America/New_york');
+$currentDate = date("Y-m-d H:i:s");
+
 //echo "<script>alert('Prive : $typeAlbum ');</script>";
 if ($typeAlbum == 1) {
     $ownerSQL = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$id'";
@@ -34,7 +40,7 @@ $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
     if (isset($_POST['upload'])) {
         $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
         $sql = "INSERT INTO photo(photo,date,fk_id_album) VALUES ('$image','2021-03-14', '$idAlbum')";
-
+        $sql2 = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à ajouté une photo dans $nomAlbum($nomGalerie)', '2021-03-14')";
         // Execute query
         if (mysqli_query($db, $sql)) {
           $page = $_SESSION['urlPrecedent'];
