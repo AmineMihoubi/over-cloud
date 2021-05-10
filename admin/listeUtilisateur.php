@@ -54,7 +54,8 @@ $db = ConnectDb::getInstance();
                         <td>$courriel</td>
                         <td><form action='../php/actionUtilisateur.php?courriel=$courriel' method='post'> 
                         <input type='submit' name='supprimer' value='Supprimer'/>
-                        </form>
+                        </form>'</td>
+                        </tr>
                         ";
                     }
                     ?>

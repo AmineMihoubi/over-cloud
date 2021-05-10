@@ -74,12 +74,6 @@ $db = ConnectDb::getInstance();
                         ";
                 }
                 ?>
-            <script>
-                $('li').on('click', function() {
-                    $('.bluebg').removeClass('bluebg');
-                    $(this).addClass('bluebg');
-                });
-            </script>
 
         </div>
     </div>

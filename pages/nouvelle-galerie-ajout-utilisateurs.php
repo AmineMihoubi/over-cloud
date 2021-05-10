@@ -17,7 +17,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
 <body>
 
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-        <form action="nouveau-galerie-ajout-utilisateurs.php" method="POST" id="profile" name="profile">
+        <form action="nouvelle-galerie-ajout-utilisateurs.php" method="POST" id="profile" name="profile">
             <p>
                 <input type="button" class="button" value="Add" onclick="addRowToTable();" />
                 <input type="button" class="button" value="Remove" onclick="removeRowFromTable();" />
@@ -71,7 +71,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
 
         if (!empty($listEmails)) {
             $_SESSION['listEmails'] = $listEmails;
-            header("location:nouveau-galerie-lien.php");
+            header("location:nouvelle-galerie-lien.php");
         }
     }
 

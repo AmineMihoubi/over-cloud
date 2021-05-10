@@ -15,7 +15,7 @@
                 <h1>Connexion</h1>
                 <input type="text" placeholder="Courriel" name="email" required>
                 <input type="password" placeholder="Mot de passe" name="password" required>
-                <input type="submit" id='submit' value='LOGIN'>
+                <input type="submit" id='submit' value='Connexion'>
                 <?php
                 if (isset($_GET['erreur'])) {
                     $err = $_GET['erreur'];
