@@ -13,7 +13,7 @@ $row0 =  mysqli_fetch_array($resultGalerie);
 $idGalerie = $row0['fk_id_galerie'];
 
 $nomAlbum = $row0['nom'];
-$typeSql = "SELECT prive, nom FROM galerie where id_galerie = '$id'";
+$typeSql = "SELECT prive, nom FROM galerie where id_galerie = '$idGalerie'";
 $resultType = mysqli_query($db, $typeSql);
 $row1 =  mysqli_fetch_array($resultType);
 $typeAlbum = $row1['prive'];
