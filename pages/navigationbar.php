@@ -27,7 +27,7 @@
           <nav class="main-menu">
             <ul>
               <?php
-              echo "<li><a href='liste-des-galeries.php'>  <i class='fa fa-bars fa-2x'></i> <span class='nav-text'> $nomGalerie </span></a></li>";
+              echo "<li><a href='liste-galeries.php'>  <i class='fa fa-bars fa-2x'></i> <span class='nav-text'> $nomGalerie </span></a></li>";
               ?>
               <?php echo "<li><a href='albums.php?id=$idGalerie'> <i class='fa fa-folder fa-2x'></i> <span class='nav-text'>Albums</span></a></li>";
               ?>

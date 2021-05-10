@@ -16,7 +16,7 @@
     }
     require '../php/ConnectDb.php';
     $db = ConnectDb::getInstance();
-    $idGalerie =$_SESSION['idGalerie'];
+    $idGalerie = $_SESSION['idGalerie'];
     ?>
     <div id=navigationBar></div>
     <script>
@@ -48,8 +48,8 @@
 
             </form>
             <form method="POST" action="">
-<input type="submit" class="buttonSupprimer" name="delete" value="Supprimer galerie">
-</form>
+                <input type="submit" class="buttonSupprimer" name="delete" value="Supprimer galerie">
+            </form>
 
         </div>
 
@@ -65,19 +65,33 @@
 
     <?php
 
-          if (isset($_POST['delete'])) {
-            $sql2 = "DELETE FROM utilisateur_galerie where fk_id_galerie like $idGalerie";
-            if(mysqli_query($db, $sql2)){
-              $sql  = "DELETE FROM galerie where id_galerie like $idGalerie";
-              if (mysqli_query($db, $sql)) {
-                $page = $_SESSION['urlPrecedent'];
-                  echo "<br/>YAY.";
-                  echo "<script> window.location.replace('listeGalerie.php'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
-              } else {
-                  echo "<br/>NOOO.";
-              }
-          }
-        }
+    if (isset($_POST['delete'])) {
+        $sql = "DELETE FROM utilisateur_galerie where fk_id_galerie like $idGalerie"; //supprime liaison galerie-utilisateur
+        if (mysqli_query($db, $sql)) {
+            $sql2  = "DELETE FROM galerie where id_galerie like $idGalerie"; //supprime galerie
+            if (mysqli_query($db, $sql2)) { //supprime liaison photo et album
+                $sql3 = "SELECT fk_id_photo FROM photo_album WHERE fk_id_photo IN(SELECT id_photo FROM photo WHERE fk_id_galerie like $idGalerie)";
 
-          ?>
+                if (mysqli_query($db, $sql3)) {
+                    $sql4 = "DELETE FROM photo WHERE fk_id_galerie like $idGalerie"; //supprime photos de la galerie
+
+                    if (mysqli_query($db, $sql4)) {
+
+                        $sql5 = "DELETE FROM album where fk_id_galerie like $idGalerie"; //supprime albums de la galerie
+
+                        if (mysqli_query($db, $sql5)) {
+                            $page = $_SESSION['urlPrecedent'];
+                            echo "<br/>YAY.";
+                            echo "<script> window.location.replace('liste-galeries.php'); </script>"; //remplace la page courante a la page voulu, dans ce cas, la page precedente
+
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        echo "<br/>NOOO.";
+    }
+
+    ?>
 </body>

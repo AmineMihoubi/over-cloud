@@ -93,7 +93,7 @@ $db = ConnectDb::getInstance();
             
              </div> </a>";
                 }
-
+                $_SESSION['idGalerie'] = $idGalerie;
                 $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
                 ?>
 

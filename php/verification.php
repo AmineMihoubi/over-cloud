@@ -28,7 +28,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
            $_SESSION['nomUtilisateur'] = $reponse['nom'];
            $_SESSION['prenomUtilisateur'] = $reponse['prenom'];
 
-           header('Location: ../pages/liste-des-galeries.php');
+           header('Location: ../pages/liste-galeries.php');
         }
         else
         {

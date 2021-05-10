@@ -22,7 +22,7 @@ CREATE TABLE `Utilisateur_Galerie` (
 
 CREATE TABLE `Photo` (
 	`id_photo` INT(20) NOT NULL AUTO_INCREMENT,
-	`fk_id_album` INT(20) NOT NULL,
+	`fk_id_galerie` INT(20) NOT NULL,
 	`photo` blob NOT NULL,
 	`date` DATE NOT NULL,
 	PRIMARY KEY (`id_photo`)
@@ -30,7 +30,6 @@ CREATE TABLE `Photo` (
 
 CREATE TABLE `Album` (
 	`id_album` INT(20) NOT NULL AUTO_INCREMENT,
-	`fk_id_photo` INT(20) NOT NULL DEFAULT '1',
 	`nom` varchar(50) NOT NULL,
 	`fk_id_galerie` INT(20) NOT NULL,
 	`date` DATE NOT NULL,
@@ -66,15 +65,20 @@ CREATE TABLE `Historique` (
 	PRIMARY KEY (`id_historique`)
 );
 
+CREATE TABLE `Photo_Album`(
+	`fk_id_photo` int(20) not null,
+	`fk_id_album` int(20) not null,
+	
+
+);
+
 ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
 
 ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk1` FOREIGN KEY (`fk_id_galerie`) REFERENCES `Galerie`(`id_galerie`);
 
 ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk2` FOREIGN KEY (`fk_id_type_utilisateur`) REFERENCES `Type_utilisateur`(`id_type_utilisateur`);
 
-ALTER TABLE `Photo` ADD CONSTRAINT `Photo_fk0` FOREIGN KEY (`fk_id_album`) REFERENCES `Album`(`id_album`);
-
-ALTER TABLE `Album` ADD CONSTRAINT `Album_fk0` FOREIGN KEY (`fk_id_photo`) REFERENCES `Photo`(`id_photo`);
+ALTER TABLE `Photo` ADD CONSTRAINT `Photo_fk0` FOREIGN KEY (`fk_id_galerie`) REFERENCES `Album`(`id_galerie`);
 
 ALTER TABLE `Album` ADD CONSTRAINT `Album_fk1` FOREIGN KEY (`fk_id_galerie`) REFERENCES `Galerie`(`id_galerie`);
 
@@ -83,3 +87,7 @@ ALTER TABLE `Commentaire` ADD CONSTRAINT `Commentaire_fk0` FOREIGN KEY (`fk_id_a
 ALTER TABLE `Commentaire` ADD CONSTRAINT `Commentaire_fk1` FOREIGN KEY (`fk_id_photo`) REFERENCES `Photo`(`id_photo`);
 
 ALTER TABLE `Historique` ADD CONSTRAINT `Historique_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
+
+ALTER TABLE `Photo_Album` ADD CONSTRAINT `Photo_Album_fk0` FOREIGN KEY (`fk_id_photo`) REFERENCES `Photo`(`id_photo`);
+
+ALTER TABLE `Photo_Album` ADD CONSTRAINT `Photo_Album_fk1` FOREIGN KEY (`fk_id_album`) REFERENCES `Album`(`id_album`);

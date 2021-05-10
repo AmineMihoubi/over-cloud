@@ -38,7 +38,7 @@ $db = ConnectDb::getInstance();
         $id = $_SESSION['idUtilisateur'];
         $sql = "INSERT INTO galerie (nom, prive) VALUES ('{$_SESSION['nouveauNomGalerie']}', '{$_SESSION['TypeGalerie']}');";
         $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
-        $sql3 = "INSERT INTO album (nom, fk_id_galerie) VALUES('Default',(SELECT id_galerie from galerie order by id_galerie desc limit 1));";
+        $sql3 = "INSERT INTO album (nom, fk_id_galerie,date) VALUES('Default',(SELECT id_galerie from galerie order by id_galerie desc limit 1),CURDATE());";
         $res = mysqli_query($db, $sql);
         if ($res === TRUE) {
           $_SESSION['last_Id'] = $db->insert_id;
@@ -82,7 +82,6 @@ $db = ConnectDb::getInstance();
           echo "one " . $res;
           echo "two " . $res2;
           echo "three " . $res3;
-          echo "HELLLOOOO" . $user;
         }
       } else {
         $done = 'false';

@@ -9,7 +9,7 @@ $db = ConnectDb::getInstance();
  $idGalerie = $_SESSION['idGalerie'];
 
 
- $sql = "INSERT INTO album (nom,fk_id_galerie) VALUES ('".$nomAlbum."', $idGalerie)";
+ $sql = "INSERT INTO album (nom,fk_id_galerie,date) VALUES ('".$nomAlbum."', $idGalerie,curdate())";
  mysqli_query($db,$sql);
  mysqli_close($db);
  header('Refresh: 0.001; ../pages/albums.php?id='.$idGalerie.'');
