@@ -50,9 +50,9 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
       $_SESSION['nouveauNomGalerie'] = $nouveauNomGalerie;
       $typeChoisi = $_SESSION["TypeGalerie"];
       if ($typeChoisi == '0') {
-        header("location:nouveau-galerie-ajout-utilisateurs.php");
+        header("location:nouvelle-galerie-ajout-utilisateurs.php");
       } else {
-        header("location:nouveau-galerie-lien.php");
+        header("location:nouvelle-galerie-lien.php");
       }
     }
   }

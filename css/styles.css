@@ -1,7 +1,7 @@
             @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
             @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap);
             body {
-                background-color: rgb(209, 209, 209);
+                background-color: whitesmoke;
                 font-family: 'Poppins', sans-serif;
             }
             /**
@@ -23,10 +23,6 @@ liste-des-galeries
                 box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
             }
             /* Add some padding inside the card container */
-            
-            .container {
-                padding: 2px 8px;
-            }
             
             #listeGalerie-container {
                 display: inline-flex;
@@ -249,55 +245,14 @@ Parametres utilisateurs
 * Liste des albums
 */
             
-            #listeAlbums {
-                margin-left: 20%;
-                padding-top: 5%;
-            }
-            
-            #listeAlbums b {
-                font-size: 18px;
-                font-weight: 900;
-                line-height: 1.5;
-                text-align: center;
-                cursor: pointer;
-            }
-            
-            .carteAlbum {
-                /* Add shadows to create the "card" effect */
-                width: 100px;
-                height: 100px;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-                transition: 0.3s;
-                background-color: #6df2b4;
-                display: inline-table;
-                margin-right: 50px;
-                text-align: center;
-            }
-            /* On mouse-over, add a deeper shadow */
-            
-            .carteAlbum {
-                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-            }
-            /* Add some padding inside the card container */
-            
-            .carteAlbum {
-                padding: 2px 16px;
-            }
-            
-            .carteAlbum b {
-                font-size: x-large;
-                text-align: center;
-            }
-            /*Affichage des photos*/
-            
             .gallery {
                 display: grid;
                 grid-template-columns: repeat(5, 1fr);
                 grid-gap: 15px;
             }
             
-            .gallery-container {
-                width: 60%;
+            .container {
+                width: 80%;
                 margin-left: 200px;
             }
             
@@ -437,11 +392,27 @@ Parametres utilisateurs
 Page création d'album
 **/
             
-            #creation-album {
-                height: 400px;
-                width: 700px;
-                padding-left: 800px;
-                padding-top: 200px;
+            .creation {
+                height: 50px;
+                width: 50px;
+                background-color: #6df2b4;
+                border-radius: 50%;
+                display: inline-block;
+                margin-top: 50px;
+                margin-left: 35px;
+                transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+            }
+            
+            .creation:hover {
+                transform: scale(1.05);
+                transition: all 0.3s ease-in-out;
+                border: none;
+            }
+            
+            .creation h1 {
+                margin-top: 0px;
+                margin-left: 13px;
+                color: #6a24a3;
             }
             /*Affichage de plusieurs selections (albums ou galeries) */
             
@@ -462,22 +433,31 @@ Page création d'album
             }
             
             .card {
-                text-align: center;
-                margin: 30px auto;
-                width: 100px;
+                border-radius: 10px;
+                background: #fff;
+                box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+                transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+                padding: 40px 30px 0px 30px;
+                cursor: pointer;
                 height: 100px;
-                border-radius: 20px;
-                box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25);
+                width: 150px;
             }
             
-            .card .card_title {
-                text-align: center;
-                border-radius: 0px 0px 40px 40px;
-                font-family: sans-serif;
-                font-weight: bold;
-                font-size: 20px;
-                margin-top: -80px;
-                height: 40px;
+            .card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+            }
+            
+            .card img {
+                float: left;
+                height: 50px;
+                width: 50px;
+            }
+            
+            .card h3 {
+                font-size: medium;
+                float: right;
+                color: black;
             }
             /* Section de commentaires pour la page imageZoom */
             
@@ -561,8 +541,8 @@ Page création d'album
             }
             
             .main-menu {
-                background: #212121;
-                border-right: 1px solid #e5e5e5;
+                background: #6a24a3;
+                border-right: 1px solid white;
                 position: absolute;
                 top: 0;
                 bottom: 0;
@@ -591,7 +571,7 @@ Page création d'album
                 display: table;
                 border-collapse: collapse;
                 border-spacing: 0;
-                color: #999;
+                color: white;
                 font-family: 'Poppins', sans-serif;
                 font-size: 14px;
                 text-decoration: none;
@@ -649,15 +629,10 @@ Page création d'album
             
             .main-menu li:hover>a,
             nav.main-menu li.active>a,
-            .dropdown-menu>li>a:hover,
-            .dropdown-menu>li>a:focus,
-            .dropdown-menu>.active>a,
-            .dropdown-menu>.active>a:hover,
-            .dropdown-menu>.active>a:focus,
             .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
             .dashboard-page nav.dashboard-menu ul li.active a {
-                color: #fff;
-                background-color: #5fa2db;
+                color: #6a24a3;
+                background-color: white;
             }
             /*testestetstet*/
             
@@ -696,7 +671,7 @@ Page création d'album
             
             .close:hover,
             .close:focus {
-                color: #999;
+                color: white;
                 text-decoration: none;
                 cursor: pointer;
             }
@@ -744,4 +719,68 @@ Page création d'album
             .photocheckbox:hover,
             .photocheckbox:checked {
                 opacity: 1;
+            }
+            
+            .display {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-gap: 15px;
+            }
+            /*smol nav*/
+            
+            .mini-menu {
+                float: right;
+            }
+            
+            .btn-profile {
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+                background: url("../image/utilisateur-de-profil.png") no-repeat;
+                background-size: 50px 50px;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+            }
+            /* Dropdown button on hover & focus */
+            
+            .btn-profile:hover,
+            .btn-profile:focus {
+                background-color: white;
+            }
+            /* Dropdown Content (Hidden by Default) */
+            
+            .minimenu-pages {
+                display: none;
+                position: absolute;
+                background-color: #f1f1f1;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+                text-align: center;
+            }
+            /* Links inside the dropdown */
+            
+            .minimenu-pages a,
+            .minimenu-pages input[type=submit] {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                border: none;
+                cursor: pointer;
+                font-family: 'Poppins', sans-serif;
+            }
+            /* Change color of dropdown links on hover */
+            
+            .minimenu-pages a:hover {
+                background-color: lightgray
+            }
+            /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+            
+            .show {
+                display: block;
             }

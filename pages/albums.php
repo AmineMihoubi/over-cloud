@@ -35,9 +35,8 @@ if ($_GET['id'] != null) {
       $_SESSION['idGalerie'] = $_GET['id'];
     }
     ?>
-    <div>
 
-      <div class="gallery-container">
+        <div class="container">
         <?php
         $id = $_SESSION['idGalerie'];
         $db = ConnectDb::getInstance();
@@ -46,28 +45,24 @@ if ($_GET['id'] != null) {
         $resultType = mysqli_query($db, $typeSql);
         $row1 =  mysqli_fetch_array($resultType);
         $typeAlbum = $row1['prive'];
-        //echo "<script>alert('Prive : $typeAlbum ');</script>";
+
         if ($typeAlbum == 1) {
           $ownerSQL = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$id'";
           $resultOwner = mysqli_query($db, $ownerSQL);
           $row2 =  mysqli_fetch_array($resultOwner);
           $ownerID = $row2['fk_id_utilisateur'];
-          //echo "<script>alert('Owner id: $ownerID ');</script>";
-          //$loginID = $_SESSION['idUtilisateur'];
-          //echo "<script>alert('Logged in ID: $loginID');</script>";
           if ($_SESSION['idUtilisateur'] != $ownerID) {
             header('Location: 404.php');
           }
         }
-        //huh????????
+
         $sql = "SELECT id_album, nom FROM album where fk_id_galerie = '$id'";
         $result = mysqli_query($db, $sql);
         ?>
 
-        <div class="gallery">
+        <div class="display">
           <?php
           $id = $_SESSION['idGalerie'];
-          $db = ConnectDb::getInstance();
           $sql = "SELECT id_album, nom FROM album where fk_id_galerie = '$id'";
           $result = mysqli_query($db, $sql);
 
@@ -76,24 +71,20 @@ if ($_GET['id'] != null) {
             $nom = $row['nom'];
 
             echo "
+            <a href='photoAlbum?id=$idAlbum'>
                 <div class = card>
-                <a href='photoAlbum?id=$idAlbum'>
-                <br></br>
-                <b class= card_title>$nom</b>
-                </a>
-                </div>";
+                <img src= ../image/album.png> 
+                <h3>$nom</h3>
+               
+                </div> </a>";
           }
           ?>
-          <div class="gallery">
-            <div id=nouvelle-album>
-              <a href='creation-album.php'>
-                <br></br>
-                <b>Créer un nouvel album</b>
-              </a>
-            </div>
-          </div>
+          <a href='creation-album.php'>
+            <div class=creation>
+              <h1>+</h1>
+            </div></a>
+          
         </div>
-      </div>
     </div>
   </div>
 
