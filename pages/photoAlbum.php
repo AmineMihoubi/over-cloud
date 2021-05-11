@@ -66,17 +66,15 @@ $res = mysqli_query($db, $sql_afficher_photos);
         <div class="actionsbar-container">
             <ul>
                 <li><a id="btn-ajouter" class="button" onclick="document.getElementById('ajouter-photos').style.display='block'">Ajouter +</a></li>
-                <li> <a id="btn-supprimer" class="button"> Supprimer album</a> </li>
+                <li> <a id="btn-supprimer" class="button" onclick="document.getElementById('supprimer-album').style.display='block'"> Supprimer album</a> </li>
             </ul>
         </div>
     </div>
 
+<!-- affichage des photos -->
     <div class="gallery-container">
         <div class="gallery">
-
             <?php
-
-            //was able to show the images certain way, gotta see if i can show a certain amount per line
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
                     $idPhoto = $row['id_photo'];
@@ -93,39 +91,35 @@ $res = mysqli_query($db, $sql_afficher_photos);
         </div>
     </div>
 
-
+<!--petit fenetre pour ajouter des photos-->
     <div id="ajouter-photos" class="popup">
         <span onclick="document.getElementById('ajouter-photos').style.display='none'" class="close" title="Close Modal">&times;</span>
         <form class="popup-content" method="POST" action="" enctype="multipart/form-data">
             <div class="popup-container">
                 <h1>AJOUTER PHOTOS</h1>
                 <div class="popup-buttons">
-                    <input class="popup-input" type="file" name="image">
-                    <input class="popup-input" type="submit" name="upload" value="Upload"></li>
+                    <input type="file" name="image">
+                    <input type="submit" name="upload" value="Upload">
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+<!--petit fenetre pour l'album-->
+<div id="supprimer-album" class="popup">
+        <span onclick="document.getElementById('supprimer-album').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="popup-content" method="POST" action="" enctype="multipart/form-data">
+            <div class="popup-container">
+                <h1>SUPPRIMER ALBUM?</h1>
+                <div class="popup-buttons">
+                <input type="submit" name="confirm" value="Confirmer">
                 </div>
             </div>
         </form>
 
     </div>
 
-    <script>
-        var modal = document.getElementById('ajouter-photos');
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
-
-    <!-- <div class="supprimer-photos">
-
-        <form method="POST" action="" enctype="multipart/form-data">
-            <br /><br /><br /><br /><br /><br />
-            <input class="popup-input" type="submit" name="confirm" value="Confirmer"></li>
-        </form>
-
-    </div> -->
 
 
     <?php
@@ -152,16 +146,17 @@ $res = mysqli_query($db, $sql_afficher_photos);
     }
 
     if (isset($_POST['confirm'])) {
-        $sql2 = "DELETE FROM photo where id_album like $idAlbum";
-        if (mysqli_query($db, $sql2)) {
-            $sql = "DELETE FROM album where id_album like $idAlbum";
+        $sql = "DELETE FROM photo_album where fk_id_album like $idAlbum";
+        if (mysqli_query($db, $sql)) {
+            $sql2 = "DELETE FROM album where id_album like $idAlbum";
             // Execute query
-            if (mysqli_query($db, $sql)) {
+            if (mysqli_query($db, $sql2)) {
                 $page = $_SESSION['urlPrecedent'];
                 echo "<br/>YAY.";
-                echo "<script> document.getElementsByClassName('.bg-popup2').style.display = 'none'; </script>";
-                echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
-            } else {
+                
+            header("Refresh: 0.001; albums.php?id=$idGalerie");
+
+                        } else {
                 echo "<br/>NOOO.";
             }
         }
@@ -169,7 +164,7 @@ $res = mysqli_query($db, $sql_afficher_photos);
     ?>
 
 
-    
+    <script src="../js/popupscript.js"></script>
     
 
 

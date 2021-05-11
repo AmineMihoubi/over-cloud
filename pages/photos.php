@@ -38,30 +38,16 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
 
         <ul>
         <li><a id="btn-ajouter" class="button" onclick="document.getElementById('ajouter-photos').style.display='block'">Ajouter +</a></li>
-            <li><a id="btn-supprimer" style="display:none" class="button">Supprimer +</a></li>
+            <!--<li><a id="btn-supprimer" style="display:none" class="button">Supprimer +</a></li>-->
         </ul>
 
     </div>
-
-    <!-- <script>
-        function supprimerPhotos() {
-            var checkBox = document.getElementById("check1");
-            var text = document.getElementById("btn-supprimer");
-            if (checkBox.checked == true) {
-                text.style.display = "block";
-            } else {
-                text.style.display = "none";
-            }
-        }
-    </script> -->
-
 
 
     <div class="gallery-container">
         <div class="gallery">
 
             <?php
-
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
                     echo '<div>';
@@ -98,16 +84,6 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
         </form>
 
     </div>
-
-    <script>
-        var modal = document.getElementById('ajouter-photos');
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
 
 
 
