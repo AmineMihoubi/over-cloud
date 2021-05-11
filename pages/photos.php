@@ -37,13 +37,13 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
     <div class="actionsbar-container">
 
         <ul>
-            <li><a id="btn-ajouter" class="button">Ajouter +</a></li>
+        <li><a id="btn-ajouter" class="button" onclick="document.getElementById('ajouter-photos').style.display='block'">Ajouter +</a></li>
             <li><a id="btn-supprimer" style="display:none" class="button">Supprimer +</a></li>
         </ul>
 
     </div>
 
-    <script>
+    <!-- <script>
         function supprimerPhotos() {
             var checkBox = document.getElementById("check1");
             var text = document.getElementById("btn-supprimer");
@@ -53,20 +53,8 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                 text.style.display = "none";
             }
         }
-    </script>
+    </script> -->
 
-    <div class="bg-popup">
-        <div class="popup-content">
-            <div class="btn-fermer">+</div>
-            <form method="POST" action="photos.php" enctype="multipart/form-data">
-                <br /><br /><br /><br /><br /><br />
-                <input class="popup-input" type="file" name="image[]" multiple>
-                <input class="popup-input" type="submit" name="upload" value="Upload"></li>
-                </ul>
-            </form>
-
-        </div>
-    </div>
 
 
     <div class="gallery-container">
@@ -95,6 +83,31 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
             ?>
         </div>
     </div>
+
+
+    <div id="ajouter-photos" class="popup">
+        <span onclick="document.getElementById('ajouter-photos').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="popup-content" method="POST" action="" enctype="multipart/form-data">
+            <div class="popup-container">
+                <h1>AJOUTER PHOTOS</h1>
+                <div class="popup-buttons">
+                    <input class="popup-input" type="file" name="image">
+                    <input class="popup-input" type="submit" name="upload" value="Upload"></li>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        var modal = document.getElementById('ajouter-photos');
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
 
 
 
