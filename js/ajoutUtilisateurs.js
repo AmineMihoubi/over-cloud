@@ -29,7 +29,7 @@ function removeRowFromTable() {
   if (lastRow > 2) tbl.deleteRow(lastRow - 1);
 }
 
-function validateRow(frm) {
+function validateRow() {
   var chkb = document.getElementById("chkValidate");
   if (chkb.checked) {
     var tbl = document.getElementById("tblSample");
@@ -38,35 +38,14 @@ function validateRow(frm) {
     for (i = 1; i <= lastRow; i++) {
       var aRow = document.getElementById("txtRow" + i);
       if (aRow.value.length <= 0) {
-        alert("Row " + i + " is empty");
-        return;
+        if (i == 1) {
+          alert("La ligne #1 doit contenir un courriel pour continuer!");
+        } else {
+          alert("La ligne #" + i + " doit contenir un courriel ou, être supprimé avant de continuer!");
+        }
+        return false;
       }
     }
   }
-  //formDataToObject(frm);
-}
-
-function printToPage() {
-  var pos;
-  var searchStr = window.location.search;
-  var searchArray = searchStr.substring(1, searchStr.length).split("&");
-  var htmlOutput = "";
-  for (var i = 0; i < searchArray.length; i++) {
-    htmlOutput += searchArray[i] + "<br />";
-  }
-  return htmlOutput;
-}
-
-function formDataToObject(elForm) {
-  if (!elForm instanceof Element) return;
-  var fields = elForm.querySelectorAll("input, select, textarea"),
-    o = {};
-
-  for (var i = 0, imax = fields.length; i < imax; ++i) {
-    var field = fields[i],
-      sKey = field.name || field.id;
-    o[sKey] = field.value;
-  }
-  alert("Form data:\n\n" + JSON.stringify(o, null, 2));
-  return o;
+  return true;
 }
