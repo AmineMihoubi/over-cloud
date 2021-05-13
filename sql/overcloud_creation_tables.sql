@@ -11,7 +11,6 @@ CREATE TABLE `Galerie` (
 	`id_galerie` INT(20) NOT NULL AUTO_INCREMENT,
 	`nom` varchar(50) NOT NULL,
 	`type` INT NOT NULL,
-	`status` INT NOT NULL,
 	PRIMARY KEY (`id_galerie`)
 );
 

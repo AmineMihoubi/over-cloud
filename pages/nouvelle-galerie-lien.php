@@ -36,15 +36,13 @@ $db = ConnectDb::getInstance();
       <?php
       if ($_SESSION['GallerieCreated'] === FALSE) {
         $id = $_SESSION['idUtilisateur'];
-        $sql = "INSERT INTO galerie (nom, type,status) VALUES ('{$_SESSION['nouveauNomGalerie']}', '{$_SESSION['TypeGalerie']}','{$_SESSION['StatusGalerie']}' );";
-        $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
-        $sql3 = "INSERT INTO album (nom, fk_id_galerie,date) VALUES('Default',(SELECT id_galerie from galerie order by id_galerie desc limit 1),CURDATE());";
+        $sql = "INSERT INTO galerie (nom, status) VALUES ('{$_SESSION['nouveauNomGalerie']}','{$_SESSION['StatusGalerie']}' );";
+        $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', 'LAST_INSERT_ID()',1);";
         $res = mysqli_query($db, $sql);
         if ($res === TRUE) {
           $_SESSION['last_Id'] = $db->insert_id;
         }
         $res2 = mysqli_query($db, $sql2);
-        $res3 = mysqli_query($db, $sql3);
 
         //echo '<script type="text/javascript">alert("we finished inserting all the things for the author");</script>';
         $typeChoisi = $_SESSION["TypeGalerie"];
@@ -74,14 +72,13 @@ $db = ConnectDb::getInstance();
           unset($i);
         }
 
-        if ($res && $res2 && $res3) {
+        if ($res && $res2) {
           $done = 'true';
           $_SESSION['GallerieCreated'] = TRUE;
         } else {
           echo "NOPE";
           echo "one " . $res;
           echo "two " . $res2;
-          echo "three " . $res3;
         }
       } else {
         $done = 'false';
