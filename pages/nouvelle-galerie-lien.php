@@ -36,8 +36,8 @@ $db = ConnectDb::getInstance();
       <?php
       if ($_SESSION['GallerieCreated'] === FALSE) {
         $id = $_SESSION['idUtilisateur'];
-        $sql = "INSERT INTO galerie (nom, status) VALUES ('{$_SESSION['nouveauNomGalerie']}','{$_SESSION['StatusGalerie']}' );";
-        $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', 'LAST_INSERT_ID()',1);";
+        $sql = "INSERT INTO galerie (nom,type,status) VALUES ('{$_SESSION['nouveauNomGalerie']}','{$_SESSION['TypeGalerie']}', '{$_SESSION['StatusGalerie']}');";
+        $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
         $res = mysqli_query($db, $sql);
         if ($res === TRUE) {
           $_SESSION['last_Id'] = $db->insert_id;
@@ -79,6 +79,7 @@ $db = ConnectDb::getInstance();
           echo "NOPE";
           echo "one " . $res;
           echo "two " . $res2;
+          $done = 'false';
         }
       } else {
         $done = 'false';
@@ -101,7 +102,7 @@ $db = ConnectDb::getInstance();
     <br /><br /><br /><br />
 
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-      <a href="liste-des-galeries.php" class="button">Terminer</a>
+      <a href="liste-galeries.php" class="button">Terminer</a>
     </div>
 
   </div>

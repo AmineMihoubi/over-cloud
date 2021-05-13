@@ -44,8 +44,15 @@
                 <label for="prive">Galerie privée</label><br>
                 <input type="submit" class="buttonConfirmer" name="submit" value="Confirmer!">
                 <br>
-
-
+                <script>
+                    var status = <?php echo $_SESSION['statusGalerie'] ?>;
+                    console.log("status : " + status);
+                    if (status == 1) {
+                        document.getElementById("prive").checked = true;
+                    } else {
+                        document.getElementById("publique").checked = true;
+                    }
+                </script>
             </form>
             <form method="POST" action="">
                 <input type="submit" class="buttonSupprimer" name="delete" value="Supprimer galerie">

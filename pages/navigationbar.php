@@ -11,15 +11,21 @@
           } else {
             $idGalerie = 1; //give a random value so that we don't ruin the whole code 
           }
-          
-          $sql = "SELECT id_galerie,nom,prive FROM galerie where id_galerie = '$idGalerie'";
+
+          echo '<script>console.log("id Galerie is: ' . $idGalerie . '");</script>';
+          $sql = "SELECT * FROM galerie where id_galerie = '$idGalerie'";
           $query = mysqli_query($db, $sql);
           $result = mysqli_fetch_assoc($query);
           $nomGalerie = $result['nom'];
-          $typeGalerie = $result['prive'];
+          echo '<script>console.log("Nom Galerie is: ' . $nomGalerie . '");</script>';
+          $typeGalerie = $result['type'];
+          echo '<script>console.log("Type Galerie is: ' . $typeGalerie . '");</script>';
+          $statusGalerie = $result['status'];
+          echo '<script>console.log("Status Galerie is: ' . $statusGalerie . '");</script>';
           $_SESSION['nomGalerie'] = $nomGalerie;
           $_SESSION['idGalerie'] = $idGalerie;
           $_SESSION['typeGalerie'] = $typeGalerie;
+          $_SESSION['statusGalerie'] = $statusGalerie;
           ?>
 
           <!-- Bare de navigation !-->
@@ -47,15 +53,15 @@
               </li>
               <!--<li><a href="">Participants</a></li>-->
               <li id="paraUtilisateur">
-              
-               <a href="parametres-de-lutilisateur.php">
-               <i class="fa fa-user fa-2x"></i>
-               <span class="nav-text">
 
-                  <?php
-                  $_SESSION['blaseUtilisateur'] = $_SESSION['prenomUtilisateur'] . " " . $_SESSION['nomUtilisateur'];
-                  echo  $_SESSION['blaseUtilisateur'];
-                  ?></span></a>
+                <a href="parametres-de-lutilisateur.php">
+                  <i class="fa fa-user fa-2x"></i>
+                  <span class="nav-text">
+
+                    <?php
+                    $_SESSION['blaseUtilisateur'] = $_SESSION['prenomUtilisateur'] . " " . $_SESSION['nomUtilisateur'];
+                    echo  $_SESSION['blaseUtilisateur'];
+                    ?></span></a>
               </li>
 
             </ul>

@@ -11,6 +11,7 @@ CREATE TABLE `Galerie` (
 	`id_galerie` INT(20) NOT NULL AUTO_INCREMENT,
 	`nom` varchar(50) NOT NULL,
 	`type` INT NOT NULL,
+	`status` INT NOT NULL,
 	PRIMARY KEY (`id_galerie`)
 );
 
@@ -67,9 +68,7 @@ CREATE TABLE `Historique` (
 
 CREATE TABLE `Photo_Album`(
 	`fk_id_photo` int(20) not null,
-	`fk_id_album` int(20) not null,
-	
-
+	`fk_id_album` int(20) not null
 );
 
 ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);

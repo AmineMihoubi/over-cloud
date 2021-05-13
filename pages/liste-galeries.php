@@ -21,11 +21,11 @@ $db = ConnectDb::getInstance();
         <!--drop down menu-->
         <div class="mini-menu">
             <button onclick="afficherPages()" class="btn-profile">
-           
-        
-        </button>
+
+
+            </button>
             <div id="miniMenu" class="minimenu-pages">
-                <a  style="background-color: red;">
+                <a style="background-color: red;">
                     <form action="../php/deconnexion.php" method="get">
                         <input style="background: none;" type="submit" value="Déconnexion">
                     </form>
@@ -81,6 +81,7 @@ $db = ConnectDb::getInstance();
                 <?php
                 $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}' AND fk_id_type_utilisateur = 1);";
                 $result = mysqli_query($db, $sql);
+                $idGalerie = false;
                 while ($row =  mysqli_fetch_array($result)) {
                     $idGalerie = $row['id_galerie'];
                     $nom = $row['nom'];
@@ -93,8 +94,13 @@ $db = ConnectDb::getInstance();
             
              </div> </a>";
                 }
-                $_SESSION['idGalerie'] = $idGalerie;
-                $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
+                if ($idGalerie) {
+                    $_SESSION['idGalerie'] = $idGalerie;
+                    $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
+                } else {
+                    echo "Créer une Galerie";
+                }
+
                 ?>
 
                 <a href="nouvelle-galerie-type.php">
