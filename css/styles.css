@@ -257,41 +257,10 @@ Parametres utilisateurs
             }
             
             .gallery img {
-                width: 100%;
-                height: 100%;
                 object-fit: cover;
                 position: relative;
-            }
-            
-            #img_div {
-                width: 80%;
-                padding: 5px;
-                margin: 15px auto;
-                border: 1px solid #cbcbcb;
-            }
-            
-            #img_div:after {
-                content: "";
-                display: block;
-                clear: both;
-            }
-            
-            #image {
-                float: right;
-                margin: 5px;
                 width: 300px;
-                height: 140px;
-            }
-            
-            #imageZoom {
-                width: 35%;
-            }
-            
-            #imageZoom img {
-                width: 100%;
-                height: 700px;
-                object-fit: cover;
-                object-position: 100% 100%;
+                height: 350px;
             }
             /*bar d'action*/
             
@@ -662,11 +631,10 @@ Page création d'album
             
             .modal-content {
                 position: relative;
-                background-color: #fefefe;
                 margin: auto;
                 padding: 0;
-                width: 90%;
-                max-width: 1200px;
+                width: 80%;
+                max-width: 1000px;
             }
             /* The Close Button */
             
@@ -689,6 +657,12 @@ Page création d'album
             
             .mySlides {
                 display: none;
+                text-align: center;
+            }
+            
+            .mySlides img {
+                width: 900px;
+                height: 700px;
             }
             /* Next & previous buttons */
             

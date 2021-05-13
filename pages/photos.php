@@ -44,23 +44,22 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
     </div>
 
 
-    <div class="gallery-container">
+    <div class="container">
         <div class="gallery">
-
             <?php
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
                     echo '<div>';
                     echo '<img id = "image" onclick="openModal();currentSlide(' . $i . ')"  src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery img"/>';
-                    echo '<input type="checkbox" class="photocheckbox" onclick="supprimerPhotos()" id="check' . $i . '" />';
+                    //echo '<input type="checkbox" class="photocheckbox" onclick="supprimerPhotos()" id="check' . $i . '" />';
                     echo '</div>';
-                    if ($i == mysqli_num_rows($res)) {
+                    // if ($i == mysqli_num_rows($res)) {
 
-                        $i = 1;
-                    } else {
+                    //     $i = 1;
+                    // } else {
 
-                        $i++;
-                    }
+                    //     $i++;
+                    // }
                 }
             } else {
                 echo "0 results";

@@ -72,7 +72,7 @@ $res = mysqli_query($db, $sql_afficher_photos);
     </div>
 
 <!-- affichage des photos -->
-    <div class="gallery-container">
+    <div class="container">
         <div class="gallery">
             <?php
             if (mysqli_num_rows($res) > 0) {
