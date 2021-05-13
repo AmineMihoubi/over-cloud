@@ -36,7 +36,7 @@ $db = ConnectDb::getInstance();
       <?php
       if ($_SESSION['GallerieCreated'] === FALSE) {
         $id = $_SESSION['idUtilisateur'];
-        $sql = "INSERT INTO galerie (nom, prive) VALUES ('{$_SESSION['nouveauNomGalerie']}', '{$_SESSION['TypeGalerie']}');";
+        $sql = "INSERT INTO galerie (nom, type,status) VALUES ('{$_SESSION['nouveauNomGalerie']}', '{$_SESSION['TypeGalerie']}','{$_SESSION['StatusGalerie']}' );";
         $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
         $sql3 = "INSERT INTO album (nom, fk_id_galerie,date) VALUES('Default',(SELECT id_galerie from galerie order by id_galerie desc limit 1),CURDATE());";
         $res = mysqli_query($db, $sql);

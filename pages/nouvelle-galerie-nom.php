@@ -52,7 +52,8 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
       if ($typeChoisi == '0') {
         header("location:nouvelle-galerie-ajout-utilisateurs.php");
       } else {
-        header("location:nouvelle-galerie-lien.php");
+        header("location:nouvelle-galerie-status.php");
+        //header("location:nouvelle-galerie-lien.php");
       }
     }
   }

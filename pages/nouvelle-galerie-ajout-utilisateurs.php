@@ -71,7 +71,8 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
 
         if (!empty($listEmails)) {
             $_SESSION['listEmails'] = $listEmails;
-            header("location:nouvelle-galerie-lien.php");
+            header("location:nouvelle-galerie-status.php");
+            //header("location:nouvelle-galerie-lien.php");
         }
     }
 
