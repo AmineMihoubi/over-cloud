@@ -40,6 +40,7 @@ if ($_GET['id'] != null) {
     <div class="container">
       <?php
       $id = $_SESSION['idGalerie'];
+      echo '<script type="text/javascript">alert("Id galery is: ' . $id . '");</script>';
       $db = ConnectDb::getInstance();
 
       $typeSql = "SELECT * FROM galerie where id_galerie = '$id'";
@@ -71,10 +72,6 @@ if ($_GET['id'] != null) {
           }
         }
       }
-
-
-      $sql = "SELECT id_album, nom FROM album where fk_id_galerie = '$id'";
-      $result = mysqli_query($db, $sql);
       ?>
 
       <div class="display">
@@ -82,7 +79,7 @@ if ($_GET['id'] != null) {
         $id = $_SESSION['idGalerie'];
         $sql = "SELECT id_album, nom FROM album where fk_id_galerie = '$id'";
         $result = mysqli_query($db, $sql);
-
+        $idAlbum = false;
         while ($row =  mysqli_fetch_array($result)) {
           $idAlbum = $row['id_album'];
           $nom = $row['nom'];
@@ -94,6 +91,12 @@ if ($_GET['id'] != null) {
                 <h3>$nom</h3>
                
                 </div> </a>";
+        }
+        if ($idAlbum) {
+          $_SESSION['idAlbum'] = $idAlbum;
+          $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
+        } else {
+          echo "Créer un Album";
         }
         ?>
         <a href='creation-album.php'>
