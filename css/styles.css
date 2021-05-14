@@ -306,6 +306,7 @@ Parametres utilisateurs
                 .container {
                     width: 80%;
                     margin-left: 200px;
+                    margin-top: 50px;
                 }
                 
                 .gallery img {
@@ -317,37 +318,16 @@ Parametres utilisateurs
                 /*bar d'action*/
                 
                 .actionsbar-container {
-                    width: 80%;
+                    padding: 10px;
+                    width: auto;
                     overflow: hidden;
-                    display: inline-block;
+                    float: right;
+                    margin-right: 20px;
                 }
                 
-                .actionsbar ul {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    overflow: hidden;
-                    background-color: white;
-                    width: 130px;
+                .actionsbar-container li {
+                    display: inline;
                     float: left;
-                }
-                
-                .actionsbar li {
-                    float: left;
-                    color: #f2f2f2;
-                    text-align: center;
-                    padding: 14px 16px;
-                    text-decoration: none;
-                    font-size: 17px;
-                }
-                
-                .actionsbar a {
-                    display: inline-block;
-                    color: #f2f2f2;
-                    text-align: center;
-                    padding: 14px 16px;
-                    transition: 0.3s;
-                    font-size: 17px;
                 }
                 /*popup*/
                 
@@ -367,12 +347,14 @@ Parametres utilisateurs
                     background-color: #fefefe;
                     margin: 5% auto 15% auto;
                     border: 1px solid #888;
-                    width: 80%;
+                    width: 40%;
+                    height: 30%;
                 }
                 
                 .popup-container {
                     padding: 16px;
                     text-align: center;
+                    margin-top: 40px;
                 }
                 
                 .popup-buttons::after {
@@ -424,6 +406,7 @@ Page création d'album
 **/
                 
                 .creation {
+                    cursor: pointer;
                     height: 50px;
                     width: 50px;
                     background-color: #3FD198;
@@ -444,6 +427,29 @@ Page création d'album
                     margin-top: 0px;
                     margin-left: 13px;
                     color: #7F40BF;
+                }
+                
+                .supprimer {
+                    cursor: pointer;
+                    height: 50px;
+                    width: 50px;
+                    background-color: rgb(209, 73, 73);
+                    border-radius: 50%;
+                    margin-left: 35px;
+                    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+                }
+                
+                .supprimer:hover {
+                    transform: scale(1.05);
+                    transition: all 0.3s ease-in-out;
+                    border: none;
+                }
+                
+                .supprimer img {
+                    margin-top: 6px;
+                    margin-left: 8px;
+                    width: 35px;
+                    height: 35px;
                 }
                 /*Affichage de plusieurs selections (albums ou galeries) */
                 
@@ -521,10 +527,10 @@ Page création d'album
                 .main-menu {
                     background: #7F40BF;
                     border-right: 1px solid white;
-                    position: absolute;
+                    position: fixed;
                     top: 0;
                     bottom: 0;
-                    height: 100%;
+                    height: auto;
                     left: 0;
                     width: 60px;
                     overflow: hidden;

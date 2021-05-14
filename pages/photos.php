@@ -36,30 +36,24 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
 
     <div class="actionsbar-container">
 
-        <ul>
-        <li><a id="btn-ajouter" class="button" onclick="document.getElementById('ajouter-photos').style.display='block'">Ajouter +</a></li>
-            <!--<li><a id="btn-supprimer" style="display:none" class="button">Supprimer +</a></li>-->
-        </ul>
+        <a onclick="document.getElementById('ajouter-photos').style.display='block'">
+            <div class=creation style="margin-top:0;">
+                <h1>+</h1>
+            </div>
+        </a>
+
 
     </div>
 
 
-    <div class="container">
+    <div class="container" style="margin-top: 50px;">
         <div class="gallery">
             <?php
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
                     echo '<div>';
                     echo '<img id = "image" onclick="openModal();currentSlide(' . $i . ')"  src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery img"/>';
-                    //echo '<input type="checkbox" class="photocheckbox" onclick="supprimerPhotos()" id="check' . $i . '" />';
                     echo '</div>';
-                    // if ($i == mysqli_num_rows($res)) {
-
-                    //     $i = 1;
-                    // } else {
-
-                    //     $i++;
-                    // }
                 }
             } else {
                 echo "0 results";
@@ -163,17 +157,16 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
             $sql = "INSERT INTO photo(photo,date,fk_id_galerie) VALUES ('$image',curdate(), '{$_SESSION['idGalerie']}')";
 
 
-            
+
             if (mysqli_query($db, $sql)) {
 
                 echo "<br/>YAYAY.";
-
             } else {
                 echo "<br/>Images invalides.";
             }
         }
         $page = $_SESSION['urlPrecedent'];
-        //echo "<script> window.location.replace('$page'); </script>";
+        echo "<script> window.location.replace('$page'); </script>";
     }
 
 

@@ -36,25 +36,42 @@ if ($_GET['id'] != null) {
             $_SESSION['idAlbum'] = $_GET['id'];
         }
         ?>
-    <!--Barre de navigation-->
-    <div id=navigationBar></div>
-    <script>
-        $(function() {
-            $("#navigationBar").load("../php/navigationbar.php");
-        });
-    </script>
+        <!--Barre de navigation-->
+        <div id=navigationBar></div>
+        <script>
+            $(function() {
+                $("#navigationBar").load("../php/navigationbar.php");
+            });
+        </script>
 
-    <!--Barre d'actions-->
-    <div style="margin-left: 200px;">
-        <div class="actionsbar-container">
+        <!--Barre d'actions-->
+
+
+        <div class="actionsbar-container" >
             <ul>
-                <li><a id="btn-ajouter" class="button" onclick="document.getElementById('ajouter-photos').style.display='block'">Ajouter +</a></li>
-                <li> <a id="btn-supprimer" class="button" onclick="document.getElementById('supprimer-album').style.display='block'"> Supprimer album</a> </li>
+                <li>
+                    <a onclick="document.getElementById('ajouter-photos').style.display='block'">
+                        <div class="creation" style="margin-top:0;">
+                            <h1>+</h1>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="document.getElementById('supprimer-album').style.display='block'">
+
+                        <div class="supprimer" style="margin-top:0;">
+
+                            <img src="../image/delete-icon.png">
+
+                        </div>
+
+                    </a>
+                </li>
             </ul>
         </div>
-    </div>
 
-        <div class="container">
+        <div>
             <?php
             $id = $_SESSION['idAlbum'];
             $db = ConnectDb::getInstance();
@@ -133,7 +150,7 @@ if ($_GET['id'] != null) {
                     <div class="popup-container">
                         <h1>AJOUTER PHOTOS</h1>
                         <div class="popup-buttons">
-                            <input type="file" name="image">
+                            <input type="file" name="image[]" multiple>
                             <input type="submit" name="upload" value="Upload">
                         </div>
                     </div>
@@ -159,25 +176,37 @@ if ($_GET['id'] != null) {
 
             <?php
             if (isset($_POST['upload'])) {
-                $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-                $sql = "INSERT INTO photo(photo,date,fk_id_galerie) VALUES ('$image',curdate(), '$idGalerie')";
-                $sql2 = "INSERT INTO photo_album(fk_id_photo,fk_id_album) VALUES (LAST_INSERT_ID(),'$idAlbum')";
-                //IL FAUT VRAIMENT LES EXCUTES EN ORDRE A CAUSE DU LAST_INSERT_ID()
-                $sql3 = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à ajouté une photo dans $nomAlbum($nomGalerie)', curdate())";
 
-                // Execute query
-                if (mysqli_query($db, $sql)) {
-                    if (mysqli_query($db, $sql2)) {
-                        $page = $_SESSION['urlPrecedent'];
-                        echo "<br/>YAY.";
-                        echo "<script> window.location.replace('$page'); </script>";
+                for ($count = 0; $count < count($_FILES['image']['tmp_name']); $count++) {
+
+
+                    $image = addslashes(file_get_contents($_FILES['image']['tmp_name'][$count]));
+        
+                    $sql = "INSERT INTO photo(photo,date,fk_id_galerie) VALUES ('$image',curdate(), '{$_SESSION['idGalerie']}')";
+        
+                    $sql2 = "INSERT INTO photo_album(fk_id_photo,fk_id_album) VALUES (LAST_INSERT_ID(),'$idAlbum')";
+                
+                    $sql3 = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à ajouté une photo dans $nomAlbum($nomGalerie)', curdate())";
+    
+                    // Execute query
+                    if (mysqli_query($db, $sql)) {
+                        if (mysqli_query($db, $sql2)) {
+                            $page = $_SESSION['urlPrecedent'];
+                            echo "<br/>YAY.";
+                            echo "<script> window.location.replace('$page'); </script>";
+                        } else {
+                            echo "<br/>NOOO2.";
+                        }
                     } else {
-                        echo "<br/>NOOO2.";
+                        echo "<br/>NOOO.";
                     }
-                } else {
-                    echo "<br/>NOOO.";
+                    header("Refresh: 0.001; photoAlbum.php?id=$idAlbum");
                 }
-                header("Refresh: 0.001; photoAlbum.php?id=$idAlbum");
+
+
+                
+                
+                
             }
 
             if (isset($_POST['confirm'])) {
