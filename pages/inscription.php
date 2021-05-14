@@ -31,20 +31,20 @@
 				$db_host     = 'localhost';
 
 				//Connecting to the database
-				$conn = mysqli_connect($db_host, $db_username, $db_password, $db_name);
+				$db = mysqli_connect($db_host, $db_username, $db_password, $db_name);
 
-				if (!$conn) {
+				if (!$db) {
 					die("could not connect to database: " . mysqli_connect_error());
 				}
 
-				$email = mysqli_real_escape_string($conn, htmlspecialchars($_POST['mail']));
-				$prenom = mysqli_real_escape_string($conn, htmlspecialchars($_POST['prenom']));
-				$nom = mysqli_real_escape_string($conn, htmlspecialchars($_POST['nom']));
-				$password = mysqli_real_escape_string($conn, htmlspecialchars($_POST['pwd']));
-				$password2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['pwd2']));
+				$email = mysqli_real_escape_string($db, htmlspecialchars($_POST['mail']));
+				$prenom = mysqli_real_escape_string($db, htmlspecialchars($_POST['prenom']));
+				$nom = mysqli_real_escape_string($db, htmlspecialchars($_POST['nom']));
+				$password = mysqli_real_escape_string($db, htmlspecialchars($_POST['pwd']));
+				$password2 = mysqli_real_escape_string($db, htmlspecialchars($_POST['pwd2']));
 				if ($password == $password2) {
 					$sql = "insert into utilisateur (prenom, nom, mdp, courriel) VALUES ('$prenom', '$nom', '$password', '$email')";
-					$res = mysqli_query($conn, $sql);
+					$res = mysqli_query($db, $sql);
 					if ($res) {
 						$done = 'true';
 
@@ -55,9 +55,9 @@
 						$_SESSION['nomUtilisateur'] = $reponse['nom'];
 						$_SESSION['prenomUtilisateur'] = $reponse['prenom'];
 						echo "<script> location.href='../index.php'; </script>";
-						exit;
+					exit;
 					} else {
-						echo "le courriel entré est déjà utilisé";
+						echo "Ce courriel est déjà utilisé!";
 					}
 				}
 			}

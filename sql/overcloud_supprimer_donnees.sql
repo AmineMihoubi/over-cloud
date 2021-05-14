@@ -1,0 +1,10 @@
+DELETE FROM photo_album;
+DELETE FROM historique;
+DELETE FROM administrateur_changement;
+DELETE FROM administrateur;
+DELETE FROM type_utilisateur;
+DELETE FROM commentaire;
+DELETE FROM album;
+DELETE FROM utilisateur_galerie;
+DELETE FROM galerie;
+DELETE FROM utilisateur;

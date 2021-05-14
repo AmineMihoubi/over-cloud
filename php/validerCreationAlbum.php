@@ -7,7 +7,7 @@ $db = ConnectDb::getInstance();
  // pour éliminer toute attaque de type injection SQL et XSS
  $nomAlbum = mysqli_real_escape_string($db,htmlspecialchars($_POST['nom'])); 
  $idGalerie = $_SESSION['idGalerie'];
- $galerieSQL = "SELECT nom FROM album where id_galerie = '$idGalerie'";
+ $galerieSQL = "SELECT nom FROM album where fk_id_galerie = '$idGalerie'";
  $resultGalerie = mysqli_query($db, $galerieSQL);
  $row0 =  mysqli_fetch_array($resultGalerie);
  $nomGalerie = $row0['nom'];
