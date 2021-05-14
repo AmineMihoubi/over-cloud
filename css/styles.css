@@ -1,770 +1,760 @@
-            @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-            @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap);
-            body {
-                background-color: whitesmoke;
-                font-family: 'Poppins', sans-serif;
-            }
-            /**
-liste-des-galeries
-**/
-            
-            .listeGalerie-card {
-                /* Add shadows to create the "card" effect */
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-                transition: 0.3s;
-                width: 120px;
-                height: 180px;
-                display: inline-table;
-                margin-left: 5rem;
-            }
-            /* On mouse-over, add a deeper shadow */
-            
-            .listeGalerie-card:hover {
-                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-            }
-            /* Add some padding inside the card container */
-            
-            #listeGalerie-container {
-                display: inline-flex;
-            }
-            
-            .listeGalerie-card {
-                display: inline-block;
-                margin-left: 10rem;
-            }
-            
-            #listeGalerie-nouvelle {
-                margin-left: 55rem;
-                margin-top: 5rem;
-                margin-bottom: 10rem;
-            }
-            /**
+                @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+                @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap);
+                body {
+                    background-color: whitesmoke;
+                    font-family: 'Poppins', sans-serif;
+                }
+                /**Login and register UI**/
+                
+                .accueil form {
+                    padding-top: 40px;
+                    text-align: center;
+                }
+                
+                .formulaire {
+                    float: right;
+                    width: 400px;
+                    height: 400px;
+                    margin-right: 400px;
+                    text-align: center;
+                }
+                
+                .accueil form input[type=text],
+                input[type=password] {
+                    width: 76%;
+                    color: rgb(38, 50, 56);
+                    font-weight: 700;
+                    font-size: 14px;
+                    letter-spacing: 1px;
+                    background: rgba(136, 126, 126, 0.04);
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 20px;
+                    outline: none;
+                    box-sizing: border-box;
+                    border: 2px solid rgba(0, 0, 0, 0.02);
+                    margin-bottom: 50px;
+                    text-align: center;
+                    margin-bottom: 27px;
+                }
+                
+                .accueil form input[type=text]:focus,
+                input[type=password]:focus {
+                    border: 2px solid rgba(0, 0, 0, 0.18) !important;
+                }
+                
+                .accueil form input[type=submit] {
+                    cursor: pointer;
+                    border-radius: 5em;
+                    color: #fff;
+                    background: linear-gradient(to right, #3FD198, #62cea4);
+                    border: 0;
+                    padding-left: 40px;
+                    padding-right: 40px;
+                    padding-bottom: 10px;
+                    padding-top: 10px;
+                    font-size: 13px;
+                    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+                }
+                
+                .formulaire .nouveau-compte {
+                    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+                    color: #E1BEE7;
+                    padding-top: 15px;
+                }
+                
+                .formulaire a {
+                    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+                    color: #E1BEE7;
+                    text-decoration: none
+                }
+                
+                .formulaire h1 {
+                    margin-bottom: 50px;
+                    color: #7F40BF;
+                    font-weight: bold;
+                    font-size: 30px;
+                }
+                
+                @media (max-width: 600px) {
+                    .main {
+                        border-radius: 0px;
+                    }
+                }
+                /**
 Parametres utilisateurs
 **/
-            
-            #photoProfil,
-            #carteParametresUtilisateur {
-                display: block;
-            }
-            
-            #photoProfil {
-                padding-left: 700px;
-                padding-top: 50px;
-                width: 10px;
-                height: 10px;
-            }
-            
-            #carteParametresUtilisateur {
-                /* Add shadows to create the "card" effect */
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-                transition: 0.3s;
-                height: 700px;
-                width: 900px;
-                margin-left: 630px;
-                margin-top: -10px;
-                padding-top: 50px;
-                background-color: #1b1b28;
-                border-radius: 45px;
-            }
-            
-            #carteText {
-                padding-left: 40%;
-                margin-top: -50px;
-                font-size: 30px;
-                color: white;
-            }
-            
-            .champSaisieUtilisateur {
-                border-radius: 45px;
-                width: 300px;
-                resize: none;
-                font-family: "Times New Roman", Times, serif;
-                font-size: 15px;
-                padding-top: 10px;
-                letter-spacing: 1.2px;
-                padding-left: 20px;
-                margin-bottom: 30px;
-                margin-right: 360px;
-                margin-top: 10px;
-                font-size: 18px;
-                font-weight: 900;
-                color: rgba(22, 21, 21, 0.8);
-                line-height: 1.5;
-                margin-right: 200px;
-            }
-            
-            h9 {
-                font-size: 18px;
-                font-weight: 900;
-                color: hsla(0, 0%, 100%, .8);
-                line-height: 1.5;
-                margin-right: 200px;
-            }
-            
-            h5 {
-                color: hsla(0, 0%, 100%, .8);
-                line-height: 1.5;
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
-            
-            .buttonConfirmer {
-                width: 250px;
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                background-color: yellowgreen;
-                border-radius: 45px;
-            }
-            
-            .buttonSupprimer {
-                width: 250px;
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                background-color: red;
-                border-radius: 45px;
-            }
-            
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-            /**
+                
+                #photoProfil,
+                #carteParametresUtilisateur {
+                    display: block;
+                }
+                
+                #photoProfil {
+                    padding-left: 700px;
+                    padding-top: 50px;
+                    width: 10px;
+                    height: 10px;
+                }
+                
+                #carteParametresUtilisateur {
+                    /* Add shadows to create the "card" effect */
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                    transition: 0.3s;
+                    height: 700px;
+                    width: 900px;
+                    margin-left: 630px;
+                    margin-top: -10px;
+                    padding-top: 50px;
+                    background-color: #1b1b28;
+                    border-radius: 45px;
+                }
+                
+                #carteText {
+                    padding-left: 40%;
+                    margin-top: -50px;
+                    font-size: 30px;
+                    color: white;
+                }
+                
+                .champSaisieUtilisateur {
+                    border-radius: 45px;
+                    width: 300px;
+                    resize: none;
+                    font-family: "Times New Roman", Times, serif;
+                    font-size: 15px;
+                    padding-top: 10px;
+                    letter-spacing: 1.2px;
+                    padding-left: 20px;
+                    margin-bottom: 30px;
+                    margin-right: 360px;
+                    margin-top: 10px;
+                    font-size: 18px;
+                    font-weight: 900;
+                    color: rgba(22, 21, 21, 0.8);
+                    line-height: 1.5;
+                    margin-right: 200px;
+                }
+                
+                h9 {
+                    font-size: 18px;
+                    font-weight: 900;
+                    color: hsla(0, 0%, 100%, .8);
+                    line-height: 1.5;
+                    margin-right: 200px;
+                }
+                
+                h5 {
+                    color: hsla(0, 0%, 100%, .8);
+                    line-height: 1.5;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+                
+                .buttonConfirmer {
+                    width: 250px;
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    background-color: yellowgreen;
+                    border-radius: 45px;
+                }
+                
+                .buttonSupprimer {
+                    width: 250px;
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    background-color: red;
+                    border-radius: 45px;
+                }
+                
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                /**
 * Parametres de la galerie
 **/
-            
-            #carteParametresGalerie {
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-                transition: 0.3s;
-                height: 700px;
-                width: 900px;
-                margin-left: 630px;
-                background-color: #1b1b28;
-                border-radius: 45px;
-                margin-top: 50px;
-            }
-            
-            #carteParametresGalerie h5 {
-                margin-top: 70px;
-                margin-left: -50px;
-            }
-            
-            #carteParametresGalerie,
-            #navigationBar {
-                display: inline-block;
-            }
-            
-            .champSaisieGalerie {
-                border-radius: 45px;
-                width: 300px;
-                resize: none;
-                font-family: "Times New Roman", Times, serif;
-                font-size: 15px;
-                padding-top: 10px;
-                letter-spacing: 1.2px;
-                padding-left: 20px;
-                margin-bottom: 30px;
-                margin-right: 360px;
-                margin-top: 10px;
-                font-size: 18px;
-                font-weight: 900;
-                color: rgba(22, 21, 21, 0.8);
-                line-height: 1.5;
-                margin-right: 200px;
-                margin-left: -300px;
-            }
-            
-            #infoText {
-                background-color: #252533;
-                font-size: large;
-                margin-left: -200px;
-                margin-right: 100px;
-                margin-bottom: 50px;
-            }
-            
-            #carteParametresGalerie h9 {
-                margin-left: -300px;
-                padding-right: 300px;
-            }
-            
-            #carteParametresGalerie textarea {
-                width: 500px;
-                margin-left: -300px;
-            }
-            
-            #carteParametresGalerie label {
-                font-size: medium;
-            }
-            
-            #carteParametresGalerie input {
-                margin-left: -300px;
-            }
-            
-            select {
-                border-radius: 45px;
-                width: 300px;
-                height: 30px;
-                resize: none;
-                font-family: "Times New Roman", Times, serif;
-                margin-left: -300px;
-                margin-top: -20px;
-            }
-            
-            #lien {
-                padding-left: 250px;
-            }
-            
-            #h8 {
-                font-size: 18px;
-                font-weight: 900;
-                color: hsla(0, 0%, 100%, .8);
-                line-height: 1.5;
-            }
-            /**
+                
+                #carteParametresGalerie {
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                    transition: 0.3s;
+                    height: 700px;
+                    width: 900px;
+                    margin-left: 630px;
+                    background-color: #1b1b28;
+                    border-radius: 45px;
+                    margin-top: 50px;
+                }
+                
+                #carteParametresGalerie h5 {
+                    margin-top: 70px;
+                    margin-left: -50px;
+                }
+                
+                #carteParametresGalerie,
+                #navigationBar {
+                    display: inline-block;
+                }
+                
+                .champSaisieGalerie {
+                    border-radius: 45px;
+                    width: 300px;
+                    resize: none;
+                    font-family: "Times New Roman", Times, serif;
+                    font-size: 15px;
+                    padding-top: 10px;
+                    letter-spacing: 1.2px;
+                    padding-left: 20px;
+                    margin-bottom: 30px;
+                    margin-right: 360px;
+                    margin-top: 10px;
+                    font-size: 18px;
+                    font-weight: 900;
+                    color: rgba(22, 21, 21, 0.8);
+                    line-height: 1.5;
+                    margin-right: 200px;
+                    margin-left: -300px;
+                }
+                
+                #infoText {
+                    background-color: #252533;
+                    font-size: large;
+                    margin-left: -200px;
+                    margin-right: 100px;
+                    margin-bottom: 50px;
+                }
+                
+                #carteParametresGalerie h9 {
+                    margin-left: -300px;
+                    padding-right: 300px;
+                }
+                
+                #carteParametresGalerie textarea {
+                    width: 500px;
+                    margin-left: -300px;
+                }
+                
+                #carteParametresGalerie label {
+                    font-size: medium;
+                }
+                
+                #carteParametresGalerie input {
+                    margin-left: -300px;
+                }
+                
+                select {
+                    border-radius: 45px;
+                    width: 300px;
+                    height: 30px;
+                    resize: none;
+                    font-family: "Times New Roman", Times, serif;
+                    margin-left: -300px;
+                    margin-top: -20px;
+                }
+                
+                #lien {
+                    padding-left: 250px;
+                }
+                
+                #h8 {
+                    font-size: 18px;
+                    font-weight: 900;
+                    color: hsla(0, 0%, 100%, .8);
+                    line-height: 1.5;
+                }
+                /**
 * Bare de navigation
 **/
-            
-            #paraUtilisateur {
-                margin-top: 35rem;
-            }
-            /**
+                
+                #paraUtilisateur {
+                    margin-top: 35rem;
+                }
+                /**
 * Liste des albums
 */
-            
-            .gallery {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                grid-gap: 15px;
-            }
-            
-            .container {
-                width: 80%;
-                margin-left: 200px;
-            }
-            
-            .gallery img {
-                object-fit: cover;
-                position: relative;
-                width: 300px;
-                height: 350px;
-            }
-            /*bar d'action*/
-            
-            .actionsbar-container {
-                width: 80%;
-                overflow: hidden;
-                display: inline-block;
-            }
-            
-            .actionsbar ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                background-color: white;
-                width: 130px;
-                float: left;
-            }
-            
-            .actionsbar li {
-                float: left;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 17px;
-            }
-            
-            .actionsbar a {
-                display: inline-block;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                transition: 0.3s;
-                font-size: 17px;
-            }
-            /*popup*/
-            
-            .popup {
-                display: none;
-                position: fixed;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                overflow: auto;
-                background-color: #474e5d;
-                padding-top: 50px;
-            }
-            
-            .popup-content {
-                background-color: #fefefe;
-                margin: 5% auto 15% auto;
-                border: 1px solid #888;
-                width: 80%;
-            }
-            
-            .popup-container {
-                padding: 16px;
-                text-align: center;
-            }
-            
-            .popup-buttons::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-            
-            .popup-buttons input[type=file],
-            input[type=submit] {
-                background-color: #ddd;
-                border: none;
-                color: black;
-                padding: 10px 20px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 16px;
-            }
-            
-            .close {
-                position: absolute;
-                right: 35px;
-                top: 15px;
-                font-size: 40px;
-                font-weight: bold;
-                color: #f1f1f1;
-            }
-            
-            .close:hover,
-            .close:focus {
-                color: #f44336;
-                cursor: pointer;
-            }
-            
-            .button {
-                border: 2px solid white;
-                border-radius: 30px;
-                text-decoration: none;
-                padding: 10px 28px;
-                color: rgb(0, 0, 0);
-                display: inline-block;
-                cursor: pointer;
-            }
-            /**
+                
+                .gallery {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    grid-gap: 15px;
+                }
+                
+                .container {
+                    width: 80%;
+                    margin-left: 200px;
+                }
+                
+                .gallery img {
+                    object-fit: cover;
+                    position: relative;
+                    width: 300px;
+                    height: 350px;
+                }
+                /*bar d'action*/
+                
+                .actionsbar-container {
+                    width: 80%;
+                    overflow: hidden;
+                    display: inline-block;
+                }
+                
+                .actionsbar ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    background-color: white;
+                    width: 130px;
+                    float: left;
+                }
+                
+                .actionsbar li {
+                    float: left;
+                    color: #f2f2f2;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    font-size: 17px;
+                }
+                
+                .actionsbar a {
+                    display: inline-block;
+                    color: #f2f2f2;
+                    text-align: center;
+                    padding: 14px 16px;
+                    transition: 0.3s;
+                    font-size: 17px;
+                }
+                /*popup*/
+                
+                .popup {
+                    display: none;
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: #474e5d;
+                    padding-top: 50px;
+                }
+                
+                .popup-content {
+                    background-color: #fefefe;
+                    margin: 5% auto 15% auto;
+                    border: 1px solid #888;
+                    width: 80%;
+                }
+                
+                .popup-container {
+                    padding: 16px;
+                    text-align: center;
+                }
+                
+                .popup-buttons::after {
+                    content: "";
+                    clear: both;
+                    display: table;
+                }
+                
+                .popup-buttons input[type=file],
+                input[type=submit] {
+                    background-color: #ddd;
+                    border: none;
+                    color: black;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    border-radius: 16px;
+                }
+                
+                .close {
+                    position: absolute;
+                    right: 35px;
+                    top: 15px;
+                    font-size: 40px;
+                    font-weight: bold;
+                    color: #f1f1f1;
+                }
+                
+                .close:hover,
+                .close:focus {
+                    color: #f44336;
+                    cursor: pointer;
+                }
+                
+                .button {
+                    border: 2px solid white;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    padding: 10px 28px;
+                    color: rgb(0, 0, 0);
+                    display: inline-block;
+                    cursor: pointer;
+                }
+                /**
 Page création d'album
 **/
-            
-            .creation {
-                height: 50px;
-                width: 50px;
-                background-color: #6df2b4;
-                border-radius: 50%;
-                display: inline-block;
-                margin-top: 50px;
-                margin-left: 35px;
-                transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-            }
-            
-            .creation:hover {
-                transform: scale(1.05);
-                transition: all 0.3s ease-in-out;
-                border: none;
-            }
-            
-            .creation h1 {
-                margin-top: 0px;
-                margin-left: 13px;
-                color: #6a24a3;
-            }
-            /*Affichage de plusieurs selections (albums ou galeries) */
-            
-            .column {
-                float: left;
-                width: 15%;
-                margin-right: -200px;
-            }
-            
-            .row {
-                margin: 0 -5px;
-            }
-            
-            .row:after {
-                content: "";
-                display: table;
-                clear: both;
-            }
-            
-            .card {
-                border-radius: 10px;
-                background: #fff;
-                box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
-                transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-                padding: 40px 30px 0px 30px;
-                cursor: pointer;
-                height: 100px;
-                width: 150px;
-            }
-            
-            .card:hover {
-                transform: scale(1.05);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
-            }
-            
-            .card img {
-                float: left;
-                height: 50px;
-                width: 50px;
-            }
-            
-            .card h3 {
-                font-size: medium;
-                float: right;
-                color: black;
-            }
-            /* Section de commentaires pour la page imageZoom */
-            
-            #imageZoom,
-            #section-commentaires {
-                display: inline-block;
-            }
-            
-            #imageZoom {
-                margin-left: 500px;
-            }
-            
-            #section-commentaires {
-                background-color: rgba(180, 180, 180, 0.644);
-                width: 500px;
-                height: 700px;
-                overflow: auto;
-                border: 2px solid rgb(0, 0, 0);
-            }
-            
-            .commentaires {
-                margin-left: 5px;
-                width: 490px;
-                height: 100px;
-                background-color: rgb(255, 255, 255);
-                border: 1px solid rgb(31, 29, 29);
-            }
-            
-            #deco {
-                height: 100px;
-                width: 300px;
-                border-radius: 55px;
-                margin-left: 800px;
-                background-color: red;
-                color: white;
-                cursor: pointer;
-            }
-            
-            .commentaires hr {
-                margin-top: 25px;
-            }
-            
-            #text-Area {
-                position: absolute;
-                bottom: 0;
-                position: right;
-            }
-            
-            #text-Area textarea {
-                margin-top: -9rem;
-                width: 500px;
-                height: 100px;
-                resize: none;
-            }
-            
-            .button-supprimer {
-                float: right;
-                color: red;
-                cursor: pointer;
-            }
-            /* testing new navigation bar*/
-            
-            .fa-2x {
-                font-size: 2em;
-            }
-            
-            .fa {
-                position: relative;
-                display: table-cell;
-                width: 60px;
-                height: 36px;
-                text-align: center;
-                vertical-align: middle;
-                font-size: 20px;
-            }
-            
-            .main-menu:hover,
-            nav.main-menu.expanded {
-                width: 250px;
-                overflow: visible;
-            }
-            
-            .main-menu {
-                background: #6a24a3;
-                border-right: 1px solid white;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                height: 100%;
-                left: 0;
-                width: 60px;
-                overflow: hidden;
-                -webkit-transition: width .05s linear;
-                transition: width .05s linear;
-                -webkit-transform: translateZ(0) scale(1, 1);
-                z-index: 1000;
-            }
-            
-            .main-menu>ul {
-                margin: 7px 0;
-            }
-            
-            .main-menu li {
-                position: relative;
-                display: block;
-                width: 250px;
-            }
-            
-            .main-menu li>a {
-                position: relative;
-                display: table;
-                border-collapse: collapse;
-                border-spacing: 0;
-                color: white;
-                font-family: 'Poppins', sans-serif;
-                font-size: 14px;
-                text-decoration: none;
-                -webkit-transform: translateZ(0) scale(1, 1);
-                -webkit-transition: all .1s linear;
-                transition: all .1s linear;
-            }
-            
-            .main-menu .nav-icon {
-                position: relative;
-                display: table-cell;
-                width: 60px;
-                height: 36px;
-                text-align: center;
-                vertical-align: middle;
-                font-size: 18px;
-            }
-            
-            .main-menu .nav-text {
-                position: relative;
-                display: table-cell;
-                vertical-align: middle;
-                width: 190px;
-                font-family: 'Poppins', sans-serif;
-            }
-            
-            .no-touch .scrollable.hover {
-                overflow-y: hidden;
-            }
-            
-            .no-touch .scrollable.hover:hover {
-                overflow-y: auto;
-                overflow: visible;
-            }
-            
-            a:hover,
-            a:focus {
-                text-decoration: none;
-            }
-            
-            nav {
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                -o-user-select: none;
-                user-select: none;
-            }
-            
-            nav ul,
-            nav li {
-                outline: 0;
-                margin: 0;
-                padding: 0;
-            }
-            
-            .main-menu li:hover>a,
-            nav.main-menu li.active>a,
-            .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
-            .dashboard-page nav.dashboard-menu ul li.active a {
-                color: #6a24a3;
-                background-color: white;
-            }
-            /*testestetstet*/
-            
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 1;
-                padding-top: 100px;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                overflow: auto;
-                background-color: black;
-            }
-            /* Modal Content */
-            
-            .modal-content {
-                position: relative;
-                margin: auto;
-                padding: 0;
-                width: 80%;
-                max-width: 1000px;
-            }
-            /* The Close Button */
-            
-            .close {
-                color: white;
-                position: absolute;
-                top: 10px;
-                right: 25px;
-                font-size: 35px;
-                font-weight: bold;
-            }
-            
-            .close:hover,
-            .close:focus {
-                color: white;
-                text-decoration: none;
-                cursor: pointer;
-            }
-            /* Hide the slides by default */
-            
-            .mySlides {
-                display: none;
-                text-align: center;
-            }
-            
-            .mySlides img {
-                width: 900px;
-                height: 700px;
-            }
-            /* Next & previous buttons */
-            
-            .prev,
-            .next {
-                cursor: pointer;
-                position: absolute;
-                top: 50%;
-                width: auto;
-                padding: 16px;
-                margin-top: -50px;
-                color: white;
-                font-weight: bold;
-                font-size: 20px;
-                transition: 0.6s ease;
-                border-radius: 0 3px 3px 0;
-                user-select: none;
-                -webkit-user-select: none;
-            }
-            /* Position the "next button" to the right */
-            
-            .next {
-                right: 0;
-                border-radius: 3px 0 0 3px;
-            }
-            /* On hover, add a black background color with a little bit see-through */
-            
-            .prev:hover,
-            .next:hover {
-                background-color: rgba(0, 0, 0, 0.8);
-            }
-            
-            .photocheckbox {
-                opacity: 0;
-                position: absolute;
-            }
-            
-            .photocheckbox:hover,
-            .photocheckbox:checked {
-                opacity: 1;
-            }
-            
-            .display {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                grid-gap: 15px;
-            }
-            /*smol nav*/
-            
-            .mini-menu {
-                float: right;
-            }
-            
-            .btn-profile {
-                color: white;
-                padding: 16px;
-                font-size: 16px;
-                border: none;
-                cursor: pointer;
-                background: url("../image/utilisateur-de-profil.png") no-repeat;
-                background-size: 50px 50px;
-                border-radius: 50%;
-                width: 50px;
-                height: 50px;
-                text-align: center;
-            }
-            /* Dropdown button on hover & focus */
-            
-            .btn-profile:hover,
-            .btn-profile:focus {
-                background-color: white;
-            }
-            /* Dropdown Content (Hidden by Default) */
-            
-            .minimenu-pages {
-                display: none;
-                position: absolute;
-                background-color: #f1f1f1;
-                min-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-                z-index: 1;
-                text-align: center;
-            }
-            /* Links inside the dropdown */
-            
-            .minimenu-pages a,
-            .minimenu-pages input[type=submit] {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-                border: none;
-                cursor: pointer;
-                font-family: 'Poppins', sans-serif;
-            }
-            /* Change color of dropdown links on hover */
-            
-            .minimenu-pages a:hover {
-                background-color: lightgray
-            }
-            /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-            
-            .show {
-                display: block;
-            }
+                
+                .creation {
+                    height: 50px;
+                    width: 50px;
+                    background-color: #3FD198;
+                    border-radius: 50%;
+                    display: inline-block;
+                    margin-top: 50px;
+                    margin-left: 35px;
+                    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+                }
+                
+                .creation:hover {
+                    transform: scale(1.05);
+                    transition: all 0.3s ease-in-out;
+                    border: none;
+                }
+                
+                .creation h1 {
+                    margin-top: 0px;
+                    margin-left: 13px;
+                    color: #7F40BF;
+                }
+                /*Affichage de plusieurs selections (albums ou galeries) */
+                
+                .column {
+                    float: left;
+                    width: 15%;
+                    margin-right: -200px;
+                }
+                
+                .row {
+                    margin: 0 -5px;
+                }
+                
+                .row:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+                
+                .card {
+                    border-radius: 10px;
+                    background: #fff;
+                    box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+                    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+                    padding: 40px 30px 0px 30px;
+                    cursor: pointer;
+                    height: 100px;
+                    width: 150px;
+                }
+                
+                .card:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+                }
+                
+                .card img {
+                    float: left;
+                    height: 50px;
+                    width: 50px;
+                }
+                
+                .card h3 {
+                    font-size: medium;
+                    float: right;
+                    color: black;
+                }
+                
+                .button-supprimer {
+                    float: right;
+                    color: red;
+                    cursor: pointer;
+                }
+                /* testing new navigation bar*/
+                
+                .fa-2x {
+                    font-size: 2em;
+                }
+                
+                .fa {
+                    position: relative;
+                    display: table-cell;
+                    width: 60px;
+                    height: 36px;
+                    text-align: center;
+                    vertical-align: middle;
+                    font-size: 20px;
+                }
+                
+                .main-menu:hover,
+                nav.main-menu.expanded {
+                    width: 250px;
+                    overflow: visible;
+                }
+                
+                .main-menu {
+                    background: #7F40BF;
+                    border-right: 1px solid white;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    height: 100%;
+                    left: 0;
+                    width: 60px;
+                    overflow: hidden;
+                    -webkit-transition: width .05s linear;
+                    transition: width .05s linear;
+                    -webkit-transform: translateZ(0) scale(1, 1);
+                    z-index: 1000;
+                }
+                
+                .main-menu>ul {
+                    margin: 7px 0;
+                }
+                
+                .main-menu li {
+                    position: relative;
+                    display: block;
+                    width: 250px;
+                }
+                
+                .main-menu li>a {
+                    position: relative;
+                    display: table;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 14px;
+                    text-decoration: none;
+                    -webkit-transform: translateZ(0) scale(1, 1);
+                    -webkit-transition: all .1s linear;
+                    transition: all .1s linear;
+                }
+                
+                .main-menu .nav-icon {
+                    position: relative;
+                    display: table-cell;
+                    width: 60px;
+                    height: 36px;
+                    text-align: center;
+                    vertical-align: middle;
+                    font-size: 18px;
+                }
+                
+                .main-menu .nav-text {
+                    position: relative;
+                    display: table-cell;
+                    vertical-align: middle;
+                    width: 190px;
+                    font-family: 'Poppins', sans-serif;
+                }
+                
+                .no-touch .scrollable.hover {
+                    overflow-y: hidden;
+                }
+                
+                .no-touch .scrollable.hover:hover {
+                    overflow-y: auto;
+                    overflow: visible;
+                }
+                
+                a:hover,
+                a:focus {
+                    text-decoration: none;
+                }
+                
+                nav {
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    -o-user-select: none;
+                    user-select: none;
+                }
+                
+                nav ul,
+                nav li {
+                    outline: 0;
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                .main-menu li:hover>a,
+                nav.main-menu li.active>a,
+                .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+                .dashboard-page nav.dashboard-menu ul li.active a {
+                    color: #6a24a3;
+                    background-color: white;
+                }
+                /*testestetstet*/
+                
+                .modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 1;
+                    padding-top: 100px;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: black;
+                }
+                /* Modal Content */
+                
+                .modal-content {
+                    position: relative;
+                    margin: auto;
+                    padding: 0;
+                    width: 80%;
+                    max-width: 1000px;
+                }
+                /* The Close Button */
+                
+                .close {
+                    color: white;
+                    position: absolute;
+                    top: 10px;
+                    right: 25px;
+                    font-size: 35px;
+                    font-weight: bold;
+                }
+                
+                .close:hover,
+                .close:focus {
+                    color: white;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+                /* Hide the slides by default */
+                
+                .mySlides {
+                    display: none;
+                    text-align: center;
+                }
+                
+                .mySlides img {
+                    width: 900px;
+                    height: 700px;
+                }
+                /* Next & previous buttons */
+                
+                .prev,
+                .next {
+                    cursor: pointer;
+                    position: absolute;
+                    top: 50%;
+                    width: auto;
+                    padding: 16px;
+                    margin-top: -50px;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 20px;
+                    transition: 0.6s ease;
+                    border-radius: 0 3px 3px 0;
+                    user-select: none;
+                    -webkit-user-select: none;
+                }
+                /* Position the "next button" to the right */
+                
+                .next {
+                    right: 0;
+                    border-radius: 3px 0 0 3px;
+                }
+                /* On hover, add a black background color with a little bit see-through */
+                
+                .prev:hover,
+                .next:hover {
+                    background-color: rgba(0, 0, 0, 0.8);
+                }
+                
+                .photocheckbox {
+                    opacity: 0;
+                    position: absolute;
+                }
+                
+                .photocheckbox:hover,
+                .photocheckbox:checked {
+                    opacity: 1;
+                }
+                
+                .display {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    grid-gap: 15px;
+                }
+                /*smol nav*/
+                
+                .mini-menu {
+                    float: right;
+                }
+                
+                .btn-profile {
+                    color: white;
+                    padding: 16px;
+                    font-size: 16px;
+                    border: none;
+                    cursor: pointer;
+                    background: url("../image/utilisateur-de-profil.png") no-repeat;
+                    background-size: 50px 50px;
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    text-align: center;
+                }
+                /* Dropdown button on hover & focus */
+                
+                .btn-profile:hover,
+                .btn-profile:focus {
+                    background-color: white;
+                }
+                /* Dropdown Content (Hidden by Default) */
+                
+                .minimenu-pages {
+                    display: none;
+                    position: absolute;
+                    background-color: #f1f1f1;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+                    text-align: center;
+                }
+                /* Links inside the dropdown */
+                
+                .minimenu-pages a,
+                .minimenu-pages input[type=submit] {
+                    color: black;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                    border: none;
+                    cursor: pointer;
+                    font-family: 'Poppins', sans-serif;
+                }
+                /* Change color of dropdown links on hover */
+                
+                .minimenu-pages a:hover {
+                    background-color: lightgray
+                }
+                /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+                
+                .show {
+                    display: block;
+                }

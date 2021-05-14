@@ -23,7 +23,7 @@ if ($_GET['id'] != null) {
     <div id=navigationBar></div>
     <script>
       $(function() {
-        $("#navigationBar").load("navigationbar.php");
+        $("#navigationBar").load("../php/navigationbar.php");
       });
     </script>
 
@@ -40,7 +40,7 @@ if ($_GET['id'] != null) {
     <div class="container">
       <?php
       $id = $_SESSION['idGalerie'];
-      echo '<script type="text/javascript">alert("Id galery is: ' . $id . '");</script>';
+      //echo '<script type="text/javascript">alert("Id galery is: ' . $id . '");</script>';
       $db = ConnectDb::getInstance();
 
       $typeSql = "SELECT * FROM galerie where id_galerie = '$id'";

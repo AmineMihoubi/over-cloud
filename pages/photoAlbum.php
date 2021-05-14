@@ -36,6 +36,23 @@ if ($_GET['id'] != null) {
             $_SESSION['idAlbum'] = $_GET['id'];
         }
         ?>
+    <!--Barre de navigation-->
+    <div id=navigationBar></div>
+    <script>
+        $(function() {
+            $("#navigationBar").load("../php/navigationbar.php");
+        });
+    </script>
+
+    <!--Barre d'actions-->
+    <div style="margin-left: 200px;">
+        <div class="actionsbar-container">
+            <ul>
+                <li><a id="btn-ajouter" class="button" onclick="document.getElementById('ajouter-photos').style.display='block'">Ajouter +</a></li>
+                <li> <a id="btn-supprimer" class="button" onclick="document.getElementById('supprimer-album').style.display='block'"> Supprimer album</a> </li>
+            </ul>
+        </div>
+    </div>
 
         <div class="container">
             <?php
@@ -79,15 +96,6 @@ if ($_GET['id'] != null) {
             }
             ?>
 
-            <!--Barre d'actions-->
-            <div style="margin-left: 200px;">
-                <div class="actionsbar-container">
-                    <ul>
-                        <li><a id="btn-ajouter" class="button" onclick="document.getElementById('ajouter-photos').style.display='block'">Ajouter +</a></li>
-                        <li> <a id="btn-supprimer" class="button" onclick="document.getElementById('supprimer-album').style.display='block'"> Supprimer album</a> </li>
-                    </ul>
-                </div>
-            </div>
 
             <!-- affichage des photos -->
             <div class="container">
