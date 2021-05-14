@@ -24,9 +24,7 @@ body {
     margin: 50px;
 }
 
-
 form {
-
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
@@ -36,7 +34,7 @@ form {
 input[type="radio"] {
     -webkit-appearance: none;
     appearance: none;
-    background-color: #a188f5;
+    background-color: #7F40BF;
     height: 100%;
     width: 100%;
     border-radius: 10px;
@@ -44,9 +42,7 @@ input[type="radio"] {
     box-shadow: 7px 7px 15px rgba(2, 28, 53, 0.08);
     cursor: pointer;
     outline: none;
-    }
-
-
+}
 
 input[type="radio"]:before {
     content: "";
@@ -60,7 +56,7 @@ input[type="radio"]:before {
     right: 20px;
 }
 
-input[type="radio"]:after  {
+input[type="radio"]:after {
     content: "";
     position: absolute;
     height: 13px;
@@ -70,7 +66,6 @@ input[type="radio"]:after  {
     top: 39.5px;
     right: 24.5px;
 }
-
 
 label {
     position: absolute;
@@ -87,7 +82,6 @@ h5 {
 
 h2 {
     padding-top: 10px;
-
 }
 
 span {
@@ -108,10 +102,9 @@ input[type="radio"]:checked:after {
     background-color: #478bfb;
 }
 
-input[type="radio"] + img {
-  cursor: pointer;
+input[type="radio"]+img {
+    cursor: pointer;
 }
-
 
 button,
 legend {
@@ -127,7 +120,6 @@ legend {
     cursor: pointer;
     outline: none;
     font-family: 'Poppins', sans-serif;
-
 }
 
 button:hover,

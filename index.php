@@ -8,12 +8,11 @@
 
 <body style="background-color: white;">
 
-<div class="accueil">
+    <div class="accueil">
 
-<div style="float: left;">
-
-<img src="./image/photo-page-accueil.jpg" style="margin-left: 150px; margin-top:100px;">
-</div>
+        <div class="image-accueil">
+            <img src="./image/photo-page-accueil.jpg" style="margin-left: 150px; margin-top:100px;">
+        </div>
 
         <div class="formulaire">
             <!-- zone de connexion -->
@@ -30,18 +29,19 @@
                         echo "<p style='color:red'>Email ou mot de passe incorrect</p>";
                 }
                 ?>
-                <p class="nouveau-compte"><a href="#" id=creerCompte onclick="myFunction()">Pas de compte? Inscrivez-vous!</p>
+                <br></br>
+                <a href="./pages/inscription.php" class="nouveau-compte" id=creerCompte onclick="myFunction()">Pas de compte? Inscrivez-vous!</a>
             </form>
         </div>
 
 
-    <script>
-        function myFunction() {
-            window.location.href = "./pages/inscription.php";
-        }
-    </script>
+        <script>
+            function myFunction() {
+                window.location.href = "./pages/inscription.php";
+            }
+        </script>
 
-</div>
+    </div>
 
 </body>
 

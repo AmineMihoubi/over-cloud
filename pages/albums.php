@@ -96,7 +96,7 @@ if ($_GET['id'] != null) {
           $_SESSION['idAlbum'] = $idAlbum;
           $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
         } else {
-          echo "Créer un Album";
+          
         }
         ?>
         <a href='creation-album.php'>

@@ -11,6 +11,15 @@
                     text-align: center;
                 }
                 
+                .image-accueil {
+                    float: left;
+                }
+                
+                .image-accueil img {
+                    margin-left: 150px;
+                    margin-top: 100px;
+                }
+                
                 .formulaire {
                     float: right;
                     width: 400px;
