@@ -58,6 +58,14 @@ CREATE TABLE `Administrateur` (
 	PRIMARY KEY (`id_admin`)
 );
 
+CREATE TABLE `Administrateur_changement` ( 
+`id_changement` INT(20) NOT NULL AUTO_INCREMENT,
+`id_administrateur` INT(50) NOT NULL,
+`description` varchar(500),
+`date` DATE,
+PRIMARY KEY (`id_changement`)
+);
+
 CREATE TABLE `Historique` (
 	`id_historique` INT(20) NOT NULL AUTO_INCREMENT,
 	`fk_id_utilisateur` INT(20) NOT NULL,
