@@ -29,7 +29,7 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
     <div id=navigationBar></div>
     <script>
         $(function() {
-            $("#navigationBar").load("navigationbar.php");
+            $("#navigationBar").load("../php/navigationbar.php");
         });
     </script>
 
@@ -76,7 +76,7 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
             <div class="popup-container">
                 <h1>AJOUTER PHOTOS</h1>
                 <div class="popup-buttons">
-                    <input class="popup-input" type="file" name="image">
+                    <input class="popup-input" type="file" name="image[]" multiple>
                     <input class="popup-input" type="submit" name="upload" value="Upload"></li>
                 </div>
             </div>
@@ -173,7 +173,7 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
             }
         }
         $page = $_SESSION['urlPrecedent'];
-        echo "<script> window.location.replace('$page'); </script>";
+        //echo "<script> window.location.replace('$page'); </script>";
     }
 
 
