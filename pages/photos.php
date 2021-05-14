@@ -151,11 +151,8 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
 
         for ($count = 0; $count < count($_FILES['image']['tmp_name']); $count++) {
 
-
             $image = addslashes(file_get_contents($_FILES['image']['tmp_name'][$count]));
-
             $sql = "INSERT INTO photo(photo,date,fk_id_galerie) VALUES ('$image',curdate(), '{$_SESSION['idGalerie']}')";
-
 
 
             if (mysqli_query($db, $sql)) {

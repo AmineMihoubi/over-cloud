@@ -81,11 +81,13 @@ if ($_GET['id'] != null) {
             $row0 = mysqli_fetch_array($resultGalerie);
             $idGalerie = $row0['fk_id_galerie'];
 
+            $nomAlbum = $row0['nom'];
             $typeSql = "SELECT * FROM galerie where id_galerie = '$idGalerie'";
             $resultType = mysqli_query($db, $typeSql);
             $row1 = mysqli_fetch_array($resultType);
             $typeGalerie = $row1['type'];
             $statusGalerie = $row1['status'];
+            $nomGalerie = $row1['nom'];
 
             if ($statusGalerie != 0) { //if the galerie is not public
                 if ($typeGalerie == 1) { //if the galerie is individual. check if we're the owner
@@ -200,7 +202,7 @@ if ($_GET['id'] != null) {
                     } else {
                         echo "<br/>NOOO.";
                     }
-                    header("Refresh: 0.001; photoAlbum.php?id=$idAlbum");
+                   header("Refresh: 0.001; photoAlbum.php?id=$idAlbum");
                 }
 
 
