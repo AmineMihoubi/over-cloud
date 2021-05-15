@@ -21,7 +21,7 @@
     <div id=navigationBar></div>
     <script>
         $(function() {
-            $("#navigationBar").load("navigationbar.php");
+            $("#navigationBar").load("../php/navigationbar.php");
         });
     </script>
 

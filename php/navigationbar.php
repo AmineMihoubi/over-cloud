@@ -52,6 +52,12 @@
                   <span class="nav-text">Paramètres</span></a>
               </li>
               <!--<li><a href="">Participants</a></li>-->
+              
+
+            </ul>
+
+            <ul>
+              <br></br><br></br>
               <li id="paraUtilisateur">
 
                 <a href="parametres-de-lutilisateur.php">
@@ -63,11 +69,7 @@
                     echo  $_SESSION['blaseUtilisateur'];
                     ?></span></a>
               </li>
-
-            </ul>
-
-            <ul>
-              <li id="deconnexion"><a href="../php/deconnexion.php">
+              <li id="deconnexion"><a href="../php/deconnexion.php" style="background-color: red;">
                   <i class="fa fa-power-off fa-2x"></i>
                   <span class="nav-text">Déconnecter</span></a></li>
             </ul>
