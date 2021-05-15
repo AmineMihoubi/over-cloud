@@ -54,6 +54,14 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                     echo '<div>';
                     echo '<img id = "image" onclick="openModal();currentSlide(' . $i . ')"  src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery img"/>';
                     echo '</div>';
+
+                    if ($i == mysqli_num_rows($res)) {
+
+                        $i = 1;
+                    } else {
+
+                        $i++;
+                    }
                 }
             } else {
                 echo "0 results";
@@ -90,11 +98,21 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
             if (mysqli_num_rows($res2) > 0) {
                 while ($row = mysqli_fetch_assoc($res2)) {
                     echo '<div class="mySlides">';
-                    echo '<img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "style=width:100%"/>';
+                    echo '<img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "style=width:100%">';
                     echo '</div>';
                 }
             }
             ?>
+
+            <h1 style="color: white;">HELLO</h1>
+            <h1 style="color: white;">HELLO</h1>
+            <h1 style="color: white;">HELLO</h1>
+            <h1 style="color: white;">HELLO</h1>
+            <h1 style="color: white;">HELLO</h1>
+            <h1 style="color: white;">HELLO</h1>
+            <h1 style="color: white;">HELLO</h1>
+            <h1 style="color: white;">HELLO</h1>
+            <h1 style="color: white;">HELLO</h1>
 
 
         </div>

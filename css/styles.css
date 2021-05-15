@@ -310,6 +310,7 @@ Parametres utilisateurs
                 }
                 
                 .gallery img {
+                    cursor: pointer;
                     object-fit: cover;
                     position: relative;
                     width: 300px;
@@ -692,6 +693,10 @@ Page création d'album
                 .next {
                     right: 0;
                     border-radius: 3px 0 0 3px;
+                }
+                
+                .prev {
+                    margin-left: 70px;
                 }
                 /* On hover, add a black background color with a little bit see-through */
                 
