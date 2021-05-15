@@ -4,7 +4,10 @@ require '../php/ConnectDb.php';
 if ($_GET['id'] != null) {
     $_SESSION['idAlbum'] = $_GET['id'];
     $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
+    
 }
+
+$i = 1; //compteur pour connaitre l'index des images dans une table
 ?>
 
 <!DOCTYPE html>
@@ -123,14 +126,23 @@ if ($_GET['id'] != null) {
                     $idAlbum = $_SESSION['idAlbum'];
                     $sql_afficher_photos = "SELECT * FROM photo p join photo_album pa on p.id_photo = pa.fk_id_photo where pa.fk_id_album = $idAlbum";
                     $res = mysqli_query($db, $sql_afficher_photos);
+                    $res2 = mysqli_query($db, $sql_afficher_photos);
                     $idPhoto = false;
                     if (mysqli_num_rows($res) > 0) {
                         while ($row = mysqli_fetch_assoc($res)) {
                             $idPhoto = $row['id_photo'];
                             $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
-                            echo '<a href=photo-zoom?idPhoto=' . $idPhoto . '>
-                        <img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery img"/>
-                        </a>';
+                            echo '<div>';
+                    echo '<img id = "image" onclick="openModal();currentSlide(' . $i . ')"  src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery img"/>';
+                    echo '</div>';
+
+                    if ($i == mysqli_num_rows($res)) {
+
+                        $i = 1;
+                    } else {
+
+                        $i++;
+                    }
                         }
                         if ($idAlbum) {
                             $_SESSION['idPhoto'] = $idPhoto;
@@ -173,6 +185,150 @@ if ($_GET['id'] != null) {
                 </form>
 
             </div>
+
+            <div id="myModal" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+
+
+            <?php
+
+            if (mysqli_num_rows($res2) > 0) {
+                while ($row = mysqli_fetch_assoc($res2)) {
+                    echo '<div class="mySlides">';
+                    $idPhoto = $row['id_photo'];
+                    echo '<img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "style=width:100%">';
+                    echo '</div>';
+                }
+            }
+            ?>
+
+
+<!--SECTION COMMENTAIRE WOWOWOWOWO-->
+<div class="section-commentaires">
+
+<div class="message">
+      <form method="post" action="../php/gererCommentaire.php">
+        <input type="hidden" name="idPhoto" value="<?php echo $idPhoto; ?>"></input>
+        <input name="ajouter-commentaire" type="text" placeholder="Écrire un commentaire..." maxlength="60">
+      </form>
+    </div>
+
+    <div class="commentaire">
+    <?php
+    $sql = "SELECT fk_id_auteur,message,id_commentaire FROM commentaire where fk_id_photo = $idPhoto ";
+    $result = mysqli_query($db, $sql);
+    while ($row =  mysqli_fetch_array($result)) {
+      $idAuteur = $row['fk_id_auteur'];
+      $idCommentaire = $row['id_commentaire'];
+      $commentaire = $row['message'];
+      $requete = "SELECT nom,prenom FROM utilisateur WHERE id_utilisateur = $idAuteur";
+      $exec_requete = mysqli_query($db, $requete);
+      $reponse      = mysqli_fetch_assoc($exec_requete);
+      $nom = $reponse['nom'];
+      $prenom = $reponse['prenom'];
+      echo "
+          <div class=commentaires>
+          <i>$prenom, $nom</i>";
+      if ($idAuteur == $_SESSION['idUtilisateur']) {
+        echo "
+          <form action='../php/gererCommentaire.php' method='post'> 
+          <input type='submit' name='submit-supprimer' class='button-supprimer' value=Supprimer></input>
+          <input  type='hidden' name='idPhoto' value='$idPhoto'/>
+          <input  type='hidden' name='idCommentaire' value='$idCommentaire'/>
+          </from>";
+      }
+
+      echo "<br/>
+          <h7>$commentaire</h7>
+          <hr></hr>
+          </div>";
+    }
+    ?>
+    </div>
+    
+
+  </div>
+
+  <?php
+
+  if (isset($_POST['confirm'])) {
+    $sql = "DELETE FROM photo where id_photo like $idPhoto";
+    // Execute query
+    if (mysqli_query($db, $sql)) {
+      $page = $_SESSION['urlPrecedent'];
+
+
+      //pour l'historique
+      $idalbum = $rep['fk_id_album'];
+      $sqlAlbum = "SELECT nom, fk_id_galerie FROM album WHERE id_album = $idalbum";
+      $resAlbum = mysqli_query($db, $sqlAlbum);
+      $repAlbum = mysqli_fetch_array($resAlbum);
+      $nomAlbum = $repAlbum['nom'];
+      $idGalerie = $repAlbum['fk_id_galerie'];
+      $sqlGalerie = "SELECT nom FROM galerie WHERE id_galerie = $idGalerie";
+      $resGalerie = mysqli_query($db, $sqlGalerie);
+      $repGalerie = mysqli_fetch_array($resGalerie);
+      $nomGalerie = $repGalerie['nom'];
+
+      $sqlHistorique = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à supprimé une photo dans $nomAlbum($nomGalerie)', curdate())";
+      mysqli_query($db, $sqlHistorique);
+      echo "<br/>YAY.";
+      echo "<script> document.getElementsByClassName('.bg-popup').style.display = 'none'; </script>";
+      echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
+    } else {
+      echo "<br/>NOOO.";
+    }
+  }
+
+  ?>
+
+
+        </div>
+        <!-- Next/previous controls -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+
+
+    <script>
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+
+        }
+    </script>
 
 
 
