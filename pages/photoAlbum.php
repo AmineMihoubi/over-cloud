@@ -220,8 +220,9 @@ if (mysqli_num_rows($res2) > 0) {
                   echo "
                     <form action='../php/gererCommentaire.php' method='post'> 
                     <input type='submit' name='submit-supprimer' class='button-supprimer' value=Supprimer></input>
-                    <input  type='hidden' name='idPhoto' value='$idPhoto'/>
-                    <input  type='hidden' name='idCommentaire' value='$idCommentaire'/>
+                    <input type='hidden' name='idPhoto' value='$idPhoto'/>
+                    <input type='hidden' name='idAlbum' value='$idAlbum'/>
+                    <input type='hidden' name='idCommentaire' value='$idCommentaire'/>
                     </from>
                       ";
                 }
