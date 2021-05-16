@@ -16,7 +16,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
 
 <body>
 
-  <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <div class="container">
     <form action="nouvelle-galerie-nom.php" method="POST">
 
       <div>
@@ -24,7 +24,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
         <br /><br />
       </div>
 
-      <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+      <div class="container">
         <label>Nom de la gallerie</label>
         <br /><br /><br /><br />
         <br /><br /><br /><br />
@@ -32,7 +32,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
         <br /><br />
       </div>
 
-      <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+      <div class="container">
         <button type="submit" class="button" name="Submit">Suivant</button>
       </div>
 

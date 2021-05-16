@@ -17,9 +17,9 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
 
 <body>
 
-    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+    <div class="container">
 
-        <div>
+        <div style="margin-top: 0;">
             <h1>Comment allez-vous utiliser Overcloud?</h1>
             <br></br>
         </div>
@@ -45,7 +45,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
                 </div>
             </div>
 
-            <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+            <div class="container">
                 <button class="button" type="submit" name="Submit">Suivant</button>
             </div>
 
