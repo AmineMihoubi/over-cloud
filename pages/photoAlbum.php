@@ -191,17 +191,60 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
         <div class="modal-content">
 
 
-            <?php
+        <?php
 
-            if (mysqli_num_rows($res2) > 0) {
-                while ($row = mysqli_fetch_assoc($res2)) {
-                    echo '<div class="mySlides">';
-                    $idPhoto = $row['id_photo'];
-                    echo '<img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "style=width:100%">';
-                    echo '</div>';
+if (mysqli_num_rows($res2) > 0) {
+    while ($row = mysqli_fetch_assoc($res2)) {
+        echo '<div class="mySlides">';
+        $idPhoto = $row['id_photo'];
+        echo '<img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "style=width:100%">';
+        /**Section commentaire */
+        echo '<div class="section-commentaires">
+             ';
+
+              $sql3 = "SELECT fk_id_auteur,message,id_commentaire FROM commentaire where fk_id_photo = $idPhoto ";
+              $result3 = mysqli_query($db, $sql3);
+              while ($row3 =  mysqli_fetch_array($result3)) {
+                $idAuteur = $row3['fk_id_auteur'];
+                $idCommentaire = $row3['id_commentaire'];
+                $commentaire = $row3['message'];
+                $requete = "SELECT nom,prenom FROM utilisateur WHERE id_utilisateur = $idAuteur";
+                $exec_requete = mysqli_query($db, $requete);
+                $reponse      = mysqli_fetch_assoc($exec_requete);
+                $nom = $reponse['nom'];
+                $prenom = $reponse['prenom'];
+                echo "
+                    <div class=commentaire>
+                    <i class='nom'>$prenom, $nom</i>";
+                if ($idAuteur == $_SESSION['idUtilisateur']) {
+                  echo "
+                    <form action='../php/gererCommentaire.php' method='post'> 
+                    <input type='submit' name='submit-supprimer' class='button-supprimer' value=Supprimer></input>
+                    <input  type='hidden' name='idPhoto' value='$idPhoto'/>
+                    <input  type='hidden' name='idCommentaire' value='$idCommentaire'/>
+                    </from>
+                      ";
                 }
-            }
-            ?>
+                echo "
+                     <br/>
+                     <h7 class='comm'>$commentaire</h7>
+                     </div>
+                     ";
+              }
+
+        echo "
+        </div>
+        <div class='message'>
+        <form method='post' action='../php/gererCommentaire.php'>
+        <textarea id='textAreaPost' name='commentaire' placeholder='Écrire un commentaire...' maxlength='60'></textarea>
+        <input type='hidden' name='idPhoto' value='$idPhoto'></input>
+        <input name='submit-envoyer' type='submit' class='button-envoyer' placeholder='Envoyer votre commentaire'>
+        </form>
+        </div>
+        </div>";
+    }
+}
+?>
 
 
 
