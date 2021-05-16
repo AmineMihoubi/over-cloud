@@ -11,7 +11,6 @@ $idPhoto = $_POST['idPhoto'];
 
 $sql = "DELETE FROM commentaire WHERE id_commentaire = $idCommentaire";
 mysqli_query($db,$sql);
-mysqli_close($db);
 header("Refresh: 0.001; ../pages/photos.php");
 
 
@@ -24,9 +23,8 @@ header("Refresh: 0.001; ../pages/photos.php");
         $idUtilisateur = $_SESSION['idUtilisateur'];
 
         
-        $sql = "INSERT INTO commentaire (fk_id_auteur,fk_id_photo,message) VALUES ('".$idUtilisateur."','".$idPhoto."', '".$text." )";
+        $sql = "INSERT INTO commentaire (fk_id_auteur,fk_id_photo,message) VALUES ('".$idUtilisateur."','".$idPhoto."', '".$text."' )";
         mysqli_query($db,$sql);
-        mysqli_close($db);
         header("Refresh: 0.001; ../pages/photos.php");
     }
 

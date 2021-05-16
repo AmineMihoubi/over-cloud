@@ -117,8 +117,8 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                             $nom = $reponse['nom'];
                             $prenom = $reponse['prenom'];
                             echo "
-                                <div class=commentaires>
-                                <i>$prenom, $nom</i>";
+                                <div class=commentaire>
+                                <i class='nom'>$prenom, $nom</i>";
                             if ($idAuteur == $_SESSION['idUtilisateur']) {
                               echo "
                                 <form action='../php/gererCommentaire.php' method='post'> 
@@ -130,8 +130,7 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                             }
                             echo "
                                  <br/>
-                                 <h7>$commentaire</h7>
-                                 <hr></hr>
+                                 <h7 class='comm'>$commentaire</h7>
                                  </div>
                                  ";
                           }
@@ -142,7 +141,7 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                     <form method='post' action='../php/gererCommentaire.php'>
                     <textarea id='textAreaPost' name='commentaire' placeholder='Écrire un commentaire...' maxlength='60'></textarea>
                     <input type='hidden' name='idPhoto' value='$idPhoto'></input>
-                    <input name='submit-envoyer' type='submit' placeholder='Envoyer votre commentaire'>
+                    <input name='submit-envoyer' type='submit' class='button-envoyer' placeholder='Envoyer votre commentaire'>
                     </form>
                     </div>
                     </div>";

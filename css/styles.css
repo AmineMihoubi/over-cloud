@@ -717,18 +717,42 @@ Parametres utilisateurs
                 }
                 
                 .commentaire {
-                    width: 900px;
                     background-color: white;
-                    border-radius: 4px;
+                    height: 100px;
                     box-shadow: 10px 10px 5px #aaaaaa;
                     color: black;
+                    border: 1px solid black;
+                }
+
+                .commentaire .nom{
+                    float: left;
+                    color: blueviolet;
+                    cursor: default;
+                    text-decoration : underline
+                    
+                }
+
+                .commentaire .comm {
+                    float: left;
+                    margin-top: 10px;
                 }
                 
+                .commentaire .button-supprimer:hover {
+                    background-color: rgb(209, 73, 73);
+
+                }
+
+                .message .button-envoyer:hover {
+                    background-color: rgb(73, 209, 141);
+
+                }
+
+
                 .message {
                     width: 600px;
-                    height: 145px;
+                    height: 148px;
                     font-size: 13px;
-                    background-color: #e5e8ed;
+                    background-color: #ddd;
                 }
 
                 .message textarea {
@@ -738,10 +762,11 @@ Parametres utilisateurs
                 }
 
                 .message input {
-                    margin-top: -3px;
-                    height: 5px;
+                    margin-top: -5px;
+                    height: 30px;
                     width: 99%;
-                    font-size: smaller;
+                    font-size: small;
+                    border-radius: unset;
                 }
                 
                 .message form:focus {

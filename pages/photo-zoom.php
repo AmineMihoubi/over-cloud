@@ -73,7 +73,7 @@ $idPhoto = $_GET['idPhoto'];
       $nom = $reponse['nom'];
       $prenom = $reponse['prenom'];
       echo "
-          <div class=commentaires>
+          <div class=commentaire>
           <i>$prenom, $nom</i>";
       if ($idAuteur == $_SESSION['idUtilisateur']) {
         echo "
