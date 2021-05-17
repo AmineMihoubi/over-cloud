@@ -59,8 +59,14 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                     </a>
                 </li>
 
+<?php
+
+
+
+if($_SESSION['id_type_utilisateur'] ==0){
+    echo'
                 <li>
-                    <a onclick="document.getElementById('supprimer-album').style.display='block'">
+                    <a onclick="document.getElementById("supprimer-album").style.display="block"">
 
                         <div class="supprimer" style="margin-top:0;">
 
@@ -69,7 +75,9 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                         </div>
 
                     </a>
-                </li>
+                </li>';
+}
+                ?>
             </ul>
         </div>
 

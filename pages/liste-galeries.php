@@ -80,7 +80,7 @@ $db = ConnectDb::getInstance();
             <div class="display">
 
                 <?php
-                $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}' AND fk_id_type_utilisateur = 1);";
+                $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}' AND fk_id_type_utilisateur = 0);";
                 $result = mysqli_query($db, $sql);
                 $idGalerie = false;
                 while ($row =  mysqli_fetch_array($result)) {

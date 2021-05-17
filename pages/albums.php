@@ -6,13 +6,15 @@ if ($_GET['id'] != null) {
   $_SESSION['idGalerie'] = $_GET['id'];
   $id = $_SESSION['idGalerie'];
   $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
+  $idUtilisateur = $_SESSION['idUtilisateur'];
 
 
 
-  $requeteTypeUtilisateur = "SELECT fk_id_type_utilisateur FROM utilisateur_galerie WHERE fk_id_galerie = '$id'";
+  $requeteTypeUtilisateur = "SELECT fk_id_type_utilisateur FROM utilisateur_galerie WHERE fk_id_galerie = '$id' AND fk_id_utilisateur = '$idUtilisateur'";
   $exec_requete = mysqli_query($db,$requeteTypeUtilisateur);
   $reponse      = mysqli_fetch_assoc($exec_requete);
   $_SESSION['id_type_utilisateur'] = $reponse['fk_id_type_utilisateur'];
+  echo $_SESSION['id_type_utilisateur'];
 
 
 

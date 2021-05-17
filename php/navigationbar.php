@@ -47,7 +47,7 @@
 
               <?php
 
-              if($_SESSION['id_type_utilisateur'] =0){
+              if($_SESSION['id_type_utilisateur'] ==0){
 
               echo '
               <li>
