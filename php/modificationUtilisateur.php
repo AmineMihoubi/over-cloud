@@ -49,10 +49,11 @@ if ($password != "") {
       $sql = "UPDATE utilisateur SET mdp = '" . $password . "' where id_utilisateur = '" . $id_utilisateur . "'";
       mysqli_query($db, $sql);
    } else {
-      header('Location: ../pages/parametres-de-lutilisateur.php'); // Le mot de passe actuel est incorrect 
+      echo "<script>alert('Le mot de passe actuel est incorrect ');</script>";
+      header('Refresh: 0.001; ../pages/parametres-de-lutilisateur.php'); // Le mot de passe actuel est incorrect 
+      exit();
    }
 }
 
-mysqli_close($db);
 header('Refresh: 0.001; ../pages/parametres-de-lutilisateur.php');
 echo "<script>alert('Les changements ont été effectués ');</script>";
