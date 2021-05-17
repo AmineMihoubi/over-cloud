@@ -37,7 +37,7 @@ $db = ConnectDb::getInstance();
       if ($_SESSION['GallerieCreated'] === FALSE) {
         $id = $_SESSION['idUtilisateur'];
         $sql = "INSERT INTO galerie (nom,type,status) VALUES ('{$_SESSION['nouveauNomGalerie']}','{$_SESSION['TypeGalerie']}', '{$_SESSION['StatusGalerie']}');";
-        $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
+        $sql2 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$_SESSION['idUtilisateur']}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),0);";
         $res = mysqli_query($db, $sql);
         if ($res === TRUE) {
           $_SESSION['last_Id'] = $db->insert_id;
@@ -62,7 +62,7 @@ $db = ConnectDb::getInstance();
                 $idUserInvited = $row['id_utilisateur'];
                 //echo '<script>console.log("User Id is: ' . $idUserInvited . '");</script>';
                 if ($idUserInvited != $_SESSION['idUtilisateur']) {
-                  $sql4 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$idUserInvited}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),2);";
+                  $sql4 = "INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie, fk_id_type_utilisateur) VALUES ('{$idUserInvited}', (SELECT id_galerie from galerie order by id_galerie desc limit 1),1);";
                   mysqli_query($db, $sql4);
                 }
               }
