@@ -11,13 +11,10 @@ if ($_GET['id'] != null) {
 
 
   $requeteTypeUtilisateur = "SELECT fk_id_type_utilisateur FROM utilisateur_galerie WHERE fk_id_galerie = '$id' AND fk_id_utilisateur = '$idUtilisateur'";
-  $exec_requete = mysqli_query($db,$requeteTypeUtilisateur);
+  $exec_requete = mysqli_query($db, $requeteTypeUtilisateur);
   $reponse      = mysqli_fetch_assoc($exec_requete);
   $_SESSION['id_type_utilisateur'] = $reponse['fk_id_type_utilisateur'];
   echo $_SESSION['id_type_utilisateur'];
-
-
-
 }
 ?>
 
@@ -45,8 +42,8 @@ if ($_GET['id'] != null) {
     if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
       header('Location: ../index.php');
     }
-?>
-    
+    ?>
+
     <div class="container">
       <?php
 
@@ -84,7 +81,7 @@ if ($_GET['id'] != null) {
 
       <div class="display">
         <?php
-        
+
         $sql = "SELECT id_album, nom FROM album where fk_id_galerie = '$id'";
         $result = mysqli_query($db, $sql);
         $idAlbum = false;
@@ -107,7 +104,7 @@ if ($_GET['id'] != null) {
           echo '0 Album';
         }
         ?>
-        <a href='creation-album.php'>
+        <a onclick="document.getElementById('creation-album').style.display='block'">
           <div class=creation>
             <h1>+</h1>
           </div>
@@ -115,8 +112,25 @@ if ($_GET['id'] != null) {
 
       </div>
     </div>
+
+
+
+
+
+    <div id=creation-album class="popup">
+      <form class="popup-content" action="../php/validerCreationAlbum.php" method="POST">
+        <div class="popup-container">
+          <h1>Donnez un nom à votre album</h1>
+          <div class="popup-buttons">
+            <input type="text" placeholder="Le nom de l'album" name="nom">
+            <input type="submit"  name="submit" value="Valider la création">
+          </div>
+        </div>
+        </from>
+    </div>
+
   </div>
 
-  
+
 
 </body>

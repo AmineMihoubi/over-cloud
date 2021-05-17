@@ -29,7 +29,8 @@
                 }
                 
                 .accueil form input[type=text],
-                input[type=password] {
+                input[type=password],
+                .popup-buttons input[type=text] {
                     width: 76%;
                     color: rgb(38, 50, 56);
                     font-weight: 700;
@@ -48,7 +49,8 @@
                 }
                 
                 .accueil form input[type=text]:focus,
-                input[type=password]:focus {
+                input[type=password]:focus,
+                .popup-buttons input[type=text]:focus {
                     border: 2px solid rgba(0, 0, 0, 0.18) !important;
                 }
                 

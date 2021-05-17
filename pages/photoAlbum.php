@@ -366,7 +366,7 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                         if (mysqli_query($db, $sql2)) {
                             $page = $_SESSION['urlPrecedent'];
                             echo "<br/>YAY.";
-                            echo "<script> window.location.replace('$page'); </script>";
+                            echo "<script> window.location.replace('albums.php?id=$idGalerie'); </script>";
                         } else {
                             echo "<br/>NOOO2.";
                         }
@@ -383,10 +383,9 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                     $sql2 = "DELETE FROM album where id_album like $idAlbum";
                     // Execute query
                     if (mysqli_query($db, $sql2)) {
-                        $page = $_SESSION['urlPrecedent'];
                         echo "<br/>YAY.";
 
-                        echo "<script> window.location.replace('$page'); </script>";
+                        echo "<script> window.location.replace('albums.php?id=$idGalerie'); </script>";
                     } else {
                         echo "<br/>NOOO.";
                     }
