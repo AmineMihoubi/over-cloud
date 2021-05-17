@@ -45,14 +45,20 @@
                 </a>
               </li>
 
+              <?php
+
+              if($_SESSION['id_type_utilisateur'] ==0){
+
+              echo '
               <li>
                 <a href="parametres-de-la-galerie.php">
                   <i class="fa fa-gear fa-2x"></i>
 
                   <span class="nav-text">Paramètres</span></a>
               </li>
-              <!--<li><a href="">Participants</a></li>-->
               
+              ';}
+              ?>
 
             </ul>
 

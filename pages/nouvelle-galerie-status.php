@@ -30,7 +30,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
             <div>
                 <div class="card">
                     <input type="radio" name="StatusGalerie" value="1" checked>
-                    <label for="seule">
+                    <label for="prive">
                         <h5>Privée</h5>
                         <h2><img src="../image/Private-Icon.png" width="250" height="200"></h2>
                     </label>
@@ -38,7 +38,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
 
                 <div class="card">
                     <input type="radio" name="StatusGalerie" value="0">
-                    <label for="groupe">
+                    <label for="publique">
                         <h5>Publique</h5>
                         <h2><img src="../image/Public-Icon.png" width="250" height="200"></h2>
                     </label>

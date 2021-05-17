@@ -46,9 +46,8 @@ CREATE TABLE `Commentaire` (
 );
 
 CREATE TABLE `Type_utilisateur` (
-	`id_type_utilisateur` INT(3) NOT NULL AUTO_INCREMENT,
-	`nom` varchar(15) NOT NULL UNIQUE,
-	PRIMARY KEY (`id_type_utilisateur`)
+	`id_type_utilisateur` INT(1),
+	`nom` varchar(15)
 );
 
 CREATE TABLE `Administrateur` (
@@ -78,6 +77,9 @@ CREATE TABLE `Photo_Album`(
 	`fk_id_photo` int(20) not null,
 	`fk_id_album` int(20) not null
 );
+
+INSERT INTO `Type_utilisateur` VALUES(0, 'Artist');
+INSERT INTO `Type_utilisateur` VALUES(1, 'Spectateur');
 
 ALTER TABLE `Utilisateur_Galerie` ADD CONSTRAINT `Utilisateur_Galerie_fk0` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`);
 

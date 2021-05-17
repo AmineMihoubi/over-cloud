@@ -1,9 +1,23 @@
 <?php
 session_start();
 require '../php/ConnectDb.php';
+$db = ConnectDb::getInstance();
 if ($_GET['id'] != null) {
   $_SESSION['idGalerie'] = $_GET['id'];
+  $id = $_SESSION['idGalerie'];
   $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
+  $idUtilisateur = $_SESSION['idUtilisateur'];
+
+
+
+  $requeteTypeUtilisateur = "SELECT fk_id_type_utilisateur FROM utilisateur_galerie WHERE fk_id_galerie = '$id' AND fk_id_utilisateur = '$idUtilisateur'";
+  $exec_requete = mysqli_query($db,$requeteTypeUtilisateur);
+  $reponse      = mysqli_fetch_assoc($exec_requete);
+  $_SESSION['id_type_utilisateur'] = $reponse['fk_id_type_utilisateur'];
+  echo $_SESSION['id_type_utilisateur'];
+
+
+
 }
 ?>
 
@@ -31,17 +45,11 @@ if ($_GET['id'] != null) {
     if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
       header('Location: ../index.php');
     }
-
-    if ($_GET['id'] != null) {
-      $_SESSION['idGalerie'] = $_GET['id'];
-    }
-    ?>
-
+?>
+    
     <div class="container">
       <?php
-      $id = $_SESSION['idGalerie'];
-      //echo '<script type="text/javascript">alert("Id galery is: ' . $id . '");</script>';
-      $db = ConnectDb::getInstance();
+
 
       $typeSql = "SELECT * FROM galerie where id_galerie = '$id'";
       $resultType = mysqli_query($db, $typeSql);
@@ -76,7 +84,7 @@ if ($_GET['id'] != null) {
 
       <div class="display">
         <?php
-        $id = $_SESSION['idGalerie'];
+        
         $sql = "SELECT id_album, nom FROM album where fk_id_galerie = '$id'";
         $result = mysqli_query($db, $sql);
         $idAlbum = false;
@@ -108,5 +116,7 @@ if ($_GET['id'] != null) {
       </div>
     </div>
   </div>
+
+  
 
 </body>
