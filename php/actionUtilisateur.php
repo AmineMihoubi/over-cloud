@@ -34,8 +34,8 @@ if (isset($_POST['supprimerGalerie'])) {
   $sql1 = "DELETE FROM utilisateur_galerie where fk_id_galerie = '" . $idGalerie . "'";
   mysqli_query($db, $sql1);
 
-  $description = "Supprime la galerie '" . $galerieName . "'";
-  $sqlChangement = "INSERT INTO administrateur_changement (id_administrateur,description,date) VALUES ('" . $idAdmin . "','" . $description . "','" . $date . "')";
+  $description = "Supprime la galerie : $galerieName";
+  $sqlChangement = "INSERT INTO administrateur_changement (id_administrateur,description,date) VALUES ('" . $idAdmin . "','".$description."','" . $date . "')";
   mysqli_query($db, $sqlChangement);
 
   //echo '<script>alert("Ajout dans les logs ce qui a été fait")</script>';
