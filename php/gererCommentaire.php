@@ -2,7 +2,7 @@
 require 'ConnectDb.php';
 session_start();
 $db = ConnectDb::getInstance(); 
-$idAlbum = $_POST['idAlbum'];
+
 
 if ($_POST['submit-supprimer']) {
 $idCommentaire = $_POST['idCommentaire'];
@@ -13,7 +13,7 @@ $sql = "DELETE FROM commentaire WHERE id_commentaire = $idCommentaire";
 mysqli_query($db,$sql);
 }
 
-if ($_POST['submit-envoyer']) {
+else if ($_POST['submit-envoyer']) {
         $text = mysqli_real_escape_string($db,htmlspecialchars($_POST['commentaire']));   
         $idPhoto = $_POST['idPhoto'];
         $idUtilisateur = $_SESSION['idUtilisateur'];

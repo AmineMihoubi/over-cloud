@@ -4,7 +4,6 @@ require '../php/ConnectDb.php';
 if ($_GET['id'] != null) {
     $_SESSION['idAlbum'] = $_GET['id'];
     $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
-    
 }
 
 $i = 1; //compteur pour connaitre l'index des images dans une table
@@ -26,7 +25,7 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
         <div id=navigationBar></div>
         <script>
             $(function() {
-                $("#navigationBar").load("navigationbar.php");
+                $("#navigationBar").load("../php/navigationbar.php");
             });
         </script>
 
@@ -50,7 +49,7 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
         <!--Barre d'actions-->
 
 
-        <div class="actionsbar-container" >
+        <div class="actionsbar-container">
             <ul>
                 <li>
                     <a onclick="document.getElementById('ajouter-photos').style.display='block'">
@@ -133,16 +132,16 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                             $idPhoto = $row['id_photo'];
                             $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
                             echo '<div>';
-                    echo '<img id = "image" onclick="openModal();currentSlide(' . $i . ')"  src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery img"/>';
-                    echo '</div>';
+                            echo '<img id = "image" onclick="openModal();currentSlide(' . $i . ')"  src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "class=gallery img"/>';
+                            echo '</div>';
 
-                    if ($i == mysqli_num_rows($res)) {
+                            if ($i == mysqli_num_rows($res)) {
 
-                        $i = 1;
-                    } else {
+                                $i = 1;
+                            } else {
 
-                        $i++;
-                    }
+                                $i++;
+                            }
                         }
                         if ($idAlbum) {
                             $_SESSION['idPhoto'] = $idPhoto;
@@ -159,7 +158,10 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
 
             <!--petit fenetre pour ajouter des photos-->
             <div id="ajouter-photos" class="popup">
-                <span onclick="document.getElementById('ajouter-photos').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div>
+                <img src="../image/delete-icon.png" width="100px" height="100px">
+                    <span onclick="document.getElementById('ajouter-photos').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
                 <form class="popup-content" method="POST" action="" enctype="multipart/form-data">
                     <div class="popup-container">
                         <h1>AJOUTER PHOTOS</h1>
@@ -187,37 +189,37 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
             </div>
 
             <div id="myModal" class="modal">
-        <span class="close cursor" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
+                <span class="close cursor" onclick="closeModal()">&times;</span>
+                <div class="modal-content">
 
 
-        <?php
+                    <?php
 
-if (mysqli_num_rows($res2) > 0) {
-    while ($row = mysqli_fetch_assoc($res2)) {
-        echo '<div class="mySlides">';
-        $idPhoto = $row['id_photo'];
-        echo '<img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "style=width:100%">';
-        /**Section commentaire */
-        echo '<div class="section-commentaires">
+                    if (mysqli_num_rows($res2) > 0) {
+                        while ($row = mysqli_fetch_assoc($res2)) {
+                            echo '<div class="mySlides">';
+                            $idPhoto = $row['id_photo'];
+                            echo '<img id = "image" src="data:../image/jpeg;base64,' . base64_encode($row["photo"]) . ' "style=width:100%">';
+                            /**Section commentaire */
+                            echo '<div class="section-commentaires">
              ';
 
-              $sql3 = "SELECT fk_id_auteur,message,id_commentaire FROM commentaire where fk_id_photo = $idPhoto ";
-              $result3 = mysqli_query($db, $sql3);
-              while ($row3 =  mysqli_fetch_array($result3)) {
-                $idAuteur = $row3['fk_id_auteur'];
-                $idCommentaire = $row3['id_commentaire'];
-                $commentaire = $row3['message'];
-                $requete = "SELECT nom,prenom FROM utilisateur WHERE id_utilisateur = $idAuteur";
-                $exec_requete = mysqli_query($db, $requete);
-                $reponse      = mysqli_fetch_assoc($exec_requete);
-                $nom = $reponse['nom'];
-                $prenom = $reponse['prenom'];
-                echo "
+                            $sql3 = "SELECT fk_id_auteur,message,id_commentaire FROM commentaire where fk_id_photo = $idPhoto ";
+                            $result3 = mysqli_query($db, $sql3);
+                            while ($row3 =  mysqli_fetch_array($result3)) {
+                                $idAuteur = $row3['fk_id_auteur'];
+                                $idCommentaire = $row3['id_commentaire'];
+                                $commentaire = $row3['message'];
+                                $requete = "SELECT nom,prenom FROM utilisateur WHERE id_utilisateur = $idAuteur";
+                                $exec_requete = mysqli_query($db, $requete);
+                                $reponse      = mysqli_fetch_assoc($exec_requete);
+                                $nom = $reponse['nom'];
+                                $prenom = $reponse['prenom'];
+                                echo "
                     <div class=commentaire>
                     <i class='nom'>$prenom, $nom</i>";
-                if ($idAuteur == $_SESSION['idUtilisateur']) {
-                  echo "
+                                if ($idAuteur == $_SESSION['idUtilisateur']) {
+                                    echo "
                     <form action='../php/gererCommentaire.php' method='post'> 
                     <input type='submit' name='submit-supprimer' class='button-supprimer' value=Supprimer></input>
                     <input type='hidden' name='idPhoto' value='$idPhoto'/>
@@ -225,15 +227,15 @@ if (mysqli_num_rows($res2) > 0) {
                     <input type='hidden' name='idCommentaire' value='$idCommentaire'/>
                     </from>
                       ";
-                }
-                echo "
+                                }
+                                echo "
                      <br/>
                      <h7 class='comm'>$commentaire</h7>
                      </div>
                      ";
-              }
+                            }
 
-        echo "
+                            echo "
         </div>
         <div class='message'>
         <form method='post' action='../php/gererCommentaire.php'>
@@ -243,59 +245,59 @@ if (mysqli_num_rows($res2) > 0) {
         </form>
         </div>
         </div>";
-    }
-}
-?>
+                        }
+                    }
+                    ?>
 
 
 
 
 
-        </div>
-        <!-- Next/previous controls -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <!-- Next/previous controls -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-    </div>
+            </div>
 
 
-    <script>
-        function openModal() {
-            document.getElementById("myModal").style.display = "block";
-        }
+            <script>
+                function openModal() {
+                    document.getElementById("myModal").style.display = "block";
+                }
 
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
+                function closeModal() {
+                    document.getElementById("myModal").style.display = "none";
+                }
 
-        var slideIndex = 1;
-        showSlides(slideIndex);
+                var slideIndex = 1;
+                showSlides(slideIndex);
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
 
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
 
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
+                function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    if (n > slides.length) {
+                        slideIndex = 1
+                    }
+                    if (n < 1) {
+                        slideIndex = slides.length
+                    }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
 
-            slides[slideIndex - 1].style.display = "block";
+                    slides[slideIndex - 1].style.display = "block";
 
-        }
-    </script>
+                }
+            </script>
 
 
 
@@ -306,13 +308,13 @@ if (mysqli_num_rows($res2) > 0) {
 
 
                     $image = addslashes(file_get_contents($_FILES['image']['tmp_name'][$count]));
-        
+
                     $sql = "INSERT INTO photo(photo,date,fk_id_galerie) VALUES ('$image',curdate(), '{$_SESSION['idGalerie']}')";
-        
+
                     $sql2 = "INSERT INTO photo_album(fk_id_photo,fk_id_album) VALUES (LAST_INSERT_ID(),'$idAlbum')";
-                
+
                     $sql3 = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à ajouté une photo dans $nomAlbum($nomGalerie)', curdate())";
-    
+
                     // Execute query
                     if (mysqli_query($db, $sql)) {
                         if (mysqli_query($db, $sql2)) {
@@ -325,13 +327,8 @@ if (mysqli_num_rows($res2) > 0) {
                     } else {
                         echo "<br/>NOOO.";
                     }
-                   header("Refresh: 0.001; photoAlbum.php?id=$idAlbum");
+                    header("Refresh: 0.001; photoAlbum.php?id=$idAlbum");
                 }
-
-
-                
-                
-                
             }
 
             if (isset($_POST['confirm'])) {

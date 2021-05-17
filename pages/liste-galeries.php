@@ -7,6 +7,7 @@ $db = ConnectDb::getInstance();
 <!doctype html>
 <html>
 
+
 <head>
     <meta charset="utf-8" />
     <!-- importer le fichier de style -->
@@ -98,7 +99,6 @@ $db = ConnectDb::getInstance();
                     $_SESSION['idGalerie'] = $idGalerie;
                     $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
                 } else {
-                   
                 }
 
                 ?>
@@ -123,19 +123,19 @@ $db = ConnectDb::getInstance();
         <div style="margin:50px; justify-content:center;">
             <div class="display">
                 <?php
-                $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}' AND fk_id_type_utilisateur = 2);";
+                $sql = "SELECT id_galerie,nom FROM galerie where id_galerie in (SELECT fk_id_galerie FROM `utilisateur_galerie` WHERE fk_id_utilisateur LIKE '{$_SESSION['idUtilisateur']}' AND fk_id_type_utilisateur = 1);";
                 $result = mysqli_query($db, $sql);
                 while ($row =  mysqli_fetch_array($result)) {
                     $idGalerie = $row['id_galerie'];
                     $nom = $row['nom'];
 
-                    echo " 
-             <div class='listeGalerie-card'>   
-             <a href='albums?id=$idGalerie'>
-             <img src='../image/galerieIcon.png' alt='Galerie' width ='120' height='100'>
-             <h4><b>$nom</b></h4> 
-             </a>
-             </div>";
+                    echo " <a href='albums?id=$idGalerie'>
+             <div class='card'>   
+             
+             <img src='../image/photo-frame.png' alt='Galerie' width ='120' height='100'>
+             <h3><b>$nom</b></h3> 
+             
+             </div></a>";
                 }
 
                 $_SESSION['urlPrecedent'] = $_SERVER['REQUEST_URI'];
