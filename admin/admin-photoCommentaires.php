@@ -19,16 +19,16 @@ $idPhoto = $_GET['idPhoto'];
 <body>
 
 
-    <!-- Bare de navigation !-->
-    <div id=navigationBar></div>
-    <script>
-        $(function() {
-            $("#navigationBar").load("navigationbar-admin.php");
-        });
-    </script>
+  <!-- Bare de navigation !-->
+  <div id=navigationBar></div>
+  <script>
+    $(function() {
+      $("#navigationBar").load("navigationbar-admin.php");
+    });
+  </script>
 
 
-    <div id=imageZoom>
+  <div id=imageZoom>
     <?php
     $sql = "select * from photo where id_photo = $idPhoto";
     $res = mysqli_query($db, $sql);
@@ -39,12 +39,11 @@ $idPhoto = $_GET['idPhoto'];
 
   <div id=section-commentaires>
     <?php
-    $sql = "SELECT fk_id_auteur,message,date,id_commentaire FROM commentaire where fk_id_photo = $idPhoto ";
+    $sql = "SELECT fk_id_auteur,message,id_commentaire FROM commentaire where fk_id_photo = $idPhoto ";
     $result = mysqli_query($db, $sql);
     while ($row =  mysqli_fetch_array($result)) {
       $idAuteur = $row['fk_id_auteur'];
       $commentaire = $row['message'];
-      $dateCommentaire =  date('d-m-Y', strtotime($row['date']));
       $idCommentaire = $row['id_commentaire'];
 
       $requete = "SELECT nom,prenom FROM utilisateur WHERE id_utilisateur = $idAuteur";
@@ -55,7 +54,7 @@ $idPhoto = $_GET['idPhoto'];
       echo "
           <div class=commentaires>
           <i>$prenom, $nom</i>
-          <i> / $dateCommentaire</i>
+          <i></i>
           <br></br>
           <h7>$commentaire</h5>
           <form action='../php/actionUtilisateur.php' method='post'> 
@@ -72,20 +71,20 @@ $idPhoto = $_GET['idPhoto'];
 
   <?php
 
-        if (isset($_POST['confirm'])) {
-            $sql = "DELETE FROM photo where id_photo like $idPhoto";
-            // Execute query
-            if (mysqli_query($db, $sql)) {
-              $page = $_SESSION['urlPrecedent'];
-                echo "<br/>YAY.";
-                echo "<script> document.getElementsByClassName('.bg-popup').style.display = 'none'; </script>";
-                echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
-            } else {
-                echo "<br/>NOOO.";
-            }
-        }
+  if (isset($_POST['confirm'])) {
+    $sql = "DELETE FROM photo where id_photo like $idPhoto";
+    // Execute query
+    if (mysqli_query($db, $sql)) {
+      $page = $_SESSION['urlPrecedent'];
+      echo "<br/>YAY.";
+      echo "<script> document.getElementsByClassName('.bg-popup').style.display = 'none'; </script>";
+      echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
+    } else {
+      echo "<br/>NOOO.";
+    }
+  }
 
-        ?>
+  ?>
 
   <script src="../js/popupscript.js"></script>
 </body>

@@ -6,3 +6,4 @@ INSERT INTO utilisateur(nom,prenom,mdp,courriel) VALUES ('Amenas','Assim','passw
 INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie,fk_id_type_utilisateur) VALUES ((SELECT id_utilisateur from utilisateur order by id_utilisateur desc limit 1),(SELECT id_galerie from galerie order by id_galerie desc limit 1),2);
 INSERT INTO utilisateur(nom,prenom,mdp,courriel) VALUES ('Eid','Luigi','password123','luigieid@gmail.com');
 INSERT INTO utilisateur_galerie(fk_id_utilisateur, fk_id_galerie,fk_id_type_utilisateur) VALUES ((SELECT id_utilisateur from utilisateur order by id_utilisateur desc limit 1),(SELECT id_galerie from galerie order by id_galerie desc limit 1),2);
+INSERT INTO administrateur(utilisateur,mdp) VALUES ('admin','123456');

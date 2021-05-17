@@ -8,7 +8,7 @@
 
 </head>
 
-<body  style="background-color: white;">
+<body style="background-color: white;">
 
 	<div class="accueil">
 
@@ -18,7 +18,7 @@
 
 
 		<div class="formulaire">
-		<img src="../image/logo-overcloud.png">
+			<img src="../image/logo-overcloud.png">
 			<h1>Bienvenue</h1>
 
 			<?php
@@ -55,7 +55,7 @@
 						$_SESSION['nomUtilisateur'] = $reponse['nom'];
 						$_SESSION['prenomUtilisateur'] = $reponse['prenom'];
 						echo "<script> location.href='../index.php'; </script>";
-					exit;
+						exit;
 					} else {
 						echo "Ce courriel est déjà utilisé!";
 					}
@@ -68,7 +68,7 @@
 
 			<form method="post">
 				<input type="text" name="mail" placeholder="E-mail">
-				<input type="text" style="color:#FFFFFF;" name="prenom" placeholder="Prénom">
+				<input type="text" name="prenom" placeholder="Prénom">
 				<input type="text" name="nom" placeholder="Nom">
 				<input type="password" name="pwd" placeholder="Mot de passe">
 				<input type="password" name="pwd2" placeholder="Confirmation">
