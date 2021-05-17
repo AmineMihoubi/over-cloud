@@ -375,17 +375,14 @@ Parametres utilisateurs
                     border-radius: 16px;
                 }
                 
-                .close {
-                    position: absolute;
-                    right: 35px;
-                    top: 15px;
+                .fermer {
                     font-size: 40px;
                     font-weight: bold;
                     color: #f1f1f1;
                 }
                 
-                .close:hover,
-                .close:focus {
+                .fermer:hover,
+                .fermer:focus {
                     color: #f44336;
                     cursor: pointer;
                 }
@@ -666,8 +663,10 @@ Parametres utilisateurs
                     margin-left: -200px;
                     float: left;
                 }
-
-                .mySlides img, .section-commentaires, .message{
+                
+                .mySlides img,
+                .section-commentaires,
+                .message {
                     display: inline-block;
                 }
                 /* Next & previous buttons */
@@ -723,15 +722,14 @@ Parametres utilisateurs
                     color: black;
                     border: 1px solid black;
                 }
-
-                .commentaire .nom{
+                
+                .commentaire .nom {
                     float: left;
                     color: blueviolet;
                     cursor: default;
-                    text-decoration : underline
-                    
+                    text-decoration: underline
                 }
-
+                
                 .commentaire .comm {
                     float: left;
                     margin-top: 10px;
@@ -739,28 +737,25 @@ Parametres utilisateurs
                 
                 .commentaire .button-supprimer:hover {
                     background-color: rgb(209, 73, 73);
-
                 }
-
+                
                 .message .button-envoyer:hover {
                     background-color: rgb(73, 209, 141);
-
                 }
-
-
+                
                 .message {
                     width: 600px;
                     height: 148px;
                     font-size: 13px;
                     background-color: #ddd;
                 }
-
+                
                 .message textarea {
                     width: 99%;
                     height: 110px;
                     resize: none;
                 }
-
+                
                 .message input {
                     margin-top: -5px;
                     height: 30px;

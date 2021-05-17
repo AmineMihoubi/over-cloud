@@ -59,24 +59,24 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                     </a>
                 </li>
 
-<?php
+                <?php
 
 
 
-if($_SESSION['id_type_utilisateur'] ==0){
-    echo'
+                if ($_SESSION['id_type_utilisateur'] == 0) {
+                    echo "
                 <li>
-                    <a onclick="document.getElementById("supprimer-album").style.display="block"">
+                    <a onclick=document.getElementById('supprimer-album').style.display='block'>
 
-                        <div class="supprimer" style="margin-top:0;">
+                        <div class=supprimer style=margin-top:0;>
 
-                            <img src="../image/delete-icon.png">
+                            <img src=../image/delete-icon.png>
 
                         </div>
 
                     </a>
-                </li>';
-}
+                </li>";
+                }
                 ?>
             </ul>
         </div>
@@ -166,10 +166,9 @@ if($_SESSION['id_type_utilisateur'] ==0){
 
             <!--petit fenetre pour ajouter des photos-->
             <div id="ajouter-photos" class="popup">
-                <div>
-                <img src="../image/delete-icon.png" width="100px" height="100px">
-                    <span onclick="document.getElementById('ajouter-photos').style.display='none'" class="close" title="Close Modal">&times;</span>
-                </div>
+
+                <span onclick="document.getElementById('ajouter-photos').style.display='none'" class="close" title="Close Modal">&times;</span>
+
                 <form class="popup-content" method="POST" action="" enctype="multipart/form-data">
                     <div class="popup-container">
                         <h1>AJOUTER PHOTOS</h1>
@@ -189,7 +188,7 @@ if($_SESSION['id_type_utilisateur'] ==0){
                     <div class="popup-container">
                         <h1>SUPPRIMER ALBUM?</h1>
                         <div class="popup-buttons">
-                            <input type="submit" name="confirm" value="Confirmer">
+                            <input type="submit" name="supprimer-album" value="Confirmer">
                         </div>
                     </div>
                 </form>
@@ -197,7 +196,33 @@ if($_SESSION['id_type_utilisateur'] ==0){
             </div>
 
             <div id="myModal" class="modal">
-                <span class="close cursor" onclick="closeModal()">&times;</span>
+                <div class="actionsbar-container" style="position:absolute; right: 35px;
+                    top: 15px;">
+                    <ul>
+
+                    <?php
+                    if ($_SESSION['id_type_utilisateur'] == 0) {
+                    echo"
+
+
+                        <li>
+                            <a onclick=document.getElementById('supprimer-photos').style.display='block'>
+                                <img src=../image/delete-icon.png width=26px height=26px style=margin-top:17px; margin-right:30px; cursor:pointer;>
+                            </a>
+                        </li>";}
+
+                        ?>
+
+                        <li>
+                            <a class="fermer" onclick="closeModal()">&times;</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+
                 <div class="modal-content">
 
 
@@ -260,6 +285,19 @@ if($_SESSION['id_type_utilisateur'] ==0){
 
 
 
+
+                </div>
+
+                <div id="supprimer-photos" class="popup">
+                    <span onclick="document.getElementById('supprimer-photos').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <form class="popup-content" method="POST" action="" enctype="multipart/form-data">
+                        <div class="popup-container">
+                            <h1>SUPPRIMER LA PHOTO?</h1>
+                            <div class="popup-buttons">
+                                <input type="submit" name="supprimer-photos" value="Confirmer">
+                            </div>
+                        </div>
+                    </form>
 
                 </div>
                 <!-- Next/previous controls -->
@@ -339,7 +377,7 @@ if($_SESSION['id_type_utilisateur'] ==0){
                 }
             }
 
-            if (isset($_POST['confirm'])) {
+            if (isset($_POST['supprimer-album'])) {
                 $sql = "DELETE FROM photo_album where fk_id_album like $idAlbum";
                 if (mysqli_query($db, $sql)) {
                     $sql2 = "DELETE FROM album where id_album like $idAlbum";
@@ -348,9 +386,31 @@ if($_SESSION['id_type_utilisateur'] ==0){
                         $page = $_SESSION['urlPrecedent'];
                         echo "<br/>YAY.";
 
-                        header("Refresh: 0.001; albums.php?id=$idGalerie");
+                        echo "<script> window.location.replace('$page'); </script>";
                     } else {
                         echo "<br/>NOOO.";
+                    }
+                }
+            }
+
+            if (isset($_POST['supprimer-photos'])) {
+                $sql = "DELETE FROM photo_album where fk_id_photo like $idPhoto";
+                if (mysqli_query($db, $sql)) {
+                    $sql2 = "DELETE FROM photo where id_photo like $idPhoto";
+                    // Execute query
+                    if (mysqli_query($db, $sql2)) {
+
+                        $sql3 = "DELETE FROM commentaire where fk_id_photo like $idPhoto";
+
+                        if (mysqli_query($db, $sql3)) {
+
+                            $page = $_SESSION['urlPrecedent'];
+                            echo "<br/>YAY.";
+
+                            echo "<script> window.location.replace('$page'); </script>";
+                        } else {
+                            echo "<br/>NOOO.";
+                        }
                     }
                 }
             }

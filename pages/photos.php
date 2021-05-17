@@ -90,7 +90,28 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
 
 
     <div id="myModal" class="modal">
-        <span class="close cursor" onclick="closeModal()">&times;</span>
+
+        <div class="actionsbar-container" style="position:absolute; right: 35px;
+                    top: 15px;">
+            <ul>
+            <?php
+                    if ($_SESSION['id_type_utilisateur'] == 0) {
+                    echo"
+
+
+                        <li>
+                            <a onclick=document.getElementById('supprimer-photos').style.display='block'>
+                                <img src=../image/delete-icon.png width='26px' height='26px' style='margin-top:17px; margin-right:30px; cursor:pointer';>
+                            </a>
+                        </li>";}
+
+                        ?>
+
+                <li>
+                    <a class="fermer" onclick="closeModal()">&times;</a>
+                </li>
+            </ul>
+        </div>
         <div class="modal-content">
 
 
@@ -105,35 +126,35 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
                     echo '<div class="section-commentaires">
                          ';
 
-                          $sql3 = "SELECT fk_id_auteur,message,id_commentaire FROM commentaire where fk_id_photo = $idPhoto ";
-                          $result3 = mysqli_query($db, $sql3);
-                          while ($row3 =  mysqli_fetch_array($result3)) {
-                            $idAuteur = $row3['fk_id_auteur'];
-                            $idCommentaire = $row3['id_commentaire'];
-                            $commentaire = $row3['message'];
-                            $requete = "SELECT nom,prenom FROM utilisateur WHERE id_utilisateur = $idAuteur";
-                            $exec_requete = mysqli_query($db, $requete);
-                            $reponse      = mysqli_fetch_assoc($exec_requete);
-                            $nom = $reponse['nom'];
-                            $prenom = $reponse['prenom'];
-                            echo "
+                    $sql3 = "SELECT fk_id_auteur,message,id_commentaire FROM commentaire where fk_id_photo = $idPhoto ";
+                    $result3 = mysqli_query($db, $sql3);
+                    while ($row3 =  mysqli_fetch_array($result3)) {
+                        $idAuteur = $row3['fk_id_auteur'];
+                        $idCommentaire = $row3['id_commentaire'];
+                        $commentaire = $row3['message'];
+                        $requete = "SELECT nom,prenom FROM utilisateur WHERE id_utilisateur = $idAuteur";
+                        $exec_requete = mysqli_query($db, $requete);
+                        $reponse      = mysqli_fetch_assoc($exec_requete);
+                        $nom = $reponse['nom'];
+                        $prenom = $reponse['prenom'];
+                        echo "
                                 <div class=commentaire>
                                 <i class='nom'>$prenom, $nom</i>";
-                            if ($idAuteur == $_SESSION['idUtilisateur']) {
-                              echo "
+                        if ($idAuteur == $_SESSION['idUtilisateur']) {
+                            echo "
                                 <form action='../php/gererCommentaire.php' method='post'> 
                                 <input type='submit' name='submit-supprimer' class='button-supprimer' value=Supprimer></input>
                                 <input  type='hidden' name='idPhoto' value='$idPhoto'/>
                                 <input  type='hidden' name='idCommentaire' value='$idCommentaire'/>
                                 </from>
                                   ";
-                            }
-                            echo "
+                        }
+                        echo "
                                  <br/>
                                  <h7 class='comm'>$commentaire</h7>
                                  </div>
                                  ";
-                          }
+                    }
 
                     echo "
                     </div>
@@ -149,42 +170,79 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
             }
             ?>
 
-  <?php
+            <?php
 
-  if (isset($_POST['confirm'])) {
-    $sql = "DELETE FROM photo where id_photo like $idPhoto";
-    // Execute query
-    if (mysqli_query($db, $sql)) {
-      $page = $_SESSION['urlPrecedent'];
+            if (isset($_POST['confirm'])) {
+                $sql = "DELETE FROM photo where id_photo like $idPhoto";
+                // Execute query
+                if (mysqli_query($db, $sql)) {
+                    $page = $_SESSION['urlPrecedent'];
 
 
-      //pour l'historique
-      $idalbum = $rep['fk_id_album'];
-      $sqlAlbum = "SELECT nom, fk_id_galerie FROM album WHERE id_album = $idalbum";
-      $resAlbum = mysqli_query($db, $sqlAlbum);
-      $repAlbum = mysqli_fetch_array($resAlbum);
-      $nomAlbum = $repAlbum['nom'];
-      $idGalerie = $repAlbum['fk_id_galerie'];
-      $sqlGalerie = "SELECT nom FROM galerie WHERE id_galerie = $idGalerie";
-      $resGalerie = mysqli_query($db, $sqlGalerie);
-      $repGalerie = mysqli_fetch_array($resGalerie);
-      $nomGalerie = $repGalerie['nom'];
+                    //pour l'historique
+                    $idalbum = $rep['fk_id_album'];
+                    $sqlAlbum = "SELECT nom, fk_id_galerie FROM album WHERE id_album = $idalbum";
+                    $resAlbum = mysqli_query($db, $sqlAlbum);
+                    $repAlbum = mysqli_fetch_array($resAlbum);
+                    $nomAlbum = $repAlbum['nom'];
+                    $idGalerie = $repAlbum['fk_id_galerie'];
+                    $sqlGalerie = "SELECT nom FROM galerie WHERE id_galerie = $idGalerie";
+                    $resGalerie = mysqli_query($db, $sqlGalerie);
+                    $repGalerie = mysqli_fetch_array($resGalerie);
+                    $nomGalerie = $repGalerie['nom'];
 
-      $sqlHistorique = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à supprimé une photo dans $nomAlbum($nomGalerie)', curdate())";
-      mysqli_query($db, $sqlHistorique);
-      echo "<br/>YAY.";
-      echo "<script> document.getElementsByClassName('.bg-popup').style.display = 'none'; </script>";
-      echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
-    } else {
-      echo "<br/>NOOO.";
-    }
-  }
-  ?>
+                    $sqlHistorique = "INSERT INTO historique(fk_id_utilisateur, action, date) VALUES ('{$_SESSION['idUtilisateur']}', 'à supprimé une photo dans $nomAlbum($nomGalerie)', curdate())";
+                    mysqli_query($db, $sqlHistorique);
+                    echo "<br/>YAY.";
+                    echo "<script> document.getElementsByClassName('.bg-popup').style.display = 'none'; </script>";
+                    echo "<script> window.location.replace('$page'); </script>"; //replace la page courante a la page voulu, dans ce cas, la page precedente
+                } else {
+                    echo "<br/>NOOO.";
+                }
+            }
+
+            if (isset($_POST['supprimer-photos'])) {
+                $sql = "DELETE FROM photo_album where fk_id_photo like $idPhoto";
+                if (mysqli_query($db, $sql)) {
+                    $sql2 = "DELETE FROM photo where id_photo like $idPhoto";
+                    // Execute query
+                    if (mysqli_query($db, $sql2)) {
+
+                        $sql3 = "DELETE FROM commentaire where fk_id_photo like $idPhoto";
+
+                        if (mysqli_query($db, $sql3)) {
+
+                            $page = $_SESSION['urlPrecedent'];
+                            echo "<br/>YAY.";
+
+                            echo "<script> window.location.replace('$page'); </script>";
+                        } else {
+                            echo "<br/>NOOO.";
+                        }
+                    }
+                }
+            }
+            ?>
 
 
 
 
         </div>
+
+        <div id="supprimer-photos" class="popup">
+            <span onclick="document.getElementById('supprimer-photos').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <form class="popup-content" method="POST" action="" enctype="multipart/form-data">
+                <div class="popup-container">
+                    <h1>SUPPRIMER LA PHOTO?</h1>
+                    <div class="popup-buttons">
+                        <input type="submit" name="supprimer-photos" value="Confirmer">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
         <!-- Next/previous controls -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
