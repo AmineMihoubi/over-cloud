@@ -20,12 +20,12 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
     <form action="nouvelle-galerie-nom.php" method="POST">
 
       <div>
-        <h1>Création d'une Gallerie</h1>
+        <h1>Création d'une Galerie</h1>
         <br /><br />
       </div>
 
       <div class="container">
-        <label>Nom de la gallerie</label>
+        <label>Nom de la galerie</label>
         <br /><br /><br /><br />
         <br /><br /><br /><br />
         <input type="text" name="NomGalerie" />

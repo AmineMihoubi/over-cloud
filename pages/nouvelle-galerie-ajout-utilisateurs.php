@@ -19,16 +19,16 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
         <form action="nouvelle-galerie-ajout-utilisateurs.php" method="POST" id="profile" name="profile" onsubmit="return validateRow();">
             <p>
-                <input type="button" class="button" value="Add" onclick="addRowToTable();" />
-                <input type="button" class="button" value="Remove" onclick="removeRowFromTable();" />
-                <button type="submit" class="button" name="Submit">Submit</button>
+                <input type="button" class="button" value="Ajouter" onclick="addRowToTable();" />
+                <input type="button" class="button" value="Enlever" onclick="removeRowFromTable();" />
+                <button type="submit" class="button" name="Submit">Envoyer</button>
                 <input hidden type="checkbox" id="chkValidate" checked=true />
             </p>
             <p>
             </p>
             <table border="1" id="tblSample">
                 <tr>
-                    <th colspan="3">Sample table</th>
+                    <th colspan="3">Table des adresse courriels</th>
                 </tr>
                 <tr>
                     <td>1</td>

@@ -28,7 +28,7 @@ $db = ConnectDb::getInstance();
 
     <div class='carte'>
         <div id=infoText>
-            <i>La liste des utilisateurs vous permez de supprimer un compte parmis tous les utilisateurs de l'application.</i>
+            <i>La liste des utilisateurs vous permez de supprimer un compte parmi tous les utilisateurs de l'application.</i>
         </div>
 
         <div class='listeUtilisateurs'>
@@ -54,7 +54,7 @@ $db = ConnectDb::getInstance();
                         <td>$courriel</td>
                         <td><form action='../php/actionUtilisateur.php?courriel=$courriel' method='post'> 
                         <input type='submit' name='supprimerUtilisateur' value='Supprimer'/>
-                        </form>'</td>
+                        </form></td>
                         </tr>
                         ";
                     }

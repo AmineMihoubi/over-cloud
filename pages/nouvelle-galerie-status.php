@@ -20,7 +20,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 
         <div>
-            <h1>Voulez-vous rendre votre gallerie Publique ou Privée?</h1>
+            <h1>Voulez-vous rendre votre galerie Publique ou Privée?</h1>
             <br></br>
         </div>
 

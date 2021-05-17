@@ -28,7 +28,7 @@ $db = ConnectDb::getInstance();
 
     <div class='carte'>
         <div id=infoText>
-            <i>La liste des galeries de l'utilisateur vous permez de supprimer une des galeries parmis toutes les galeries de l'application.</i>
+            <i>La liste des galeries de l'utilisateur vous permet de supprimer une des galeries parmi toutes les galeries de l'application.</i>
         </div>
 
         <div class='listeUtilisateurs'>

@@ -63,7 +63,7 @@ $res = mysqli_query($db, $sql_afficher_photos);
                     $nbImages = $nbImages + 1;
                     if ($nbImages == 3) {
                         $nbImages = 0;
-                        echo '<div class = "photo"> </div>"';
+                        echo '<div class = "photo"> </div>';
                     }
                 }
             } else {

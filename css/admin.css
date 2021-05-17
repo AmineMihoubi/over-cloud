@@ -103,7 +103,6 @@ body {
 }
 
 #deconnexion {
-  margin-top: 430%;
   background-color: darkred;
 }
 
@@ -248,8 +247,6 @@ body {
 }
 
 .button-supprimer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   color: black;
   background-color: red;
