@@ -364,7 +364,7 @@ Parametres utilisateurs
                 }
                 
                 .popup-buttons input[type=file],
-                input[type=submit] {
+                .popup-buttons input[type=submit] {
                     background-color: #ddd;
                     border: none;
                     color: black;
@@ -743,6 +743,7 @@ Parametres utilisateurs
                 
                 .message .button-envoyer:hover {
                     background-color: rgb(73, 209, 141);
+                    cursor: pointer;
                 }
                 
                 .message {

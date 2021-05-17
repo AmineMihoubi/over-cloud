@@ -30,7 +30,7 @@
             <h5>Paramètres de la galerie</h5>
             <div id=infoText>
                 <i>Les galeries servent à contenir les albums photos afin de les partager avec tout le monde, ou seulement à ceux qui ont la permission.
-                    Partagez des photos, ou participez aux discussions sur celle-çi avec les personnes de votre choix !
+                    Partagez des photos, ou participez aux discussions sur celle-ci avec les personnes de votre choix !
                 </i>
             </div>
             <form id="paraGalerie-form" action="../php/modificationGalerie.php" method="POST">
