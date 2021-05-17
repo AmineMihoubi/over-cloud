@@ -59,9 +59,6 @@ else if (isset($_POST['supprimerUtilisateur'])) {
   $description = "Supprime l'utilisateur: $idUtilisateur";
 
   $sqlChangement = "INSERT INTO administrateur_changement (id_administrateur,description,date) VALUES ('" . $idAdmin . "','" . $description . "','" . $date . "')";
-  echo "<script>alert('id_admin:  $idAdmin ')</script>";
-  echo "<script>alert('description: $description ')</script>";
-  echo "<script>alert('date: $date')</script>";
   mysqli_query($db, $sqlChangement);
 
   $sql1 = "SELECT fk_id_galerie FROM utilisateur_galerie where fk_id_utilisateur = '" . $idUtilisateur . "'";

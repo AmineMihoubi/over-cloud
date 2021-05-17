@@ -101,7 +101,7 @@ $i = 1; //compteur pour connaitre l'index des images dans une table
 
             if ($statusGalerie != 0) { //if the galerie is not public
                 if ($typeGalerie == 1) { //if the galerie is individual. check if we're the owner
-                    $ownerSQL = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$idGalerie' AND fk_id_type_utilisateur = 1";
+                    $ownerSQL = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$idGalerie'";
                     $resultOwner = mysqli_query($db, $ownerSQL);
                     $row2 = mysqli_fetch_array($resultOwner);
                     $ownerID = $row2['fk_id_utilisateur'];
