@@ -28,7 +28,7 @@ if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
             </p>
             <table border="1" id="tblSample">
                 <tr>
-                    <th colspan="3">Table des adresse courriels</th>
+                    <th colspan="3">Table des adresses courriels</th>
                 </tr>
                 <tr>
                     <td>1</td>
