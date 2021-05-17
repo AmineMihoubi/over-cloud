@@ -50,7 +50,7 @@ $db = ConnectDb::getInstance();
                         $nomGalerie = $row['nom'];
                         $id_galerie = $row['id_galerie'];
 
-                        $sql1 = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$id_galerie' AND fk_id_type_utilisateur = 1";
+                        $sql1 = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$id_galerie' AND fk_id_type_utilisateur =0";
                         $resultOwner = mysqli_query($db, $sql1);
                         $row1 =  mysqli_fetch_array($resultOwner);
                         $ownerID = $row1['fk_id_utilisateur'];

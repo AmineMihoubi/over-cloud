@@ -1,3 +1,10 @@
+<?php
+session_start();
+require '../php/ConnectDb.php';
+$db = ConnectDb::getInstance();
+?>
+
+
 <html>
 
 <head>
@@ -12,7 +19,6 @@
 <body>
     <!-- bare de navigation-->
     <?php
-    session_start();
     if (!isset($_SESSION['idUtilisateur']) || empty($_SESSION['idUtilisateur'])) {
         header('Location: ../index.php');
     }
@@ -33,6 +39,17 @@
 
         <div id=carteText>
             <h5>Modifier les informations de votre compte</h5>
+
+            <?php
+                       $idUtilisateur =  $_SESSION['idUtilisateur'];
+                       $requete = "SELECT courriel, nom, prenom FROM utilisateur WHERE id_utilisateur = $idUtilisateur";
+                       $exec_requete = mysqli_query($db,$requete);
+                       $reponse      = mysqli_fetch_assoc($exec_requete);
+                       $_SESSION['courrielUtilisateur']= $reponse['courriel'];
+                       $_SESSION['nomUtilisateur'] = $reponse['nom'];
+                       $_SESSION['prenomUtilisateur'] = $reponse['prenom'];
+
+            ?>
 
             <form action="../php/modificationUtilisateur.php" method="POST">
                 <h9>Prenom : </h9>

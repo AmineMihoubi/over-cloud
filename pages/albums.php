@@ -55,7 +55,7 @@ if ($_GET['id'] != null) {
       $statusGalerie = $row1['status'];
       if ($statusGalerie != 0) { //if the galerie is not public
         if ($typeGalerie == 1) { //if the galerie is individual. check if we're the owner
-          $ownerSQL = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$id' AND fk_id_type_utilisateur = 1";
+          $ownerSQL = "SELECT fk_id_utilisateur FROM utilisateur_galerie where fk_id_galerie = '$id' AND fk_id_type_utilisateur = 0";
           $resultOwner = mysqli_query($db, $ownerSQL);
           $row2 =  mysqli_fetch_array($resultOwner);
           $ownerID = $row2['fk_id_utilisateur'];
